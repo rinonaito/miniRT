@@ -1,0 +1,27 @@
+name: norminette
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  pre-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install norminette
+      run: |
+        pip install norminette==3.3.51
+
+    - name: Run norminette
+      run: |
+        python -m norminette libft main.c #srcs
