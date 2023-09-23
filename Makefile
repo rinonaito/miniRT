@@ -15,6 +15,8 @@ INCLUDE		=	-Iinclude -I${MLX_DIR} -I${LIBFT_DIR}
 # find src -type f -name "*.c" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/'
 SRCS	=	\
 			main.c \
+			${SRC_DIR}/make_image.c \
+			${SRC_DIR}/mlx_utils/my_mlx_pixel_put.c 
 
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
@@ -35,12 +37,16 @@ ${OBJ_DIR}/%.o : %.c
 
 clean	:
 	$(MAKE) clean -C ${MLX_DIR}
+	$(MAKE) clean -C ${LIBFT_DIR}
 	${RM} ${OBJ_DIR}
 
 fclean	:	clean
-	${RM} ${NAME}
+	${RM} ${NAME} ${MLX_DIR}/${MLX_NAME} ${LIBFT_DIR}/${LIBFT_NAME}
 
 re		:	fclean all
+
+norm	:
+	norminette main.c ${SRC_DIR} include ${LIBFT_DIR}
 
 # Test rule
 test: CFLAGS += -fsanitize=address
