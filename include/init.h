@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   src.h                                              :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 18:14:35 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/23 19:58:43 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/23 19:48:58 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/23 20:04:01 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SRC_H
-# define SRC_H
+#ifndef INIT_H
+# define INIT_H
 
-void	make_image(t_mlx_data *mlx_data, t_scene *sphere);
+# include "types.h"
+
+void	set_coordinate(
+			t_coordinate *coordinate,
+			double x,
+			double y,
+			double z);
 
 #endif

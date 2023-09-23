@@ -15,6 +15,7 @@ INCLUDE		=	-Iinclude -I${MLX_DIR} -I${LIBFT_DIR}
 # find src -type f -name "*.c" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/'
 SRCS	=	\
 			main.c \
+			${SRC_DIR}/init/set_coordinate.c \
 			${SRC_DIR}/make_image.c \
 			${SRC_DIR}/mlx_utils/my_mlx_pixel_put.c 
 
