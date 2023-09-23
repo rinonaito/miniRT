@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/23 20:08:18 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/23 22:30:26 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,30 @@ typedef struct s_rgb
 	int	blue;
 }	t_rgb;
 
-typedef struct s_coordinate
+typedef struct s_vector3d
 {
 	double	x;
 	double	y;
 	double	z;
-}	t_coordinate;
+}	t_vector3d;
+
+typedef struct s_vector2d
+{
+	double	x;
+	double	y;
+}	t_vector2d;
+
+typedef struct s_cell
+{
+	double	x;
+	double	y;
+}	t_cell;
 
 //移動するかも
 typedef struct s_ray
 {
-	t_coordinate	origin;
-	t_coordinate	direction_vec;
+	t_vector3d	origin;
+	t_vector3d	direction_vec;
 }	t_ray;
 
 // typedef struct s_ambient_lightning
@@ -42,36 +54,36 @@ typedef struct s_ray
 
 typedef struct s_camera
 {
-	t_coordinate	origin;
-	t_coordinate	direction_vec;
-	int				fov;
+	t_vector3d	origin;
+	t_vector3d	direction_vec;
+	int			fov;
 }	t_camera;
 
 // typedef struct s_light
 // {
-// 	t_coordinate	origin;
+// 	t_vector3d	origin;
 // 	double			lightning_ratio;
 // 	t_rgb			color;
 // }	t_light;
 
 typedef struct s_sphere
 {
-	t_coordinate	center;
-	double			diameter;
-	t_rgb			color;
+	t_vector3d	center;
+	double		diameter;
+	t_rgb		color;
 }	t_sphere;
 
 // typedef struct s_plane
 // {
-// 	t_coordinate	coordinate;
-// 	t_coordinate	direction_vec;
+// 	t_vector3d	coordinate;
+// 	t_vector3d	direction_vec;
 // 	t_rgb			color;
 // }	t_plane;
 
 // typedef struct s_cylinder
 // {
-// 	t_coordinate	center;
-// 	t_coordinate	direction_vec;
+// 	t_vector3d	center;
+// 	t_vector3d	direction_vec;
 // 	double			diameter;
 // 	double			height;
 // 	t_rgb			color;

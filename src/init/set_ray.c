@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   set_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 17:28:38 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/23 22:26:51 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/23 22:23:48 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 
-void	my_mlx_pixel_put(
-		t_mlx_data *mlx_data,
-		int x,
-		int y,
-		int color)
+void	set_ray(
+		t_ray *ray,
+		t_vector3d origin,
+		t_vector2d uv,
+		double focal_len)
 {
-	char	*dst;
-
-	dst = mlx_data->addr +(y * mlx_data->line_length + x
-			* (mlx_data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	ray->origin = origin;
+	ray->direction_vec.x = origin.x - uv.x;
+	ray->direction_vec.y = origin.y - uv.y;
+	ray->direction_vec.z = focal_len;
 }

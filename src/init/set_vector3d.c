@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_coordinate.c                                   :+:      :+:    :+:   */
+/*   set_vector3d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:47:50 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/23 20:03:45 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/23 21:22:00 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 
-void	set_coordinate(
-	t_coordinate *coordinate,
+void	set_vector3d(
+	t_vector3d *coordinate,
 	double x,
 	double y,
 	double z)

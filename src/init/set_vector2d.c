@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   set_vector3d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 17:28:38 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/23 22:26:51 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/23 19:47:50 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/23 21:22:00 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 
-void	my_mlx_pixel_put(
-		t_mlx_data *mlx_data,
-		int x,
-		int y,
-		int color)
+void	set_vector2d(
+	t_vector2d *coordinate,
+	double x,
+	double y)
 {
-	char	*dst;
-
-	dst = mlx_data->addr +(y * mlx_data->line_length + x
-			* (mlx_data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	coordinate->x = x;
+	coordinate->y = y;
 }
