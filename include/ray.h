@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   subtraction_vector3d_xyz.c                         :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 16:02:46 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 20:36:28 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/24 20:26:46 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/24 20:27:37 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
-#include "vector.h"
+#ifndef RAY_H
+# define RAY_H
 
-t_vector3d	subtraction_vector3d_xyz(
-		const t_vector3d a,
-		const double x,
-		const double y,
-		const double z)
-{
-	t_vector3d	result;
+# include "types.h"
 
-	result.x = a.x - x;
-	result.y = a.y - y;
-	result.z = a.z - z;
-	return (result);
-}
+void	set_ray(
+			t_ray *ray,
+			const t_vector3d origin,
+			const t_vector2d uv,
+			const double focal_len);
+
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dot_vector3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:45:31 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 16:05:46 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/24 20:36:11 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	dot_vector3d(const t_vector3d a, const t_vector3d b)
 {
-	return (a.x * b.x + a.y * b.y + a.z * b.z); 
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

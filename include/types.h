@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/23 22:30:26 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/24 20:44:44 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ typedef struct s_vector2d
 	double	y;
 }	t_vector2d;
 
-typedef struct s_cell
-{
-	double	x;
-	double	y;
-}	t_cell;
-
 //移動するかも
 typedef struct s_ray
 {
@@ -52,6 +46,11 @@ typedef struct s_ray
 // 	t_rgb	color;
 // }	t_ambient_lightning;
 
+/**
+ * origin 位置ベクトル
+ * direction_vec 変移ベクトル
+ * fov 視野角
+*/
 typedef struct s_camera
 {
 	t_vector3d	origin;
