@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/24 17:04:29 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/24 21:40:23 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 #include "init.h"
 
 #include <stdlib.h>
+/**
+ * TODO:
+ * hit_recordを理解・実装する。
+ * 法線を使ったレンダリングを実装する。
+*/
 int	main(void)
 {
 	t_mlx_data	mlx_data;
@@ -37,9 +42,9 @@ int	main(void)
 	scene.spheres->center.y = 0.0;
 	scene.spheres->center.z = 20.6;
 	scene.spheres->diameter = 12.6;
-	scene.spheres->color.red = 10;
+	scene.spheres->color.red = 100;
 	scene.spheres->color.green = 0;
-	scene.spheres->color.blue = 255;
+	scene.spheres->color.blue = 100;
 	//
 	make_image(&mlx_data, &scene);
 	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.image, 0, 0);	
