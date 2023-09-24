@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/23 22:32:45 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/24 17:04:29 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ int	main(void)
 	mlx_data.image = mlx_new_image(mlx_data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx_data.addr = mlx_get_data_addr(mlx_data.image,
 			&mlx_data.bits_per_pixel, &mlx_data.line_length, &mlx_data.endian);
-	mlx_loop(mlx_data.mlx);
 	///
-	set_vector3d(&scene.camera.origin, -50.0, 0.0, 20.0);
+	set_vector3d(&scene.camera.origin, 0.0, 0.0, 0.0);
 	scene.camera.fov = 70;
-	set_vector3d(&scene.camera.direction_vec, 0.0, 0.0, 1.0);
+	set_vector3d(&scene.camera.direction_vec, -50.0, 0.0, 20.0);
 	scene.spheres = malloc(sizeof(t_sphere) * 1);
 	scene.spheres->center.x = 0.0;
 	scene.spheres->center.y = 0.0;
@@ -43,4 +42,6 @@ int	main(void)
 	scene.spheres->color.blue = 255;
 	//
 	make_image(&mlx_data, &scene);
+	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.image, 0, 0);	
+	mlx_loop(mlx_data.mlx);
 }

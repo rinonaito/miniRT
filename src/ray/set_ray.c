@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   set_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 14:41:51 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/24 16:15:16 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/24 16:05:06 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#include "types.h"
+#include "vector.h"
 
-#include <stdbool.h>
-
-bool	hit_sphere(t_ray ray, t_vector3d center, double radius);
-
-#endif
+void	set_ray(
+		t_ray *ray,
+		t_vector3d origin,
+		t_vector2d uv,
+		double focal_len)
+{
+	ray->origin = origin;
+	ray->direction_vec = subtraction_vector3d_xyz(origin, uv.x, uv.y, focal_len);
+}

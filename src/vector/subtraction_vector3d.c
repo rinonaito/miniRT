@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   subtraction_vector3d.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 14:41:51 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/24 16:15:16 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/24 15:13:28 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/24 15:46:00 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#include "types.h"
 
-#include <stdbool.h>
+t_vector3d	subtraction_vector3d(const t_vector3d a, const t_vector3d b)
+{
+	t_vector3d result;
 
-bool	hit_sphere(t_ray ray, t_vector3d center, double radius);
-
-#endif
+	result.x = a.x - b.x; 
+	result.y = a.y - b.y; 
+	result.z = a.z - b.z; 
+	return (result);
+}

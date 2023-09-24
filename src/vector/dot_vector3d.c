@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray_color.c                                    :+:      :+:    :+:   */
+/*   dot_vector3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 14:45:29 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/24 14:46:28 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/24 15:45:31 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/24 16:05:46 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 
-void	set_ray_color(t_ray *ray, t_mlx_data mlx_data, t_scene scene)
+double	dot_vector3d(const t_vector3d a, const t_vector3d b)
 {
-
+	return (a.x * b.x + a.y * b.y + a.z * b.z); 
 }

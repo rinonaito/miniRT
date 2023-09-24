@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   subtraction_vector3d_xyz.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/23 22:23:48 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/24 16:02:46 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/24 16:02:51 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
+#include "vector.h"
 
-void	set_ray(
-		t_ray *ray,
-		t_vector3d origin,
-		t_vector2d uv,
-		double focal_len)
+t_vector3d	subtraction_vector3d_xyz(
+		const t_vector3d a,
+		const double x,
+		const double y,
+		const double z)
 {
-	ray->origin = origin;
-	ray->direction_vec.x = origin.x - uv.x;
-	ray->direction_vec.y = origin.y - uv.y;
-	ray->direction_vec.z = focal_len;
+	t_vector3d result;
+
+	result.x = a.x - x; 
+	result.y = a.y - y; 
+	result.z = a.z - z; 
+	return (result);
 }

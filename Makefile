@@ -15,15 +15,18 @@ INCLUDE		=	-Iinclude -I${MLX_DIR} -I${LIBFT_DIR}
 # find src -type f -name "*.c" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/'
 SRCS	=	\
 			main.c \
-			${SRC_DIR}/init/set_ray.c \
-			${SRC_DIR}/init/set_ray_color.c \
 			${SRC_DIR}/init/set_vector2d.c \
 			${SRC_DIR}/init/set_vector3d.c \
 			${SRC_DIR}/make_image.c \
+			${SRC_DIR}/ray/set_ray.c \
 			${SRC_DIR}/sphere/hit_sphere.c \
 			${SRC_DIR}/utils/error_utils/exit_with_errno.c \
 			${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
+			${SRC_DIR}/utils/mlx_utils/set_color_in_image.c \
 			${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
+			${SRC_DIR}/vector/dot_vector3d.c \
+			${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
+			${SRC_DIR}/vector/subtraction_vector3d.c \
 
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
