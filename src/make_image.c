@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/23 22:21:30 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:45:09 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #include "init.h"
 #include <math.h>
 
+/**
+ * 焦点距離を取得する
+*/
 static double	_get_focal_len(int fov)
 {
 	double	angle_degree;
@@ -45,6 +48,7 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 			uv.x = (double)xy.x / (SCREEN_WIDTH - 1);
 			uv.y = (double)xy.y / (SCREEN_HEIGHT - 1);
 			set_ray(&ray, scene->camera.origin, uv, focal_len);
+			set_ray_color(ray, mlx_data, scene);
 			xy.x++;
 		}
 		xy.y++;
