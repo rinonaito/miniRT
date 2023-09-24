@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 20:44:44 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:28:10 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
+
+# include <stdlib.h>
 
 typedef struct s_rgb
 {
@@ -92,10 +94,14 @@ typedef struct s_scene
 {
 	// t_ambient_lightning	ambient;
 	t_camera			camera;
-	// t_light				*lights;
+	// t_light			*lights;
 	t_sphere			*spheres;
 	// t_plane 			*planes;
-	// t_cylinder 			*cylinders;
+	// t_cylinder 		*cylinders;
+	//size_t				lights_num;
+	size_t				spheres_num;
+	//size_t				planes_num;
+	//size_t				cylinders_num;
 }	t_scene;
 
 typedef struct s_mlx_data

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 20:01:33 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:27:56 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONFIG_H
 # define CONFIG_H
 
-# define SCREEN_HEIGHT		(320)
+# define SCREEN_HEIGHT		(180)
 # define SCREEN_WIDTH		(320)
 # define TITLE				("miniRT")
 # define UV_SCALE			(2.0)

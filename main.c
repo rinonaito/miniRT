@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/24 21:40:23 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/24 21:47:110 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,30 @@
 #include "init.h"
 
 #include <stdlib.h>
+void	init_map(t_scene *scene)
+{
+	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
+	scene->camera.fov = 70;
+	set_vector3d(&scene->camera.direction_vec, -50.0, 0.0, 20.0);
+	scene->spheres = malloc(sizeof(t_sphere) * 2);
+	scene->spheres[0].center.x = 10.0;
+	scene->spheres[0].center.y = 15.0;
+	scene->spheres[0].center.z = 20.6;
+	scene->spheres[0].diameter = 12.6;
+	scene->spheres[0].color.red = 100;
+	scene->spheres[0].color.green = 0;
+	scene->spheres[0].color.blue = 100;
+	scene->spheres[1].center.x = 10.5;
+	scene->spheres[1].center.y = 5.5;
+	scene->spheres[1].center.z = 10.6;
+	scene->spheres[1].diameter = 5.6;
+	scene->spheres[1].color.red = 0;
+	scene->spheres[1].color.green = 255;
+	scene->spheres[1].color.blue = 100;
+	scene->spheres_num = 1;
+
+}
+
 /**
  * TODO:
  * hit_recordを理解・実装する。
@@ -33,19 +57,7 @@ int	main(void)
 	mlx_data.image = mlx_new_image(mlx_data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx_data.addr = mlx_get_data_addr(mlx_data.image,
 			&mlx_data.bits_per_pixel, &mlx_data.line_length, &mlx_data.endian);
-	///
-	set_vector3d(&scene.camera.origin, 0.0, 0.0, 0.0);
-	scene.camera.fov = 70;
-	set_vector3d(&scene.camera.direction_vec, -50.0, 0.0, 20.0);
-	scene.spheres = malloc(sizeof(t_sphere) * 1);
-	scene.spheres->center.x = 0.0;
-	scene.spheres->center.y = 0.0;
-	scene.spheres->center.z = 20.6;
-	scene.spheres->diameter = 12.6;
-	scene.spheres->color.red = 100;
-	scene.spheres->color.green = 0;
-	scene.spheres->color.blue = 100;
-	//
+	init_map(&scene);
 	make_image(&mlx_data, &scene);
 	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.image, 0, 0);	
 	mlx_loop(mlx_data.mlx);

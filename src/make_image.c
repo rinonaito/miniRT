@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 20:18:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:25:35 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ static double	_get_focal_len(int fov)
 	focal_len = tan(angle_radians);
 	return (focal_len);
 }
+
+// static double	_get_focal_len(int fov)
+// {
+// 	double	angle_radians;
+// 	double	focal_len;
+
+// 	angle_radians = (fov / 2.0) * M_PI / 180.0;
+// 	focal_len = 0.5 / tan(angle_radians);
+// 	return (focal_len);
+// }
+
 
 /**
  * xy.x / SCREEN_WIDTH だと0.0 ~ 1.0になってしまうため、

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   set_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 20:25:42 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:28:19 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "vector.h"
+#include "config.h"
 
 void	set_ray(
 		t_ray *ray,
