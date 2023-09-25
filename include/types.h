@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 22:28:10 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/25 21:30:44 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,24 @@ typedef struct s_sphere
 
 typedef struct s_scene
 {
-	// t_ambient_lightning	ambient;
 	t_camera			camera;
-	// t_light			*lights;
 	t_sphere			*spheres;
-	// t_plane 			*planes;
-	// t_cylinder 		*cylinders;
-	//size_t				lights_num;
 	size_t				spheres_num;
-	//size_t				planes_num;
-	//size_t				cylinders_num;
 }	t_scene;
+
+// typedef struct s_scene
+// {
+// 	// t_ambient_lightning	ambient;
+// 	t_camera			camera;
+// 	// t_light			*lights;
+// 	t_sphere			*spheres;
+// 	// t_plane 			*planes;
+// 	// t_cylinder 		*cylinders;
+// 	//size_t				lights_num;
+// 	size_t				spheres_num;
+// 	//size_t				planes_num;
+// 	//size_t				cylinders_num;
+// }	t_scene;
 
 typedef struct s_mlx_data
 {

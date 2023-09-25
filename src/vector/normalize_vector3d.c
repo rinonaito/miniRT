@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize_vector3d.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 20:20:15 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/24 20:38:34 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:40:07 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ t_vector3d	normalize_vector3d(t_vector3d v)
 	normalized_vector.x = v.x / vector_size;
 	normalized_vector.y = v.y / vector_size;
 	normalized_vector.z = v.z / vector_size;
-
 	return (normalized_vector);
 }

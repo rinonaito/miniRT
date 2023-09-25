@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 22:25:35 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/25 21:31:45 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "mlx_utils.h"
 #include <math.h>
 
+#include <stdio.h>
 /**
  * 焦点距離を取得する
  * 
@@ -30,20 +31,19 @@ static double	_get_focal_len(int fov)
 
 	theta = fov / HALF_ANGLE_DIVISOR;
 	angle_radians = theta * M_PI / 180.0;
-	focal_len = tan(angle_radians);
+	focal_len = (SCREEN_WIDTH / 2.0) / tan(angle_radians);
 	return (focal_len);
 }
 
-// static double	_get_focal_len(int fov)
-// {
-// 	double	angle_radians;
-// 	double	focal_len;
+static double	_get_normalized_focal_len(int fov)
+{
+	const double	max_focal_len = _get_focal_len(MIN_FOV);
+	const double	min_focal_len = _get_focal_len(MAX_FOV);
+	const double	focal_len = _get_focal_len(fov);
 
-// 	angle_radians = (fov / 2.0) * M_PI / 180.0;
-// 	focal_len = 0.5 / tan(angle_radians);
-// 	return (focal_len);
-// }
-
+	return (SCENE_SCALE * focal_len / (max_focal_len - min_focal_len)
+		- SCENE_OFFSET);
+}
 
 /**
  * xy.x / SCREEN_WIDTH だと0.0 ~ 1.0になってしまうため、
@@ -54,7 +54,7 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 	t_vector2d		uv;
 	t_vector2d		xy;
 	t_ray			ray;
-	const double	focal_len = _get_focal_len(scene->camera.fov);
+	const double	focal_len = _get_normalized_focal_len(scene->camera.fov);
 	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
 
 	xy.y = 0;
@@ -63,9 +63,9 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 		xy.x = 0;
 		while (xy.x < SCREEN_WIDTH)
 		{
-			uv.x = (UV_SCALE * ((double)xy.x / SCREEN_WIDTH) - UV_OFFSET)
+			uv.x = (SCENE_SCALE * ((double)xy.x / SCREEN_WIDTH) - SCENE_OFFSET)
 				* aspect_ratio;
-			uv.y = UV_SCALE * ((double)xy.y / SCREEN_HEIGHT) - UV_OFFSET;
+			uv.y = SCENE_SCALE * ((double)xy.y / SCREEN_HEIGHT) - SCENE_OFFSET;
 			set_ray(&ray, scene->camera.origin, uv, focal_len);
 			set_color_in_image(ray, xy, mlx_data, *scene);
 			xy.x++;

@@ -3,29 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:42:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/24 20:35:57 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:36:04 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <vector.h>
+#include <math.h>
+#include <stdlib.h>
+#include "vector.h"
+#include "calculator.h"
 
-//TODO:以下のコードを理解する
-bool	hit_sphere(t_ray ray, t_vector3d center, double radius)
+/**
+ * レイが球と接する点の数を取得する関数
+ * ＜前提＞
+ * - 球の表面上の点(point)、球の中心(center)、球の半径(radius)の関係は
+ *   次の式で表現できる：(point - center)^2 = radius^2
+ * - pointは、次の式で表現できる：point = origin + t * direction
+
+ * 上記をもとに、tに関する二次方程式 at^2 + bt + c = 0を作成し、
+ * 球とレイの接点の数(0 ~ 2)を求め、返す
+*/
+size_t	hit_sphere(t_ray ray, t_vector3d center, double radius)
 {		
-	t_vector3d	diff_oc;
+	t_vector3d	point_minus_center;
 	double		a;
 	double		b;
 	double		c;
-	double		discriminant;
 
-	diff_oc = subtraction_vector3d(ray.origin, center);
+	point_minus_center = subtraction_vector3d(ray.origin, center);
 	a = dot_vector3d(ray.direction_vec, ray.direction_vec);
-	b = 2.0 * dot_vector3d(diff_oc, ray.direction_vec);
-	c = dot_vector3d(diff_oc, diff_oc) - radius * radius;
-	discriminant = b * b - 4 * a * c;
-	return (discriminant > 0);
+	b = 2 * dot_vector3d(ray.direction_vec, point_minus_center);
+	c = dot_vector3d(point_minus_center, point_minus_center) - pow(radius, 2);
+	return (get_num_of_positive_solutions(a, b, c));
 }
