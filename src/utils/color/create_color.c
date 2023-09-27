@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 21:37:00 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/24 21:38:221 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/27 21:58:03 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/27 22:18:07 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "types.h"
 
-int	create_color(t_rgb rgb)
+int	convert_rgb_in_int(t_rgb rgb)
 {
 	int	color;
 

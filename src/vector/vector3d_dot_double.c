@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_press.c                                 :+:      :+:    :+:   */
+/*   vector3d_dot_double.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 21:09:34 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/27 22:24:15 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/27 19:29:05 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/27 22:03:18 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
 #include "types.h"
-#include <mlx.h>
 
-#include <stdio.h>
-int	handle_key_press(int keycode, void *value)
+t_vector3d	vector3d_dot_double(t_vector3d vec, double t)
 {
-	t_mlx_data	*mlx_data;
+	t_vector3d	result;
 
-	mlx_data = value;
-	printf("key = %d\n", keycode);
-	if (keycode == ESC || keycode == ESC_OS_TPYE_M1 || keycode == 65307)
-	{
-		mlx_destroy_window(mlx_data->mlx, mlx_data->win);
-		exit(0);
-	}
-	return (0);
+	result.x = t * vec.x;
+	result.y = t * vec.y;
+	result.z = t * vec.z;
+	return (result);
 }

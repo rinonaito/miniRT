@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 19:21:00 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/25 21:31:50 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/27 22:18:02 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
  * ax^2 + bx + c = 0が成立する時、
  * b * b - 4 * a * cの答えと0を比較することで、解の数が求められる
 */
+//TODO:多分不要
 size_t	get_num_of_solutions(double a, double b, double c)
 {
 	double	result;

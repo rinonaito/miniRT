@@ -15,25 +15,31 @@ INCLUDE		=	-Iinclude -I${MLX_DIR} -I${LIBFT_DIR}
 # find src -type f -name "*.c" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/' | pbcopy
 SRCS	=	\
 			main.c \
-			${SRC_DIR}/init/set_vector2d.c \
-			${SRC_DIR}/init/set_vector3d.c \
-			${SRC_DIR}/make_image.c \
-			${SRC_DIR}/ray/set_ray.c \
-			${SRC_DIR}/sphere/hit_sphere.c \
-			${SRC_DIR}/utils/calculator/get_num_of_positive_solutions.c \
-			${SRC_DIR}/utils/calculator/get_num_of_solutions.c \
-			${SRC_DIR}/utils/color/create_color.c \
-			${SRC_DIR}/utils/error_utils/exit_with_errno.c \
-			${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
-			${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
-			${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
-			${SRC_DIR}/utils/mlx_utils/set_color_in_image.c \
-			${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
-			${SRC_DIR}/vector/addition_vector3d.c \
-			${SRC_DIR}/vector/dot_vector3d.c \
-			${SRC_DIR}/vector/normalize_vector3d.c \
-			${SRC_DIR}/vector/subtraction_vector3d.c \
-			${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
+${SRC_DIR}/init/set_vector2d.c \
+${SRC_DIR}/init/set_vector3d.c \
+${SRC_DIR}/make_image.c \
+${SRC_DIR}/ray/set_ray.c \
+${SRC_DIR}/sphere/get_normal_vector_for_sphere.c \
+${SRC_DIR}/sphere/hit_sphere.c \
+${SRC_DIR}/utils/calculator/get_num_of_positive_solutions.c \
+${SRC_DIR}/utils/calculator/get_num_of_solutions.c \
+${SRC_DIR}/utils/calculator/get_t_of_contact_point.c \
+${SRC_DIR}/utils/calculator/scale_to_minus_one_to_one.c \
+${SRC_DIR}/utils/calculator/scale_to_zero_to_one.c \
+${SRC_DIR}/utils/color/convert_rgb_in_int.c \
+${SRC_DIR}/utils/color/get_pixel_color.c \
+${SRC_DIR}/utils/error_utils/exit_with_errno.c \
+${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
+${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
+${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
+${SRC_DIR}/utils/mlx_utils/set_color_in_image.c \
+${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
+${SRC_DIR}/vector/addition_vector3d.c \
+${SRC_DIR}/vector/dot_vector3d.c \
+${SRC_DIR}/vector/normalize_vector3d.c \
+${SRC_DIR}/vector/subtraction_vector3d.c \
+${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
+${SRC_DIR}/vector/vector3d_dot_double.c \
 
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}

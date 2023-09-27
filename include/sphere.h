@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:41:51 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/25 19:19:46 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/27 22:18:14 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <stdlib.h>
 # include "types.h"
 
-size_t	hit_sphere(t_ray ray, t_vector3d center, double radius);
+double		hit_sphere(t_ray ray, t_vector3d center, double radius);
+
+t_vector3d	get_normal_vector_for_sphere(
+				t_ray ray,
+				double hit_distance,
+				t_vector3d center);
 
 #endif

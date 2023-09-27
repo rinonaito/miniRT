@@ -6,14 +6,15 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/25 21:31:45 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/27 22:01:35 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "config.h"
 #include "init.h"
 #include "mlx_utils.h"
+#include "calculator.h"
+#include "config.h"
 #include <math.h>
 
 #include <stdio.h>
@@ -35,6 +36,9 @@ static double	_get_focal_len(int fov)
 	return (focal_len);
 }
 
+/**
+ * screenまでの距離を取得し、正規化する（0 ~ 1へスケールダウン）
+*/
 static double	_get_normalized_focal_len(int fov)
 {
 	const double	max_focal_len = _get_focal_len(MIN_FOV);
@@ -63,9 +67,9 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 		xy.x = 0;
 		while (xy.x < SCREEN_WIDTH)
 		{
-			uv.x = (SCENE_SCALE * ((double)xy.x / SCREEN_WIDTH) - SCENE_OFFSET)
+			uv.x = scale_to_minus_one_to_one((double)xy.x / SCREEN_WIDTH)
 				* aspect_ratio;
-			uv.y = SCENE_SCALE * ((double)xy.y / SCREEN_HEIGHT) - SCENE_OFFSET;
+			uv.y = scale_to_minus_one_to_one((double)xy.y / SCREEN_HEIGHT);
 			set_ray(&ray, scene->camera.origin, uv, focal_len);
 			set_color_in_image(ray, xy, mlx_data, *scene);
 			xy.x++;
