@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   handle_key_press.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/27 21:44:09 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/27 21:09:34 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/27 21:46:13 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#include "config.h"
+#include "types.h"
+#include <mlx.h>
 
-# define SCREEN_HEIGHT		(180)
-# define SCREEN_WIDTH		(320)
-# define TITLE				("miniRT")
-# define SCENE_SCALE		(2.0)
-# define SCENE_OFFSET		(1.0)
-# define HALF_ANGLE_DIVISOR	(2.0)
-# define MAX_FOV        	(179)
-# define MIN_FOV	        (1)
-# define ESC				(53)
-# define ESC_OS_TPYE_M1		(49)
-# define ON_KEYDOWN			(2)
-# define ON_DESTROY			(17)
+#include <stdio.h>
+int	handle_key_press(int keycode, void *value)
+{
+	t_mlx_data	*mlx_data;
 
-#endif
+	mlx_data = value;
+	if (keycode == ESC || keycode == ESC_OS_TPYE_M1)
+	{
+		mlx_destroy_window(mlx_data->mlx, mlx_data->win);
+		exit(0);
+	}
+	return (0);
+}

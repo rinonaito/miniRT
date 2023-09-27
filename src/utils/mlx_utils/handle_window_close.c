@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   handle_window_close.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/27 21:44:09 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/27 21:10:55 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/27 21:22:16 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#include "types.h"
+#include <mlx.h>
 
-# define SCREEN_HEIGHT		(180)
-# define SCREEN_WIDTH		(320)
-# define TITLE				("miniRT")
-# define SCENE_SCALE		(2.0)
-# define SCENE_OFFSET		(1.0)
-# define HALF_ANGLE_DIVISOR	(2.0)
-# define MAX_FOV        	(179)
-# define MIN_FOV	        (1)
-# define ESC				(53)
-# define ESC_OS_TPYE_M1		(49)
-# define ON_KEYDOWN			(2)
-# define ON_DESTROY			(17)
+int	handle_window_close(void *value)
+{
+	t_mlx_data	*mlx_data;
 
-#endif
+	mlx_data = value;
+	mlx_destroy_window(mlx_data->mlx, mlx_data->win);
+	exit(0);
+	return (0);
+}

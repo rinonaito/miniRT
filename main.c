@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/25 21:30:58 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/27 21:46:31 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "config.h"
 #include "src.h"
 #include "init.h"
+#include "mlx_utils.h"
 
 #include <stdlib.h>
 
@@ -60,5 +61,9 @@ int	main(void)
 	init_map(&scene);
 	make_image(&mlx_data, &scene);
 	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.image, 0, 0);
+	mlx_hook(
+		mlx_data.win, ON_KEYDOWN, 1L << 0, handle_key_press, (void *)&mlx_data);
+	mlx_hook(
+		mlx_data.win, ON_DESTROY, 0, handle_window_close, (void *)&mlx_data);
 	mlx_loop(mlx_data.mlx);
 }

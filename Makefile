@@ -20,10 +20,12 @@ SRCS	=	\
 			${SRC_DIR}/make_image.c \
 			${SRC_DIR}/ray/set_ray.c \
 			${SRC_DIR}/sphere/hit_sphere.c \
-			${SRC_DIR}/utils/calculator/get_num_of_solutions.c \
 			${SRC_DIR}/utils/calculator/get_num_of_positive_solutions.c \
+			${SRC_DIR}/utils/calculator/get_num_of_solutions.c \
 			${SRC_DIR}/utils/color/create_color.c \
 			${SRC_DIR}/utils/error_utils/exit_with_errno.c \
+			${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
+			${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
 			${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
 			${SRC_DIR}/utils/mlx_utils/set_color_in_image.c \
 			${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
