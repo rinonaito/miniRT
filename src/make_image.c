@@ -6,12 +6,12 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/27 22:01:35 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/28 22:01:49 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "init.h"
+#include "ray.h"
 #include "mlx_utils.h"
 #include "calculator.h"
 #include "config.h"
@@ -55,25 +55,26 @@ static double	_get_normalized_focal_len(int fov)
 */
 void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 {
+	t_vector3d		xyz;
 	t_vector2d		uv;
-	t_vector2d		xy;
 	t_ray			ray;
-	const double	focal_len = _get_normalized_focal_len(scene->camera.fov);
+	// const double	focal_len = _get_normalized_focal_len(scene->camera.fov);
 	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
 
-	xy.y = 0;
-	while (xy.y < SCREEN_HEIGHT)
+	xyz.z = _get_normalized_focal_len(scene->camera.fov);
+	uv.y = 0;
+	while (uv.y < SCREEN_HEIGHT)
 	{
-		xy.x = 0;
-		while (xy.x < SCREEN_WIDTH)
+		uv.x = 0;
+		while (uv.x < SCREEN_WIDTH)
 		{
-			uv.x = scale_to_minus_one_to_one((double)xy.x / SCREEN_WIDTH)
+			xyz.x = scale_to_minus_one_to_one((double)uv.x / SCREEN_WIDTH)
 				* aspect_ratio;
-			uv.y = scale_to_minus_one_to_one((double)xy.y / SCREEN_HEIGHT);
-			set_ray(&ray, scene->camera.origin, uv, focal_len);
-			set_color_in_image(ray, xy, mlx_data, *scene);
-			xy.x++;
+			xyz.y = scale_to_minus_one_to_one((double)uv.y / SCREEN_HEIGHT);
+			set_ray(&ray, scene->camera, xyz);
+			set_color_in_image(&ray, xyz, uv, mlx_data, *scene);
+			uv.x++;
 		}
-		xy.y++;
+		uv.y++;
 	}
 }

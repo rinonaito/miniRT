@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:07:52 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/27 21:29:12 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:47:42 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # include "types.h"
 
 void	set_color_in_image(
-			t_ray ray,
-			t_vector2d xy,
+			t_ray *ray,
+			t_vector3d xyz,
+			t_vector2d uv,
 			t_mlx_data *mlx_data,
 			t_scene scene);
 
