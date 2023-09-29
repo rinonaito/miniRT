@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/28 21:33:28 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/29 19:28:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_sphere
 
 typedef struct s_scene
 {
- 	t_ambient_lighting	ambient;
+	t_ambient_lighting	ambient;
 	t_camera			camera;
 	t_sphere			*spheres;
 	size_t				spheres_num;

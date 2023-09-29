@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_color.c                                     :+:      :+:    :+:   */
+/*   vector3d_magnitude.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 21:58:03 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/27 22:18:07 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/29 19:34:39 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/29 19:35:08 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "types.h"
+#include <math.h>
 
-int	convert_rgb_in_int(t_rgb rgb)
+double	vector3d_magnitude(t_vector3d vec)
 {
-	int	color;
-
-	color = (rgb.red << 16) | (rgb.green << 8) | rgb.blue;
-	return (color);
+	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }
