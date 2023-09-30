@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_t_of_contact_point.c                           :+:      :+:    :+:   */
+/*   get_hit_distance.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@
  * 二次方程式（ax^2 + bx + c = 0）の解のうち、視点により近い解を返す関数
  * 解が存在しない場合には-1.0を返す。
 */
-double	get_t_of_contact_point(double a, double b, double c)
+double	get_hit_distance(double a, double b, double c)
 {
 	double	result;
 

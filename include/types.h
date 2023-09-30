@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 13:02:14 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 15:48:01 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define TYPES_H
 
 # include <stdlib.h>
+
+typedef enum e_object_type
+{
+	SPHERE,
+	PLANE,
+	CYLINDER
+}	t_object_type;
 
 typedef struct s_rgb
 {
@@ -68,6 +75,12 @@ typedef struct s_light
 	t_rgb		color;
 }	t_light;
 
+typedef struct s_object
+{
+	void	*object;
+	int		object_type;
+}	t_object;
+
 typedef struct s_sphere
 {
 	t_vector3d	center;
@@ -96,8 +109,8 @@ typedef struct s_scene
 	t_ambient_lighting	ambient;
 	t_camera			camera;
 	t_light				*lights;
-	t_sphere			*spheres;
-	size_t				spheres_num;
+	t_object			*objects;
+	size_t				objects_num;
 	size_t				lights_num;
 }	t_scene;
 
