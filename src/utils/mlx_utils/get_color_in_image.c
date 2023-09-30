@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_color_in_image.c                               :+:      :+:    :+:   */
+/*   get_color_in_image.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 15:53:14 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/29 19:48:08 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/30 11:42:39 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int	get_color_in_image(
 	{
 		ray->lighting_ratio
 			= _get_lighting_ratio(ray, xyz, scene, ray->direction_vec);
-		return (0x0000FF + ray->lighting_ratio);
+		return (0x0000FF * ray->lighting_ratio);
 	}
 }

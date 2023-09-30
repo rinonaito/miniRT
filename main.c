@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/28 21:58:31 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/30 11:37:15 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	init_map(t_scene *scene)
 {
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
 	scene->camera.fov = 90;
-	scene->ambient.lighting_ratio = 1.0;
 	set_vector3d(&scene->camera.direction_vec, -50.0, 0.0, 20.0);
+		scene->ambient.lighting_ratio = 1.0;
+	scene->ambient.lighting_ratio = 1.0;
 	scene->spheres = malloc(sizeof(t_sphere) * 2);
 	scene->spheres[0].center.x = 0.0;
 	scene->spheres[0].center.y = 0.0;

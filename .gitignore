@@ -1,0 +1,7 @@
+
+*.o
+*.d
+.DS_STORE
+miniRT
+.*un~
+settings.json

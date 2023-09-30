@@ -29,10 +29,10 @@ ${SRC_DIR}/utils/calculator/scale_to_zero_to_one.c \
 ${SRC_DIR}/utils/color/convert_rgb_in_int.c \
 ${SRC_DIR}/utils/color/get_pixel_color.c \
 ${SRC_DIR}/utils/error_utils/exit_with_errno.c \
+${SRC_DIR}/utils/mlx_utils/get_color_in_image.c \
 ${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
 ${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
 ${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
-${SRC_DIR}/utils/mlx_utils/set_color_in_image.c \
 ${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
 ${SRC_DIR}/vector/addition_vector3d.c \
 ${SRC_DIR}/vector/dot_vector3d.c \

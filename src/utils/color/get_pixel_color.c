@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:35:15 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/29 19:29:15 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 11:12:39 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ t_rgb	get_pixel_color(
 	t_rgb	color;
 
 	color.red = original_color.red
-		+ change_scale_for_color(nomal_vector.x) + lighting_ratio;
+		+ change_scale_for_color(nomal_vector.x) * lighting_ratio;
 	color.green = original_color.green
-		+ change_scale_for_color(nomal_vector.y) + lighting_ratio;
+		+ change_scale_for_color(nomal_vector.y) * lighting_ratio;
 	color.blue = original_color.blue
-		+ change_scale_for_color(nomal_vector.z) + lighting_ratio;
+		+ change_scale_for_color(nomal_vector.z) * lighting_ratio;
 	return (color);
 }
