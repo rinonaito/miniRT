@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 14:36:19 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 16:37:58 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@
 # define RED_SHIFT			(16)
 # define GREEN_SHIFT		(8)
 # define SECOND_COEFFICIENT	(2.0)
+# define NOT_HIT				(-1)
 
 #endif

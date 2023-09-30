@@ -24,7 +24,7 @@ ${SRC_DIR}/sphere/get_normal_vector_for_sphere.c \
 ${SRC_DIR}/sphere/hit_sphere.c \
 ${SRC_DIR}/utils/calculator/get_num_of_positive_solutions.c \
 ${SRC_DIR}/utils/calculator/get_num_of_solutions.c \
-${SRC_DIR}/utils/calculator/get_t_of_contact_point.c \
+${SRC_DIR}/utils/calculator/get_hit_distance.c \
 ${SRC_DIR}/utils/calculator/scale_to_minus_one_to_one.c \
 ${SRC_DIR}/utils/calculator/scale_to_zero_to_one.c \
 ${SRC_DIR}/utils/color/convert_rgb_in_int.c \
@@ -41,7 +41,7 @@ ${SRC_DIR}/vector/normalize_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
-${SRC_DIR}/vector/vector3d_magnitude.c \
+${SRC_DIR}/vector/get_len_of_vector3d.c \
 
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}

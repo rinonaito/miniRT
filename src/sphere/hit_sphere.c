@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:42:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/30 14:37:00 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:59:48 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ double	hit_sphere(t_ray ray, t_vector3d center, double radius)
 	c = dot_vector3d(
 			point_minus_center,
 			point_minus_center) - pow(radius, SECOND_COEFFICIENT);
-	return (get_t_of_contact_point(a, b, c));
+	return (get_hit_distance(a, b, c));
 }

@@ -31,8 +31,8 @@ static double	_calculate_lighting(
 	double		dot_length;
 
 	dot_result = dot_vector3d(point, normal_vector);
-	dot_length = vector3d_magnitude(point)
-		* vector3d_magnitude(normal_vector);
+	dot_length = get_len_of_vector3d(point)
+		* get_len_of_vector3d(normal_vector);
 	cos_theta = dot_result / dot_length;
 	if (cos_theta > NO_LIGHT_STRENGTH)
 		return (lighting_ratio * cos_theta);
@@ -63,26 +63,59 @@ static void	_set_lighting_ratio(
 	}
 }
 
+static void	_set_closest_point_info(
+	double *closest_hit_distance,
+	ssize_t *closest_object_index,
+	const t_ray ray,
+	const t_scene scene)
+{
+	size_t	i;
+	double	current_hit_distance;
+
+	i = 0;
+	*closest_hit_distance = INFINITY;
+	*closest_object_index = NOT_HIT;
+	while (i < scene.objects_num)
+	{
+		if (scene.objects[i].object_type == SPHERE)
+		{
+			current_hit_distance
+				= hit_sphere(
+					ray,
+					((t_sphere *)scene.objects[i].object)->center,
+					((t_sphere *)scene.objects[i].object)->diameter
+					/ HALF_FACTOR);
+		}
+		if (current_hit_distance >= HIT_DISTANCE_MIN
+			&& current_hit_distance < *closest_hit_distance)
+		{
+			*closest_hit_distance = current_hit_distance;
+			*closest_object_index = i;
+		}
+		i++;
+	}
+}
+
 int	get_pixel_color(
 	t_ray *ray,
 	const t_vector3d xyz,
 	const t_scene scene)
 {
-	double		hit_distance;
-	t_rgb		rgb;
 	t_rgb		else_rgb;
 	t_vector3d	normal_vector;
+	ssize_t		closest_object_i;
+	double		closest_hit_distance;
 
-	hit_distance = hit_sphere(*ray, scene.spheres[0].center,
-			scene.spheres[0].diameter / HALF_FACTOR);
-	if (hit_distance >= HIT_DISTANCE_MIN)
+	_set_closest_point_info(
+		&closest_hit_distance, &closest_object_i, *ray, scene);
+	if (closest_object_i != NOT_HIT)
 	{
-		normal_vector = get_normal_vector_for_sphere(*ray, hit_distance,
-				scene.spheres[0].center);
+		normal_vector = get_normal_vector_for_sphere(*ray, closest_hit_distance,
+				((t_sphere *)scene.objects[closest_object_i].object)->center);
 		_set_lighting_ratio(ray, xyz, scene, normal_vector);
-		rgb = reflect_lighting_ratio_in_color(
-				scene.spheres[0].color, ray->lighting_ratio);
-		return (convert_rgb_in_int(rgb));
+		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(
+					((t_sphere *)scene.objects[closest_object_i].object)->color,
+					ray->lighting_ratio)));
 	}
 	else
 	{
@@ -90,7 +123,7 @@ int	get_pixel_color(
 		else_rgb.red = 255;
 		else_rgb.green = 255;
 		else_rgb.blue = 255;
-		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(else_rgb,
-					ray->lighting_ratio)));
+		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(
+					else_rgb, ray->lighting_ratio)));
 	}
 }

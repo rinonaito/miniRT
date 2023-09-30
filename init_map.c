@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/30 13:56:56 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 16:09:05 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,37 @@
 
 void	init_map(t_scene *scene)
 {
+	t_sphere *sphere;
+	t_sphere *sphere2;
+
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
 	scene->camera.fov = 90;
 	set_vector3d(&scene->camera.direction_vec, -50.0, 0.0, 20.0);
 	scene->ambient.lighting_ratio = 1.0;
-	scene->spheres = malloc(sizeof(t_sphere) * 2);
-	scene->spheres[0].center.x = 0.5;
-	scene->spheres[0].center.y = 0.0;
-	scene->spheres[0].center.z = 10.6;
-	scene->spheres[0].diameter = 12.6;
-	scene->spheres[0].color.red = 0;
-	scene->spheres[0].color.green = 200;
-	scene->spheres[0].color.blue = 0;
-	scene->spheres[1].center.x = 10.5;
-	scene->spheres[1].center.y = 5.5;
-	scene->spheres[1].center.z = 10.6;
-	scene->spheres[1].diameter = 5.6;
-	scene->spheres[1].color.red = 0;
-	scene->spheres[1].color.green = 100;
-	scene->spheres[1].color.blue = 10;
-	scene->spheres_num = 2;
+	scene->objects = malloc(sizeof(t_object) * 2);
+	sphere = malloc(sizeof(t_sphere) * 1);
+	sphere->center.x = 0.5;
+	sphere->center.y = 0.0;
+	sphere->center.z = 10.6;
+	sphere->diameter = 12.6;
+	sphere->color.red = 0;
+	sphere->color.green = 200;
+	sphere->color.blue = 0;
+	scene->objects[0].object = sphere;
+	scene->objects[0].object_type = SPHERE;
+
+	sphere2 = malloc(sizeof(t_sphere) * 1);
+	sphere2->center.x = 5.5;
+	sphere2->center.y = 5.5;
+	sphere2->center.z = 10.6;
+	sphere2->diameter = 5.6;
+	sphere2->color.red = 0;
+	sphere2->color.green = 200;
+	sphere2->color.blue = 0;
+	scene->objects[1].object = sphere2;
+	scene->objects[1].object_type = SPHERE;
+	scene->objects_num = 2;
+
 	scene->lights = malloc(sizeof(t_light) * 2);
 	scene->lights[0].origin.x = 1;
 	scene->lights[0].origin.y = -1;
