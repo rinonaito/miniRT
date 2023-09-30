@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 21:34:35 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/30 13:42:57 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:23:43 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int		convert_rgb_in_int(t_rgb rgb);
 
-t_rgb	get_pixel_color(
+t_rgb	reflect_lighting_ratio_in_color(
 			t_rgb original_color,
 			double lighting_ratio);
 

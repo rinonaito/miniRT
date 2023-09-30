@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/29 19:52:22 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:23:12 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "config.h"
 #include <math.h>
 
-#include <stdio.h>
 /**
  * 焦点距離を取得する
  * 
@@ -31,8 +30,8 @@ static double	_get_focal_len(int fov)
 	double	focal_len;
 
 	theta = fov / HALF_ANGLE_DIVISOR;
-	angle_radians = theta * M_PI / 180.0;
-	focal_len = (SCREEN_WIDTH / 2.0) / tan(angle_radians);
+	angle_radians = theta * M_PI / HALF_FULL_DEGREE;
+	focal_len = (SCREEN_WIDTH / HALF_FACTOR) / tan(angle_radians);
 	return (focal_len);
 }
 
@@ -50,8 +49,14 @@ static double	_get_normalized_focal_len(int fov)
 }
 
 /**
- * xy.x / SCREEN_WIDTH だと0.0 ~ 1.0になってしまうため、
- * 2.0 * ((double)xy.x / SCREEN_WIDTH とすることで-1.0 ~ 1.0になる。
+ * uv座標 ：screenの2次元座標
+ *	(範囲： 0 <= u <= SCREEN_WIDTH, 0 <= v <= SCREEN_HEIGHT)
+ * xyz座標：scene空間内の3次元座標
+ * 	(範囲：-1.0 <= x <= 1.0, -1.0 <= y <= 1.0, -1.0 <= z <= 1.0)
+ * uv座標をscene空間上に配置するため、uvの範囲をxyzの範囲(-1.0 ~ 1.0)へ変更したい
+ * → 2.0 * ((double)uv.x / SCREEN_WIDTH により 0.0 ~ 1.0 → -1.0 ~ 1.0へ範囲変更
+ *
+ * aspect_ratio:スクリーンの縦横比が画像へ影響しないようにする 
 */
 void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 {
@@ -72,7 +77,7 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 			xyz.y = scale_to_minus_one_to_one((double)uv.y / SCREEN_HEIGHT);
 			set_ray(&ray, scene->camera, xyz);
 			my_mlx_pixel_put(mlx_data, (int)uv.x, (int)uv.y,
-				get_color_in_image(&ray, xyz, *scene));
+				get_pixel_color(&ray, xyz, *scene));
 			uv.x++;
 		}
 		uv.y++;

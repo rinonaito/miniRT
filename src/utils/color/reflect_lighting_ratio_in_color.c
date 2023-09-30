@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pixel_color.c                                  :+:      :+:    :+:   */
+/*   reflect_lighting_ratio_in_color.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 19:35:15 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 14:01:22 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/30 14:31:22 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/30 14:31:27 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	_get_each_color_element(
 	return (return_color);
 }
 
-t_rgb	get_pixel_color(
+t_rgb	reflect_lighting_ratio_in_color(
 	const t_rgb rgb,
 	const double lighting_ratio)
 {

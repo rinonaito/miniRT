@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   convert_rgb_in_int.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:59:18 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/27 22:18:06 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:24:29 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
+#include "config.h"
 
 int	convert_rgb_in_int(t_rgb rgb)
 {
 	int	color;
 
-	color = (rgb.red << 16) | (rgb.green << 8) | rgb.blue;
+	color = (rgb.red << RED_SHIFT) | (rgb.green << GREEN_SHIFT) | rgb.blue;
 	return (color);
 }

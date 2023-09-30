@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:42:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/27 22:18:10 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:37:00 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <stdlib.h>
 #include "vector.h"
 #include "calculator.h"
+#include "config.h"
+#include <math.h>
+#include <stdlib.h>
 
 /**
  * レイが球と接する点の数を取得する関数
@@ -35,6 +36,8 @@ double	hit_sphere(t_ray ray, t_vector3d center, double radius)
 	point_minus_center = subtraction_vector3d(ray.origin, center);
 	a = dot_vector3d(ray.direction_vec, ray.direction_vec);
 	b = 2 * dot_vector3d(ray.direction_vec, point_minus_center);
-	c = dot_vector3d(point_minus_center, point_minus_center) - pow(radius, 2);
+	c = dot_vector3d(
+			point_minus_center,
+			point_minus_center) - pow(radius, SECOND_COEFFICIENT);
 	return (get_t_of_contact_point(a, b, c));
 }

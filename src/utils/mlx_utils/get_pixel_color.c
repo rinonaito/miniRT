@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_color_in_image.c                               :+:      :+:    :+:   */
+/*   get_pixel_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 13:58:53 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:23:10 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	_set_lighting_ratio(
 	}
 }
 
-int	get_color_in_image(
+int	get_pixel_color(
 	t_ray *ray,
 	const t_vector3d xyz,
 	const t_scene scene)
@@ -74,23 +74,23 @@ int	get_color_in_image(
 	t_vector3d	normal_vector;
 
 	hit_distance = hit_sphere(*ray, scene.spheres[0].center,
-			scene.spheres[0].diameter / 2);
+			scene.spheres[0].diameter / HALF_FACTOR);
 	if (hit_distance >= HIT_DISTANCE_MIN)
 	{
 		normal_vector = get_normal_vector_for_sphere(*ray, hit_distance,
 				scene.spheres[0].center);
 		_set_lighting_ratio(ray, xyz, scene, normal_vector);
-		rgb = get_pixel_color(
+		rgb = reflect_lighting_ratio_in_color(
 				scene.spheres[0].color, ray->lighting_ratio);
 		return (convert_rgb_in_int(rgb));
 	}
 	else
 	{
 		_set_lighting_ratio(ray, xyz, scene, ray->direction_vec);
-		else_rgb.red = 0;
-		else_rgb.green = 0;
+		else_rgb.red = 255;
+		else_rgb.green = 255;
 		else_rgb.blue = 255;
-		return (
-			convert_rgb_in_int(get_pixel_color(else_rgb, ray->lighting_ratio)));
+		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(else_rgb,
+					ray->lighting_ratio)));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:07:52 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/29 19:48:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:23:13 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "types.h"
 
-int		get_color_in_image(
+int		get_pixel_color(
 			t_ray *ray,
 			const t_vector3d xyz,
 			const t_scene scene);
