@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   handle_key_press.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 12:03:01 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/27 21:09:34 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/29 19:52:00 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
-#include "vector.h"
 #include "config.h"
+#include "types.h"
+#include <mlx.h>
 
-void	set_ray(
-		t_ray *ray,
-		const t_camera camera,
-		const t_vector3d xyz)
+//TODO:printfと共に削除
+#include <stdio.h>
+
+int	handle_key_press(int keycode, void *value)
 {
-	ray->origin = camera.origin;
-	ray->direction_vec
-		= subtraction_vector3d_xyz(camera.origin, xyz.x, xyz.y, xyz.z);
-	ray->direction_vec = normalize_vector3d(ray->direction_vec);
-	ray->lighting_ratio = 0;
+	t_mlx_data	*mlx_data;
+
+	mlx_data = value;
+	printf("key = %d\n", keycode);
+	if (keycode == ESC || keycode == ESC_OS_TPYE_M1 || keycode == 65307)
+	{
+		mlx_destroy_window(mlx_data->mlx, mlx_data->win);
+		exit(0);
+	}
+	return (0);
 }

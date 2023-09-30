@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   vector3d_dot_double.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 14:41:51 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/27 22:18:14 by rnaito           ###   ########.fr       */
+/*   Created: 2023/09/27 19:29:05 by rnaito            #+#    #+#             */
+/*   Updated: 2023/09/27 22:03:18 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#include "types.h"
 
-# include <stdbool.h>
-# include <stdlib.h>
-# include "types.h"
+t_vector3d	vector3d_dot_double(t_vector3d vec, double t)
+{
+	t_vector3d	result;
 
-double		hit_sphere(t_ray ray, t_vector3d center, double radius);
-
-t_vector3d	get_normal_vector_for_sphere(
-				t_ray ray,
-				double hit_distance,
-				t_vector3d center);
-
-#endif
+	result.x = t * vec.x;
+	result.y = t * vec.y;
+	result.z = t * vec.z;
+	return (result);
+}

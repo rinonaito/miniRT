@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   handle_window_close.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 12:03:01 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/27 21:10:55 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/27 21:22:16 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "vector.h"
-#include "config.h"
+#include <mlx.h>
 
-void	set_ray(
-		t_ray *ray,
-		const t_camera camera,
-		const t_vector3d xyz)
+int	handle_window_close(void *value)
 {
-	ray->origin = camera.origin;
-	ray->direction_vec
-		= subtraction_vector3d_xyz(camera.origin, xyz.x, xyz.y, xyz.z);
-	ray->direction_vec = normalize_vector3d(ray->direction_vec);
-	ray->lighting_ratio = 0;
+	t_mlx_data	*mlx_data;
+
+	mlx_data = value;
+	mlx_destroy_window(mlx_data->mlx, mlx_data->win);
+	exit(0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:48:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/23 22:29:01 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/28 20:51:03 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,4 @@ void	set_vector2d(
 			double x,
 			double y);
 
-void	set_ray(
-			t_ray *ray,
-			t_vector3d origin,
-			t_vector2d uv,
-			double focal_len);
 #endif

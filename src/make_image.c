@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   make_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/25 21:31:45 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:23:12 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "config.h"
-#include "init.h"
+#include "ray.h"
 #include "mlx_utils.h"
+#include "calculator.h"
+#include "config.h"
 #include <math.h>
 
-#include <stdio.h>
 /**
  * 焦点距離を取得する
  * 
@@ -30,11 +30,14 @@ static double	_get_focal_len(int fov)
 	double	focal_len;
 
 	theta = fov / HALF_ANGLE_DIVISOR;
-	angle_radians = theta * M_PI / 180.0;
-	focal_len = (SCREEN_WIDTH / 2.0) / tan(angle_radians);
+	angle_radians = theta * M_PI / HALF_FULL_DEGREE;
+	focal_len = (SCREEN_WIDTH / HALF_FACTOR) / tan(angle_radians);
 	return (focal_len);
 }
 
+/**
+ * screenまでの距離を取得し、正規化する（0 ~ 1へスケールダウン）
+*/
 static double	_get_normalized_focal_len(int fov)
 {
 	const double	max_focal_len = _get_focal_len(MIN_FOV);
@@ -46,30 +49,37 @@ static double	_get_normalized_focal_len(int fov)
 }
 
 /**
- * xy.x / SCREEN_WIDTH だと0.0 ~ 1.0になってしまうため、
- * 2.0 * ((double)xy.x / SCREEN_WIDTH　とすることで-1.0 ~ 1.0になる。
+ * uv座標 ：screenの2次元座標
+ *	(範囲： 0 <= u <= SCREEN_WIDTH, 0 <= v <= SCREEN_HEIGHT)
+ * xyz座標：scene空間内の3次元座標
+ * 	(範囲：-1.0 <= x <= 1.0, -1.0 <= y <= 1.0, -1.0 <= z <= 1.0)
+ * uv座標をscene空間上に配置するため、uvの範囲をxyzの範囲(-1.0 ~ 1.0)へ変更したい
+ * → 2.0 * ((double)uv.x / SCREEN_WIDTH により 0.0 ~ 1.0 → -1.0 ~ 1.0へ範囲変更
+ *
+ * aspect_ratio:スクリーンの縦横比が画像へ影響しないようにする 
 */
 void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 {
+	t_vector3d		xyz;
 	t_vector2d		uv;
-	t_vector2d		xy;
 	t_ray			ray;
-	const double	focal_len = _get_normalized_focal_len(scene->camera.fov);
 	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
 
-	xy.y = 0;
-	while (xy.y < SCREEN_HEIGHT)
+	xyz.z = _get_normalized_focal_len(scene->camera.fov);
+	uv.y = 0;
+	while (uv.y < SCREEN_HEIGHT)
 	{
-		xy.x = 0;
-		while (xy.x < SCREEN_WIDTH)
+		uv.x = 0;
+		while (uv.x < SCREEN_WIDTH)
 		{
-			uv.x = (SCENE_SCALE * ((double)xy.x / SCREEN_WIDTH) - SCENE_OFFSET)
+			xyz.x = scale_to_minus_one_to_one((double)uv.x / SCREEN_WIDTH)
 				* aspect_ratio;
-			uv.y = SCENE_SCALE * ((double)xy.y / SCREEN_HEIGHT) - SCENE_OFFSET;
-			set_ray(&ray, scene->camera.origin, uv, focal_len);
-			set_color_in_image(ray, xy, mlx_data, *scene);
-			xy.x++;
+			xyz.y = scale_to_minus_one_to_one((double)uv.y / SCREEN_HEIGHT);
+			set_ray(&ray, scene->camera, xyz);
+			my_mlx_pixel_put(mlx_data, (int)uv.x, (int)uv.y,
+				get_pixel_color(&ray, xyz, *scene));
+			uv.x++;
 		}
-		xy.y++;
+		uv.y++;
 	}
 }

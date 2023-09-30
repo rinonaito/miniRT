@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   vector3d_magnitude.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 12:03:01 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/09/29 19:34:39 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/09/29 19:35:08 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "vector.h"
-#include "config.h"
+#include <math.h>
 
-void	set_ray(
-		t_ray *ray,
-		const t_camera camera,
-		const t_vector3d xyz)
+double	vector3d_magnitude(t_vector3d vec)
 {
-	ray->origin = camera.origin;
-	ray->direction_vec
-		= subtraction_vector3d_xyz(camera.origin, xyz.x, xyz.y, xyz.z);
-	ray->direction_vec = normalize_vector3d(ray->direction_vec);
-	ray->lighting_ratio = 0;
+	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }

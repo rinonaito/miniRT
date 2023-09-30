@@ -6,13 +6,14 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 21:14:12 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/25 21:18:30 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/26 22:18:50 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <math.h>
 
+//TODO:多分不要
 size_t	get_num_of_positive_solutions(double a, double b, double c)
 {
 	double	result;
