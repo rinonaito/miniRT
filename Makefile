@@ -14,6 +14,7 @@ INCLUDE		=	-Iinclude -I${MLX_DIR} -I${LIBFT_DIR}
 
 # find src -type f -name "*.c" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/' | pbcopy
 SRCS	=	\
+			init_map.c \
 			main.c \
 ${SRC_DIR}/init/set_vector2d.c \
 ${SRC_DIR}/init/set_vector3d.c \

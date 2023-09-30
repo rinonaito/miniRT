@@ -3,34 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:35:15 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 11:12:39 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:01:22 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "calculator.h"
+#include "config.h"
 
 //-1.0 ~ 1.0 → 0 ~ 255へ変換する
-static int	change_scale_for_color(double x)
+// static int	_change_scale_for_color(const double x)
+// {
+// 	return (scale_to_zero_to_one(x) * 255.999);
+// }
+
+static int	_get_each_color_element(
+	const int rgb,
+	const double lighting_ratio)
 {
-	return (scale_to_zero_to_one(x) * 255.999);
+	int	return_color;
+
+	if (rgb <= MIN_COLOR)
+		return (MIN_COLOR);
+	return_color
+		= rgb * lighting_ratio;
+	if (return_color >= MAX_COLOR)
+		return (MAX_COLOR);
+	return (return_color);
 }
 
 t_rgb	get_pixel_color(
-	t_rgb original_color,
-	t_vector3d nomal_vector,
-	double lighting_ratio)
+	const t_rgb rgb,
+	const double lighting_ratio)
 {
 	t_rgb	color;
 
-	color.red = original_color.red
-		+ change_scale_for_color(nomal_vector.x) * lighting_ratio;
-	color.green = original_color.green
-		+ change_scale_for_color(nomal_vector.y) * lighting_ratio;
-	color.blue = original_color.blue
-		+ change_scale_for_color(nomal_vector.z) * lighting_ratio;
+	color.red
+		= _get_each_color_element(rgb.red, lighting_ratio);
+	color.green
+		= _get_each_color_element(rgb.green, lighting_ratio);
+	color.blue
+		= _get_each_color_element(rgb.blue, lighting_ratio);
 	return (color);
 }

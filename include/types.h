@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/29 19:28:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/09/30 13:02:14 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ typedef struct s_camera
 	int			fov;
 }	t_camera;
 
-// typedef struct s_light
-// {
-// 	t_vector3d	origin;
-// 	double			lighting_ratio;
-// 	t_rgb			color;
-// }	t_light;
+typedef struct s_light
+{
+	t_vector3d	origin;
+	double		lighting_ratio;
+	t_rgb		color;
+}	t_light;
 
 typedef struct s_sphere
 {
@@ -95,8 +95,10 @@ typedef struct s_scene
 {
 	t_ambient_lighting	ambient;
 	t_camera			camera;
+	t_light				*lights;
 	t_sphere			*spheres;
 	size_t				spheres_num;
+	size_t				lights_num;
 }	t_scene;
 
 // typedef struct s_scene
