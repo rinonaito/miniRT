@@ -16,51 +16,15 @@
 #include "color.h"
 #include "vector.h"
 #include "calculator.h"
-#include "config.h"
+#include "config.h"	
+#include "light.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 
-static double	_calculate_lighting(
-	const t_vector3d ray,
-	const t_vector3d normal_vector,
-	const double lighting_ratio)
-{
-	double		cos_theta;
-	double		dot_result;
-	double		dot_length;
-
-	dot_result = dot_vector3d(ray, normal_vector);
-	dot_length = get_len_of_vector3d(ray)
-		* get_len_of_vector3d(normal_vector);
-	cos_theta = dot_result / dot_length;
-	if (cos_theta > NO_LIGHT_STRENGTH)
-		return (lighting_ratio * cos_theta);
-	else
-		return (NO_LIGHT_STRENGTH);
-}
-
-static void	_set_lighting_ratio(
-	t_ray *ray,
-	const t_vector3d point,
-	const t_scene scene,
-	const t_vector3d normal_vector)
-{
-	size_t	i;
-
-	ray->lighting_ratio += scene.ambient.lighting_ratio;
-	i = 0;
-	while (i < scene.lights_num)
-	{
-		ray->lighting_ratio += _calculate_lighting(
-				normalize_vector3d(subtraction_vector3d(point,
-						scene.lights[i].origin)),
-				normal_vector,
-				scene.lights[i].lighting_ratio);
-		i++;
-	}
-}
-
+/**
+ * レイ(視線)がシーン内のオブジェクトに当たる最も近い点を探す
+ */
 static void	_set_closest_point_info(
 	double *closest_hit_distance,
 	ssize_t *closest_object_index,
@@ -110,14 +74,15 @@ int	get_pixel_color(
 	{
 		normal_vector = get_normal_vector_for_sphere(*ray, closest_hit_distance,
 				((t_sphere *)scene.objects[closest_object_i].object)->center);
-		_set_lighting_ratio(ray, xyz, scene, normal_vector);
+		set_lighting_ratio(ray, xyz, scene, normal_vector);
+
 		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(
 					((t_sphere *)scene.objects[closest_object_i].object)->color,
 					ray->lighting_ratio)));
 	}
 	else
 	{
-		_set_lighting_ratio(ray, xyz, scene, ray->direction_vec);
+		set_lighting_ratio(ray, xyz, scene, ray->direction_vec);
 		else_rgb.red = 0;
 		else_rgb.green = 0;
 		else_rgb.blue = 0;

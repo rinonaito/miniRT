@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   make_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 14:23:12 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:48:28 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "ray.h"
+#include "init.h"
 #include "mlx_utils.h"
 #include "calculator.h"
 #include "config.h"
