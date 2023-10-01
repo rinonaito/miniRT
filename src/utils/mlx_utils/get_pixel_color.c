@@ -22,16 +22,16 @@
 #include <math.h>
 
 static double	_calculate_lighting(
-	const t_vector3d point,
-	const double lighting_ratio,
-	const t_vector3d normal_vector)
+	const t_vector3d ray,
+	const t_vector3d normal_vector,
+	const double lighting_ratio)
 {
 	double		cos_theta;
 	double		dot_result;
 	double		dot_length;
 
-	dot_result = dot_vector3d(point, normal_vector);
-	dot_length = get_len_of_vector3d(point)
+	dot_result = dot_vector3d(ray, normal_vector);
+	dot_length = get_len_of_vector3d(ray)
 		* get_len_of_vector3d(normal_vector);
 	cos_theta = dot_result / dot_length;
 	if (cos_theta > NO_LIGHT_STRENGTH)
@@ -48,17 +48,15 @@ static void	_set_lighting_ratio(
 {
 	size_t	i;
 
-	ray->lighting_ratio += _calculate_lighting(
-			subtraction_vector3d(point, ray->origin),
-			scene.ambient.lighting_ratio,
-			normal_vector);
+	ray->lighting_ratio += scene.ambient.lighting_ratio;
 	i = 0;
 	while (i < scene.lights_num)
 	{
 		ray->lighting_ratio += _calculate_lighting(
-				subtraction_vector3d(point, scene.lights[i].origin),
-				scene.lights[i].lighting_ratio,
-				normal_vector);
+				normalize_vector3d(subtraction_vector3d(point,
+						scene.lights[i].origin)),
+				normal_vector,
+				scene.lights[i].lighting_ratio);
 		i++;
 	}
 }
@@ -120,9 +118,9 @@ int	get_pixel_color(
 	else
 	{
 		_set_lighting_ratio(ray, xyz, scene, ray->direction_vec);
-		else_rgb.red = 255;
-		else_rgb.green = 255;
-		else_rgb.blue = 255;
+		else_rgb.red = 0;
+		else_rgb.green = 0;
+		else_rgb.blue = 0;
 		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(
 					else_rgb, ray->lighting_ratio)));
 	}
