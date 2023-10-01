@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/30 16:09:05 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/01 12:11:35 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_map(t_scene *scene)
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
 	scene->camera.fov = 90;
 	set_vector3d(&scene->camera.direction_vec, -50.0, 0.0, 20.0);
-	scene->ambient.lighting_ratio = 1.0;
+	scene->ambient.lighting_ratio = 0.5;
 	scene->objects = malloc(sizeof(t_object) * 2);
 	sphere = malloc(sizeof(t_sphere) * 1);
 	sphere->center.x = 0.5;
