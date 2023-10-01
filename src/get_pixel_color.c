@@ -63,7 +63,6 @@ int	get_pixel_color(
 	const t_vector3d xyz,
 	const t_scene scene)
 {
-	t_rgb		else_rgb;
 	t_vector3d	normal_vector;
 	ssize_t		closest_object_i;
 	double		closest_hit_distance;
@@ -75,18 +74,13 @@ int	get_pixel_color(
 		normal_vector = get_normal_vector_for_sphere(*ray, closest_hit_distance,
 				((t_sphere *)scene.objects[closest_object_i].object)->center);
 		set_lighting_ratio(ray, xyz, scene, normal_vector);
-
 		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(
 					((t_sphere *)scene.objects[closest_object_i].object)->color,
-					ray->lighting_ratio)));
+					ray->rgb,
+					scene.ambient.lighting_ratio, ray->lighting_ratio)));
 	}
 	else
 	{
-		set_lighting_ratio(ray, xyz, scene, ray->direction_vec);
-		else_rgb.red = 0;
-		else_rgb.green = 0;
-		else_rgb.blue = 0;
-		return (convert_rgb_in_int(reflect_lighting_ratio_in_color(
-					else_rgb, ray->lighting_ratio)));
+		return (0);
 	}
 }

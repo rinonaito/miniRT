@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 15:48:01 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/01 19:43:39 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_ray
 	t_vector3d	origin;
 	t_vector3d	direction_vec;
 	double		lighting_ratio;
+	t_rgb		rgb;
 }	t_ray;
 
 typedef struct s_ambient_lighting
