@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:31:22 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/01 20:54:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/01 21:25:02 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 // 	return (scale_to_zero_to_one(x) * 255.999);
 // }
 
+/**
+ * RGBの各色成分（R、G、B）と照明の比率を受け取り、照明の比率を反映した色成分を返す
+*/
 static int	_get_each_color_element(
 	const int rgb,
 	const double lighting_ratio)
@@ -36,6 +39,10 @@ static int	_get_each_color_element(
 	return (return_color);
 }
 
+/**
+ * オブジェクトのRGBとライトのRGBを使って、照明の効果が反映されたカラーを計算する
+ * 戻り値のcolorは元のオブジェクトの色に照明の影響を反映した新しいRGB色
+*/
 t_rgb	reflect_lighting_ratio_in_color(
 	const t_rgb object_rgb,
 	const t_rgb light_rgb,
@@ -44,7 +51,6 @@ t_rgb	reflect_lighting_ratio_in_color(
 {
 	t_rgb	color;
 
-	(void)light_rgb;
 	color.red = _get_each_color_element(
 			object_rgb.red,
 			ambient_lighting_ratio
