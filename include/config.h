@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 16:37:58 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:35:00 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@
 # define RED_SHIFT			(16)
 # define GREEN_SHIFT		(8)
 # define SECOND_COEFFICIENT	(2.0)
-# define NOT_HIT				(-1)
+# define NOT_HIT			(-1)
 
 #endif

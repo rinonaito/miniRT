@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reflect_lighting_ratio_in_color.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:31:22 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/30 14:31:27 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:13:48 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "calculator.h"
 #include "config.h"
 
+//TODO:削除予定
 //-1.0 ~ 1.0 → 0 ~ 255へ変換する
 // static int	_change_scale_for_color(const double x)
 // {
