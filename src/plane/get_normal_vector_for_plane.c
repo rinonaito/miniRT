@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   get_normal_vector_for_plane.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 14:41:51 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/03 22:02:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/03 01:01:19 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/03 01:19:28 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#include "types.h"
 
-# include <stdbool.h>
-# include <stdlib.h>
-# include "types.h"
+t_vector3d	get_normal_vector_for_plane(
+	const t_ray ray,
+	const double hit_distance,
+	const void *object)
+{
+	t_plane	*plane;
 
-double		hit_sphere(const t_ray ray, const void *object);
-
-t_vector3d	get_normal_vector_for_sphere(
-				const t_ray ray,
-				const double hit_distance,
-				const void *object);
-
-int			get_pixel_color_for_sphere(
-				const void *object,
-				const t_ray ray,
-				const double ambient_lighting_ratio);
-
-#endif
+	(void)ray;
+	(void)hit_distance;
+	plane = (t_plane *)object;
+	return (plane->direction_vec);
+}

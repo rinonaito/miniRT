@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/02 18:13:50 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/03 22:04:39 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static double	_get_normalized_focal_len(int fov)
  *
  * aspect_ratio:スクリーンの縦横比が画像へ影響しないようにする 
 */
+#include <stdio.h>
 void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 {
 	t_vector3d		xyz;
@@ -73,6 +74,7 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 		uv.x = 0;
 		while (uv.x < SCREEN_WIDTH)
 		{
+			printf("uv.x = %lf, uv.y = %lf\n", uv.x, uv.y);
 			xyz.x = scale_to_minus_one_to_one(
 					(double)uv.x / SCREEN_WIDTH, true) * aspect_ratio;
 			xyz.y = scale_to_minus_one_to_one(
