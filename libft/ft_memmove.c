@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 10:48:21 by rnaito            #+#    #+#             */
-/*   Updated: 2023/02/10 10:48:27 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/03 00:32:04 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,4 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	return (dst);
-}	
+}
