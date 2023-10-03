@@ -20,7 +20,7 @@ jobs:
 
     - name: Install norminette
       run: |
-        pip install norminette==3.3.51
+        pip install norminette==3.3.54
 
     - name: Run norminette
       run: |
