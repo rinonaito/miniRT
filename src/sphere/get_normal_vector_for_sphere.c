@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_normal_vector_for_sphere.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:22:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/27 22:05:54 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/03 01:19:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@
  * normalized: 正規化した法線ベクトル
 */
 t_vector3d	get_normal_vector_for_sphere(
-	t_ray ray,
-	double hit_distance,
-	t_vector3d center)
+	const t_ray ray,
+	const double hit_distance,
+	const void *object)
 {
+	t_sphere	*sphere;
 	t_vector3d	t_direction;
 	t_vector3d	point;
 	t_vector3d	normal_vector;
 	t_vector3d	normalized;
 
+	sphere = (t_sphere *)object;
 	t_direction = vector3d_dot_double(ray.direction_vec, hit_distance);
 	point = addition_vector3d(ray.origin, t_direction);
-	normal_vector = subtraction_vector3d(point, center);
+	normal_vector = subtraction_vector3d(point, sphere->center);
 	normalized = normalize_vector3d(normal_vector);
 	return (normalized);
 }

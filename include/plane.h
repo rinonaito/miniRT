@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   plane.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 10:48:21 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 00:32:04 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/02 23:20:19 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/03 22:02:38 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PLANE_H
+# define PLANE_H
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	char		*cdst;
-	const char	*csrc;
-	size_t		index;
+# include "types.h"
 
-	cdst = (char *)dst;
-	csrc = (const char *)src;
-	if (dst > src)
-		ft_memcpy(dst, src, len);
-	if (dst < src)
-	{
-		if (len == 0 || dst == src)
-			return (dst);
-		index = 0;
-		while (index < len)
-		{
-			cdst[index] = csrc[index];
-			index ++;
-		}
-	}
-	return (dst);
-}
+double		hit_plane(const t_ray ray, const void *object);
+
+t_vector3d	get_normal_vector_for_plane(
+				const t_ray ray,
+				const double hit_distance,
+				const void *object);
+
+int			get_pixel_color_for_plane(
+				const void *object,
+				const t_ray ray,
+				const double ambient_lighting_ratio);
+
+#endif

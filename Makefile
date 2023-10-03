@@ -31,7 +31,11 @@ ${SRC_DIR}/light/calculate_lighting_ratio.c \
 ${SRC_DIR}/light/get_specular_light.c \
 ${SRC_DIR}/light/set_lighting_ratio.c \
 ${SRC_DIR}/make_image.c \
+${SRC_DIR}/plane/get_normal_vector_for_plane.c \
+${SRC_DIR}/plane/get_pixel_color_for_plane.c \
+${SRC_DIR}/plane/hit_plane.c \
 ${SRC_DIR}/sphere/get_normal_vector_for_sphere.c \
+${SRC_DIR}/sphere/get_pixel_color_for_sphere.c \
 ${SRC_DIR}/sphere/hit_sphere.c \
 ${SRC_DIR}/utils/error_utils/exit_with_errno.c \
 ${SRC_DIR}/utils/mlx_utils/handle_key_press.c \

@@ -34,6 +34,6 @@ int	ft_print_hexint(unsigned int nb, char *base)
 		if (temp == -1)
 			return (temp);
 		count += temp;
-	}	
+	}
 	return (count);
 }

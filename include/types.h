@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/01 19:43:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/03 22:02:16 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,19 @@ typedef struct s_light
 
 typedef struct s_object
 {
-	void	*object;
-	int		object_type;
+	void		*object;
+	int			object_type;
+	double		(*fp_hit_object)(
+			const t_ray,
+			const void *);
+	t_vector3d	(*fp_get_normal_vector_for_object)(
+		const t_ray,
+		const double,
+		const void *);
+	int			(*fp_get_pixel_color_for_object)(
+			const void *,
+			const t_ray ray,
+			const double ambient_lighting_ratio);
 }	t_object;
 
 typedef struct s_sphere
@@ -89,12 +100,12 @@ typedef struct s_sphere
 	t_rgb		color;
 }	t_sphere;
 
-// typedef struct s_plane
-// {
-// 	t_vector3d	coordinate;
-// 	t_vector3d	direction_vec;
-// 	t_rgb			color;
-// }	t_plane;
+typedef struct s_plane
+{
+	t_vector3d	coordinate;
+	t_vector3d	direction_vec;
+	t_rgb		color;
+}	t_plane;
 
 // typedef struct s_cylinder
 // {
