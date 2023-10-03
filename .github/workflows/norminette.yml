@@ -24,4 +24,4 @@ jobs:
 
     - name: Run norminette
       run: |
-        python -m norminette libft main.c #srcs
+        make norm
