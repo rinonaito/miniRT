@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/03 22:06:27 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:10:42 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	init_map(t_scene *scene)
 	plane1->coordinate.x = 5.0;
 	plane1->coordinate.y = 5.0;
 	plane1->coordinate.z = 2.0;
-	plane1->direction_vec.x = 2.0;
+	plane1->direction_vec.x = 0.0;
 	plane1->direction_vec.y = 1.0;
 	plane1->direction_vec.z = 0.0;
 	plane1->color.red = 0;
