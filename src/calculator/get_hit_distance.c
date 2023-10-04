@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include <math.h>
+#include <config.h>
 
 /**
  * 二次方程式（ax^2 + bx + c = 0）の解のうち、視点により近い解を返す関数
@@ -23,7 +24,7 @@ double	get_hit_distance(double a, double b, double c)
 
 	result = b * b - 4 * a * c;
 	if (result < 0)
-		return (-1.0);
+		return (NOT_HIT);
 	else
 		return ((-b - sqrt(result)) / (2 * a));
 }
