@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 22:02:16 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:05:21 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ typedef enum e_object_type
 {
 	SPHERE,
 	PLANE,
-	CYLINDER
+	TUBE,
+	CIRCLE,
 }	t_object_type;
 
 typedef struct s_rgb
@@ -107,14 +108,22 @@ typedef struct s_plane
 	t_rgb		color;
 }	t_plane;
 
-// typedef struct s_cylinder
-// {
-// 	t_vector3d	center;
-// 	t_vector3d	direction_vec;
-// 	double			diameter;
-// 	double			height;
-// 	t_rgb			color;
-// } t_cylinder;
+typedef struct s_tube
+{
+	t_vector3d	center;
+	t_vector3d	direction_vec;
+	double		diameter;
+	double		height;
+	t_rgb		color;
+}	t_tube;
+
+typedef struct s_circle
+{
+	t_vector3d	center;
+	t_vector3d	direction_vec;
+	double		diameter;
+	t_rgb		color;
+}	t_circle;
 
 typedef struct s_scene
 {
@@ -125,20 +134,6 @@ typedef struct s_scene
 	size_t				objects_num;
 	size_t				lights_num;
 }	t_scene;
-
-// typedef struct s_scene
-// {
-// 	// t_ambient_lighting	ambient;
-// 	t_camera			camera;
-// 	// t_light			*lights;
-// 	t_sphere			*spheres;
-// 	// t_plane 			*planes;
-// 	// t_cylinder 		*cylinders;
-// 	//size_t				lights_num;
-// 	size_t				spheres_num;
-// 	//size_t				planes_num;
-// 	//size_t				cylinders_num;
-// }	t_scene;
 
 typedef struct s_mlx_data
 {

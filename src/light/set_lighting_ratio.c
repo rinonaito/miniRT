@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_lighting_ratio.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/01 22:27:03 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:00:55 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	set_lighting_ratio(
 	i = 0;
 	while (i < scene.lights_num)
 	{
-		light_vector = subtraction_vector3d(point, scene.lights[i].origin);
+		light_vector = subtraction_vector3d(scene.lights[i].origin, point);
 		if (dot_vector3d(normalize_vector3d(light_vector), normal_vector) > 0.0)
 		{
 			diffuse = calculate_lighting_ratio(

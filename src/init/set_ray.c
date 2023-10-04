@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/01 20:32:01 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:41:33 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	set_ray(
 {
 	ray->origin = camera.origin;
 	ray->direction_vec
-		= subtraction_vector3d(camera.origin, xyz);
-	ray->direction_vec = normalize_vector3d(ray->direction_vec);
+		= normalize_vector3d(subtraction_vector3d(camera.origin, xyz));
 	ray->lighting_ratio = 0;
 	ray->rgb.red = 0;
 	ray->rgb.green = 0;

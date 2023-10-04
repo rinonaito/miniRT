@@ -31,12 +31,14 @@ ${SRC_DIR}/light/calculate_lighting_ratio.c \
 ${SRC_DIR}/light/get_specular_light.c \
 ${SRC_DIR}/light/set_lighting_ratio.c \
 ${SRC_DIR}/make_image.c \
-${SRC_DIR}/plane/get_normal_vector_for_plane.c \
-${SRC_DIR}/plane/get_pixel_color_for_plane.c \
-${SRC_DIR}/plane/hit_plane.c \
-${SRC_DIR}/sphere/get_normal_vector_for_sphere.c \
-${SRC_DIR}/sphere/get_pixel_color_for_sphere.c \
-${SRC_DIR}/sphere/hit_sphere.c \
+${SRC_DIR}/object/circle/hit_circle.c \
+${SRC_DIR}/object/plane/get_normal_vector_for_plane.c \
+${SRC_DIR}/object/plane/get_pixel_color_for_plane.c \
+${SRC_DIR}/object/plane/hit_plane.c \
+${SRC_DIR}/object/sphere/get_normal_vector_for_sphere.c \
+${SRC_DIR}/object/sphere/get_pixel_color_for_sphere.c \
+${SRC_DIR}/object/sphere/hit_sphere.c \
+${SRC_DIR}/object/tube/hit_tube.c \
 ${SRC_DIR}/utils/error_utils/exit_with_errno.c \
 ${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
 ${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
@@ -49,7 +51,7 @@ ${SRC_DIR}/vector/normalize_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
-
+			
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
 RM		=	rm -rf
