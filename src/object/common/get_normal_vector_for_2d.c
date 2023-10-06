@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   get_normal_vector_for_2d.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 21:34:35 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/06 15:16:48 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/06 15:53:32 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/06 15:56:14 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "types.h"
 
-# include "types.h"
-
-int		convert_rgb_in_int(t_rgb rgb);
-
-t_rgb	reflect_lighting_ratio_in_color(
-			const t_rgb object_rgb,
-			const t_rgb light_rgb,
-			const double ambient_lighting_ratio,
-			const double direct_lighting_ratio);
-
-#endif
+t_vector3d	get_normal_vector_for_2d(
+	const t_ray ray,
+	const double hit_distance,
+	const t_vector3d object_center,
+	const t_vector3d object_direction)
+{
+	(void)ray;
+	(void)hit_distance;
+	(void)object_center;
+	return (object_direction);
+}

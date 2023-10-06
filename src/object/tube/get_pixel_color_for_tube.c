@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   get_pixel_color_for_tube.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 21:34:35 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/06 15:16:48 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/06 15:06:39 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/06 15:20:29 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "types.h"
+#include "vector.h"
+#include "color.h"
 
-# include "types.h"
+int	get_pixel_color_for_tube(
+	const void *object,
+	const t_ray ray,
+	const double ambient_lighting_ratio)
+{
+	t_tube	*tube;
+	t_rgb	rgb;
 
-int		convert_rgb_in_int(t_rgb rgb);
-
-t_rgb	reflect_lighting_ratio_in_color(
-			const t_rgb object_rgb,
-			const t_rgb light_rgb,
-			const double ambient_lighting_ratio,
-			const double direct_lighting_ratio);
-
-#endif
+	tube = (t_tube *)object;
+	rgb = reflect_lighting_ratio_in_color(
+			tube->color,
+			ray.rgb,
+			ambient_lighting_ratio,
+			ray.lighting_ratio);
+	return (convert_rgb_in_int(rgb));
+}

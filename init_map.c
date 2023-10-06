@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/04 22:02:38 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/06 16:16:25 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ static void	init_tube(t_scene *scene, int *index)
 	scene->objects[*index].object = tube;
 	scene->objects[*index].object_type = TUBE;
 	scene->objects[*index].fp_hit_object = hit_tube;
-	// scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_tube;
-	// scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_tube;
+	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_tube;
+	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_tube;
 	scene->objects_num++;
 
 	t_circle *circle_top = malloc(sizeof(t_circle) * 1);
