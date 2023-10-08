@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_argc.c                                  :+:      :+:    :+:   */
+/*   ft_xputendl_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 12:37:51 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/08 12:16:37 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/08 12:18:54 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error_utils.h"
-#include "config.h"
-#include <stdbool.h>
+#include <stdlib.h>
+#include <errno.h>
 
-bool	is_invalid_argc(int argc)
+void	ft_xputendl_fd(char *s, int fd)
 {
-	bool	ret;
+	size_t	i;
 
-	ret = argc != 2;
-	if (ret)
+	if (s == NULL)
+		return ;
+	i = 0;
+	while (s[i] != '\0')
 	{
-		print_error_msg(INVALID_ARGC);
-		return (true);
+		if (write(fd, &s[i], 1) < 0)
+			exit_with_errno(errno);
+		i ++;
 	}
-	return (false);
+	if (write(fd, "\n", 1) < 0)
+		exit_with_errno(errno);
 }

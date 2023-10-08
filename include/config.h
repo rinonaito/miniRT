@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/20 15:00:20 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:57:55 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,12 @@
 # define VERTICAL			0.0
 # define REFLECT_STRENGTH	32
 # define CHECKER_SIZE		1
+
+//utils
+# define ERROR_MSG			"Error"
+# define INVALID_ARGC		"Invalid argument count. \
+							Usage: ./miniRT [file_name]"
+# define INVALID_FILE		"Invalid file name. \
+							Please provide a .rt file as an argument."
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/07 19:14:40 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 12:47:05 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ bool	is_invalid_line(char *line, t_scene *scene)
 	identifier_type = get_identifier_type(line, &index);
 	if (identifier_type == UNDEFINED)
 		return (true);
-	if (parser[identifier_type].fp_is_invalid_object(line, scene, index))
+	if (parser[identifier_type].fp_is_invalid_identifier(line, scene, index))
 		return (true);
-	parser[identifier_type].fp_set_object(scene, line);
+	parser[identifier_type].fp_set_identifier(scene, line);
 	return (false);
 }

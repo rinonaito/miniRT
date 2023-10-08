@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_argc.c                                  :+:      :+:    :+:   */
+/*   ft_xsubstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 12:37:51 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/08 12:19:10 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/08 12:20:34 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error_utils.h"
-#include "config.h"
-#include <stdbool.h>
+#include "libft.h"
+#include "errno.h"
 
-bool	is_invalid_argc(int argc)
+char	*ft_xsubstr(char const *s, unsigned int start, size_t len)
 {
-	bool	ret;
+	char	*str;
 
-	ret = argc != 2;
-	if (ret)
-	{
-		print_error_msg(INVALID_ARGC);
-		return (true);
-	}
-	return (false);
+	str = ft_substr(s, start, len);
+	if (str == NULL)
+		exit_with_errno(errno);
+	return (str);
 }

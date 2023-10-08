@@ -6,11 +6,12 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/07 16:44:16 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 12:46:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
+#include "parser.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
