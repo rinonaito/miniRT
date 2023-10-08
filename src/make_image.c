@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 22:17:12 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/04 21:30:21 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,21 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
 
 	xyz.z = _get_normalized_focal_len(scene->camera.fov);
-	uv.y = 0;
-	while (uv.y < SCREEN_HEIGHT)
+	uv.y = SCREEN_HEIGHT - 1;
+	while (uv.y >= 0)
 	{
 		uv.x = 0;
 		while (uv.x < SCREEN_WIDTH)
 		{
 			xyz.x = scale_to_minus_one_to_one(
-					(double)uv.x / SCREEN_WIDTH, true) * aspect_ratio;
+					(double)uv.x / (SCREEN_WIDTH - 1), true);
 			xyz.y = scale_to_minus_one_to_one(
-					(double)uv.y / SCREEN_HEIGHT, false);
+					(double)uv.y / (SCREEN_HEIGHT - 1), false) / aspect_ratio;
 			set_ray(&ray, scene->camera, xyz);
 			my_mlx_pixel_put(mlx_data, (int)uv.x, (int)uv.y,
 				get_pixel_color(&ray, xyz, *scene));
 			uv.x++;
 		}
-		uv.y++;
+		uv.y--;
 	}
 }

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   get_normal_vector_for_2d.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 16:41:33 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/06 15:53:32 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/08 17:35:25 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "vector.h"
-#include "config.h"
 
-void	set_ray(
-		t_ray *ray,
-		const t_camera camera,
-		const t_vector3d xyz)
+t_vector3d	get_normal_vector_for_2d(
+	const t_ray ray,
+	const double hit_distance,
+	const t_vector3d object_direction)
 {
-	ray->origin = camera.origin;
-	ray->direction_vec
-		= normalize_vector3d(subtraction_vector3d(camera.origin, xyz));
-	ray->lighting_ratio = 0;
-	ray->rgb.red = 0;
-	ray->rgb.green = 0;
-	ray->rgb.blue = 0;
+	(void)ray;
+	(void)hit_distance;
+	return (object_direction);
 }

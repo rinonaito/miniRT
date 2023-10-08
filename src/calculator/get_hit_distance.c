@@ -17,7 +17,10 @@
 /**
  * 二次方程式（ax^2 + bx + c = 0）の解のうち、視点により近い解を返す関数
  * 解が存在しない場合には-1.0を返す。
-*/
+ * b * b - 4 * a * c >= 0の場合のみ二次方程式の解が存在する。
+ * 解は、⑴ -b - sqrt(result)) / (2 * a)、⑵ -b + sqrt(result)) / (2 * a)なので
+ * より小さい ⑴ を返す。
+ * */
 double	get_hit_distance(double a, double b, double c)
 {
 	double	result;

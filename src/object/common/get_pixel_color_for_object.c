@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   get_pixel_color_for_object.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 16:41:33 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/06 20:31:45 by naitorino         #+#    #+#             */
+/*   Updated: 2023/10/08 17:34:29 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "vector.h"
-#include "config.h"
+#include "color.h"
 
-void	set_ray(
-		t_ray *ray,
-		const t_camera camera,
-		const t_vector3d xyz)
+int	get_pixel_color_for_object(
+	t_rgb object_rgb,
+	t_rgb ray_rgb,
+	double ambient_lighting_ratio,
+	double direct_lighting_ratio)
 {
-	ray->origin = camera.origin;
-	ray->direction_vec
-		= normalize_vector3d(subtraction_vector3d(camera.origin, xyz));
-	ray->lighting_ratio = 0;
-	ray->rgb.red = 0;
-	ray->rgb.green = 0;
-	ray->rgb.blue = 0;
+	t_rgb	rgb;
+
+	rgb = reflect_lighting_ratio_in_color(
+			object_rgb,
+			ray_rgb,
+			ambient_lighting_ratio,
+			direct_lighting_ratio);
+	return (convert_rgb_in_int(rgb));
 }

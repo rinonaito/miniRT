@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   get_pixel_color_for_tube.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 21:18:57 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 16:41:33 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/06 15:06:39 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/08 17:32:30 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "vector.h"
-#include "config.h"
+#include "color.h"
+#include "object.h"
 
-void	set_ray(
-		t_ray *ray,
-		const t_camera camera,
-		const t_vector3d xyz)
+int	get_pixel_color_for_tube(
+	const void *object,
+	const t_ray ray,
+	const double ambient_lighting_ratio)
 {
-	ray->origin = camera.origin;
-	ray->direction_vec
-		= normalize_vector3d(subtraction_vector3d(camera.origin, xyz));
-	ray->lighting_ratio = 0;
-	ray->rgb.red = 0;
-	ray->rgb.green = 0;
-	ray->rgb.blue = 0;
+	t_tube	*tube;
+
+	tube = (t_tube *)object;
+	return (get_pixel_color_for_object(tube->color,
+			ray.rgb,
+			ambient_lighting_ratio,
+			ray.lighting_ratio));
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "types.h"
+#include "object.h"
 
 /**
  * 平面の法線ベクトルを返す
@@ -30,8 +31,6 @@ t_vector3d	get_normal_vector_for_plane(
 {
 	t_plane	*plane;
 
-	(void)ray;
-	(void)hit_distance;
 	plane = (t_plane *)object;
-	return (plane->direction_vec);
+	return (get_normal_vector_for_2d(ray, hit_distance, plane->direction_vec));
 }

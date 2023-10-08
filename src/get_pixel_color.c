@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 22:00:23 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:38:37 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "sphere.h"
 #include "mlx_utils.h"
 #include "color.h"
 #include "vector.h"
@@ -66,6 +65,9 @@ int	get_pixel_color(
 		&closest_hit_distance, &closest_object_i, *ray, scene);
 	if (closest_object_i != NOT_HIT)
 	{
+		if (scene.objects[closest_object_i].object_type == CIRCLE)
+			return (convert_rgb_in_int(((t_circle *)scene
+						.objects[closest_object_i].object)->color));
 		normal_vector
 			= scene.objects[closest_object_i].fp_get_normal_vector_for_object(
 				*ray,

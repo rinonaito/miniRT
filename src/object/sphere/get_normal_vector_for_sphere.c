@@ -12,6 +12,7 @@
 
 #include "types.h"
 #include "vector.h"
+#include "object.h"
 
 /**
  * 正規化した球の法線ベクトルを返す
@@ -26,15 +27,7 @@ t_vector3d	get_normal_vector_for_sphere(
 	const void *object)
 {
 	t_sphere	*sphere;
-	t_vector3d	t_direction;
-	t_vector3d	point;
-	t_vector3d	normal_vector;
-	t_vector3d	normalized;
 
 	sphere = (t_sphere *)object;
-	t_direction = vector3d_dot_double(ray.direction_vec, hit_distance);
-	point = addition_vector3d(ray.origin, t_direction);
-	normal_vector = subtraction_vector3d(point, sphere->center);
-	normalized = normalize_vector3d(normal_vector);
-	return (normalized);
+	return (get_normal_vector_for_3d(ray, hit_distance, sphere->center));
 }
