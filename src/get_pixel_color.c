@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/06 16:20:41 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/06 22:09:51 by naitorino        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,17 @@ static void	_set_closest_point_info(
 	double	current_hit_distance;
 
 	i = 0;
+//	*closest_hit_distance = INFINITY;
 	*closest_hit_distance = INFINITY;
 	*closest_object_index = NOT_HIT;
 	while (i < scene.objects_num)
 	{
+		// if (scene.objects[i].object_type == TUBE)
+		// if (scene.objects[i].object_type == CIRCLE)
+		// {
+		// 	i++;
+		// 	continue ;
+		// }
 		current_hit_distance
 			= scene.objects[i].fp_hit_object(ray, scene.objects[i].object);
 		if (current_hit_distance >= HIT_DISTANCE_MIN

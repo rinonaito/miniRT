@@ -15,11 +15,9 @@
 t_vector3d	get_normal_vector_for_2d(
 	const t_ray ray,
 	const double hit_distance,
-	const t_vector3d object_center,
 	const t_vector3d object_direction)
 {
 	(void)ray;
 	(void)hit_distance;
-	(void)object_center;
 	return (object_direction);
 }

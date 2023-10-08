@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:08:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/04 21:54:04 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/06 22:09:20 by naitorino        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ double	hit_plane(const t_ray ray, const void *object)
 			subtraction_vector3d(plane->coordinate, ray.origin),
 			plane->direction_vec)
 		/ dot_vector3d(ray.direction_vec, plane->direction_vec);
-	if (hit_distance == 0)
+	if (hit_distance <= 0)
 		return (NOT_HIT);
 	return (hit_distance);
 }

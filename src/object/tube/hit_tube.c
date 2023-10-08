@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_tube.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:18:56 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/04 21:59:03 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/06 21:09:36 by naitorino        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ double	hit_tube(const t_ray ray, const void *object)
 			tube->diameter / 2);
 	hit_distance = get_hit_distance(a, b, c);
 	if (_is_out_of_height_range(ray, *tube, hit_distance))
-		hit_distance = -1;
+		hit_distance = NOT_HIT;
 	return (hit_distance);
 }

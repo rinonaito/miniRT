@@ -31,9 +31,12 @@ ${SRC_DIR}/light/calculate_lighting_ratio.c \
 ${SRC_DIR}/light/get_specular_light.c \
 ${SRC_DIR}/light/set_lighting_ratio.c \
 ${SRC_DIR}/make_image.c \
+${SRC_DIR}/object/circle/get_normal_vector_for_circle.c \
+${SRC_DIR}/object/circle/get_pixel_color_for_circle.c \
 ${SRC_DIR}/object/circle/hit_circle.c \
-${SRC_DIR}/object/get_normal_vector_for_2d.c \
-${SRC_DIR}/object/get_normal_vector_for_3d.c \
+${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
+${SRC_DIR}/object/common/get_normal_vector_for_3d.c \
+${SRC_DIR}/object/common/get_pixel_color_for_object.c \
 ${SRC_DIR}/object/plane/get_normal_vector_for_plane.c \
 ${SRC_DIR}/object/plane/get_pixel_color_for_plane.c \
 ${SRC_DIR}/object/plane/hit_plane.c \

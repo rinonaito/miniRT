@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   circle.h                                           :+:      :+:    :+:   */
+/*   get_normal_vector_for_circle.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 22:01:29 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/04 22:01:55 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/06 19:33:48 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/06 19:34:44 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CIRCLE_H
-# define CIRCLE_H
+#include "types.h"
+#include "object.h"
 
-# include "types.h"
+t_vector3d	get_normal_vector_for_circle(
+	const t_ray ray,
+	const double hit_distance,
+	const void *object)
+{
+	t_circle	*circle;
 
-double	hit_circle(const t_ray ray, const void *object);
-
-#endif
+	circle = (t_circle *)object;
+	return (get_normal_vector_for_2d(ray, hit_distance, circle->direction_vec));
+}

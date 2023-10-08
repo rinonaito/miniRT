@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color_for_sphere.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:45:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/03 22:14:32 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:38:31 by naitorino        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "color.h"
+#include "object.h"
 
 /**
  * 球の色情報を照明比率に基づいて修正し、整数のピクセルカラーとして返す。

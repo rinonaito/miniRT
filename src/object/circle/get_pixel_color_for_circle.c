@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_normal_vector_for_tube.c                       :+:      :+:    :+:   */
+/*   get_pixel_color_for_circle.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:02:17 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/06 19:59:23 by naitorino        ###   ########.fr       */
+/*   Created: 2023/10/06 20:25:48 by naitorino         #+#    #+#             */
+/*   Updated: 2023/10/06 20:35:03 by naitorino        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "vector.h"
 #include "object.h"
 
-t_vector3d	get_normal_vector_for_tube(
+int	get_pixel_color_for_circle(
+	const void *object,
 	const t_ray ray,
-	const double hit_distance,
-	const void *object)
+	const double ambient_lighting_ratio)
 {
-	t_tube	*tube;
+	t_circle	*circle;
 
-	tube = (t_tube *)object;
-	return (get_normal_vector_for_3d(ray, hit_distance, tube->center));
+	circle = (t_circle *)object;
+	return (
+		get_pixel_color_for_object(
+			circle->color,
+			ray.rgb,
+			ambient_lighting_ratio,
+			ray.lighting_ratio)
+	);
 }

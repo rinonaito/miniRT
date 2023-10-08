@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hit_circle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:19:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/04 21:54:06 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/06 22:11:09 by naitorino        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "vector.h"
-#include "plane.h"
 #include "config.h"
+#include "object.h"
 #include <stdbool.h>
 #include <math.h>
 

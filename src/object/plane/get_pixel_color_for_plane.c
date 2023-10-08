@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color_for_plane.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:04:02 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/03 22:14:04 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:39:28 by naitorino        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "color.h"
+#include "object.h"
 
 /**
  * 平面の色情報を照明比率に基づいて修正し、整数のピクセルカラーとして返す。
@@ -29,13 +30,10 @@ int	get_pixel_color_for_plane(
 	const double ambient_lighting_ratio)
 {
 	t_plane	*plane;
-	t_rgb	rgb;
 
 	plane = (t_plane *)object;
-	rgb = reflect_lighting_ratio_in_color(
-			plane->color,
+	return (get_pixel_color_for_object(plane->color, 
 			ray.rgb,
 			ambient_lighting_ratio,
-			ray.lighting_ratio);
-	return (convert_rgb_in_int(rgb));
+			ray.lighting_ratio));
 }
