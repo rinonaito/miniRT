@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/08 17:38:37 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:13:57 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	_set_closest_point_info(
 	double	current_hit_distance;
 
 	i = 0;
-	*closest_hit_distance = INFINITY;
+	*closest_hit_distance = DBL_MAX;
 	*closest_object_index = NOT_HIT;
 	while (i < scene.objects_num)
 	{
@@ -60,14 +60,10 @@ int	get_pixel_color(
 	ssize_t		closest_object_i;
 	double		closest_hit_distance;
 
-	set_vector3d(&normal_vector, 0.0, 0.0, 0.0);
 	_set_closest_point_info(
 		&closest_hit_distance, &closest_object_i, *ray, scene);
 	if (closest_object_i != NOT_HIT)
 	{
-		if (scene.objects[closest_object_i].object_type == CIRCLE)
-			return (convert_rgb_in_int(((t_circle *)scene
-						.objects[closest_object_i].object)->color));
 		normal_vector
 			= scene.objects[closest_object_i].fp_get_normal_vector_for_object(
 				*ray,
@@ -80,5 +76,5 @@ int	get_pixel_color(
 				scene.ambient.lighting_ratio));
 	}
 	else
-		return (0);
+		return (BLACK);
 }

@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 21:00:43 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/01 21:00:47 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 18:46:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_lighting_ratio(
 			const t_scene scene,
 			const t_vector3d normal_vector);
 
-double	get_specular_light(
+double	get_specular_lighting_ratio(
 			t_light light,
 			t_vector3d normal_vector,
 			t_vector3d point,

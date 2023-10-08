@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_specular_light.c                               :+:      :+:    :+:   */
+/*   get_specular_lighting_ratio.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:30 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/08 17:36:38 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:50:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  * reflect_light			:反射光のベクトル
  * inverse_camera_vector	:指定された点からカメラの原点に向かう方向のベクトル(opint → camera_origin)
  */
-double	get_specular_light(
+double	get_specular_lighting_ratio(
 			t_light light,
 			t_vector3d normal_vector,
 			t_vector3d point,
@@ -35,7 +35,6 @@ double	get_specular_light(
 	t_vector3d	incident_light;
 	t_vector3d	reflect_light;
 	t_vector3d	inverse_camera_vector;
-	double		specular_power;
 	double		lighting_ratio;
 
 	incident_light = subtraction_vector3d(light.origin, point);
@@ -46,9 +45,7 @@ double	get_specular_light(
 	inverse_camera_vector = subtraction_vector3d(camera_origin, point);
 	lighting_ratio = calculate_lighting_ratio(reflect_light,
 			inverse_camera_vector, light.lighting_ratio);
-	if (lighting_ratio != 0)
-		specular_power = pow(lighting_ratio, 32);
-	else
-		specular_power = 0;
-	return (specular_power);
+	if (lighting_ratio == NO_LIGHT_STRENGTH)
+		return (NO_LIGHT_STRENGTH);
+	return (pow(lighting_ratio, REFLECT_STRENGTH));
 }

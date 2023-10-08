@@ -16,9 +16,7 @@ INCLUDE		=	-Iinclude -I${MLX_DIR} -I${LIBFT_DIR}
 SRCS	=	\
 			init_map.c \
 			main.c \
-${SRC_DIR}/calculator/get_hit_distance.c \
-${SRC_DIR}/calculator/get_num_of_positive_solutions.c \
-${SRC_DIR}/calculator/get_num_of_solutions.c \
+${SRC_DIR}/calculator/get_closer_hit_distance.c \
 ${SRC_DIR}/calculator/scale_to_minus_one_to_one.c \
 ${SRC_DIR}/calculator/scale_to_zero_to_one.c \
 ${SRC_DIR}/color/convert_rgb_in_int.c \
@@ -28,7 +26,7 @@ ${SRC_DIR}/init/set_ray.c \
 ${SRC_DIR}/init/set_vector2d.c \
 ${SRC_DIR}/init/set_vector3d.c \
 ${SRC_DIR}/light/calculate_lighting_ratio.c \
-${SRC_DIR}/light/get_specular_light.c \
+${SRC_DIR}/light/get_specular_lighting_ratio.c \
 ${SRC_DIR}/light/set_lighting_ratio.c \
 ${SRC_DIR}/make_image.c \
 ${SRC_DIR}/object/circle/get_normal_vector_for_circle.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:42:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/04 15:46:28 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/08 19:19:03 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@
 #include "types.h"
 #include <math.h>
 #include <stdlib.h>
+
+static double	_get_closer_hit_distance_for_sphere(
+	const t_ray ray,
+	const t_vector3d normal_vector,
+	const double radius)
+{
+	double	a;
+	double	b;
+	double	c;
+	double	hit_distance;
+
+	a = dot_vector3d(ray.direction_vec, ray.direction_vec);
+	b = -2.0 * dot_vector3d(ray.direction_vec, normal_vector);
+	c = dot_vector3d(normal_vector, normal_vector)
+		- pow(radius, 2.0);
+	hit_distance = get_closer_hit_distance(a, b, c);
+	if (hit_distance < 0.0)
+		return (NOT_HIT);
+	return (hit_distance);
+}
 
 /**
  * レイが球と接する点の数を取得する関数
@@ -31,15 +51,9 @@ double	hit_sphere(const t_ray ray, const void *object)
 {
 	t_sphere	*sphere;
 	t_vector3d	normal_vector;
-	double		a;
-	double		b;
-	double		c;
 
 	sphere = (t_sphere *)object;
 	normal_vector = subtraction_vector3d(sphere->center, ray.origin);
-	a = dot_vector3d(ray.direction_vec, ray.direction_vec);
-	b = -2 * dot_vector3d(ray.direction_vec, normal_vector);
-	c = dot_vector3d(normal_vector, normal_vector)
-		- pow(sphere->diameter / HALF_FACTOR, SECOND_COEFFICIENT);
-	return (get_hit_distance(a, b, c));
+	return (_get_closer_hit_distance_for_sphere(
+			ray, normal_vector, sphere->diameter / 2.0));
 }

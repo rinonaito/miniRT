@@ -3,26 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   set_lighting_ratio.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 17:00:55 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/08 19:35:45 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "vector.h"
 #include "light.h"
+#include "config.h"
+#include <stdbool.h>
 
 /**
  * 2つの色（光源の色とレイの色）を混合するための関数
  * 混合の度合いは、指定された照明の比率に基づいている
 */
 static t_rgb	_get_ray_color(
-	t_rgb ray_rgb,
-	t_rgb light_rgb,
-	double ray_lighting_ratio,
-	double light_lighting_ratio)
+	const t_rgb ray_rgb,
+	const t_rgb light_rgb,
+	const double ray_lighting_ratio,
+	const double light_lighting_ratio)
 {
 	int		mixed_red;
 	int		mixed_green;
@@ -38,6 +40,13 @@ static t_rgb	_get_ray_color(
 	mixed_rgb.green = mixed_green;
 	mixed_rgb.blue = mixed_blue;
 	return (mixed_rgb);
+}
+
+static bool	_is_smaller_than_vertical(
+	const t_vector3d light_vector,
+	const t_vector3d normal_vector)
+{
+	return (dot_vector3d(light_vector, normal_vector) > VERTICAL);
 }
 
 /**
@@ -57,20 +66,17 @@ void	set_lighting_ratio(
 	i = 0;
 	while (i < scene.lights_num)
 	{
-		light_vector = subtraction_vector3d(scene.lights[i].origin, point);
-		if (dot_vector3d(normalize_vector3d(light_vector), normal_vector) > 0.0)
+		light_vector = normalize_vector3d(
+				subtraction_vector3d(scene.lights[i].origin, point));
+		if (_is_smaller_than_vertical(light_vector, normal_vector))
 		{
-			diffuse = calculate_lighting_ratio(
-					normalize_vector3d(light_vector),
-					normal_vector,
-					scene.lights[i].lighting_ratio);
-			specular = get_specular_light(scene.lights[i], normal_vector, point,
-					scene.camera.origin);
-			ray->rgb = _get_ray_color(
-					ray->rgb, scene.lights[i].color,
-					ray->lighting_ratio,
-					diffuse + specular);
-			ray->lighting_ratio += diffuse + specular;
+			diffuse = calculate_lighting_ratio(light_vector,
+					normal_vector, scene.lights[i].lighting_ratio);
+			specular = get_specular_lighting_ratio(scene.lights[i],
+					normal_vector, point, scene.camera.origin);
+			ray->rgb = _get_ray_color(ray->rgb, scene.lights[i].color,
+					ray->lighting_ratio, diffuse + specular);
+			ray->lighting_ratio += (diffuse + specular);
 		}
 		i++;
 	}
