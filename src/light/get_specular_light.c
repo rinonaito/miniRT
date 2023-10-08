@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:30 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 17:00:50 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/08 17:36:38 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ double	get_specular_light(
 	double		lighting_ratio;
 
 	incident_light = subtraction_vector3d(light.origin, point);
-	reflect_light = subtraction_vector3d( incident_light, 
+	reflect_light = subtraction_vector3d(incident_light,
 			vector3d_dot_double(normal_vector,
 				SECOND_COEFFICIENT * dot_vector3d(incident_light,
 					normal_vector)));

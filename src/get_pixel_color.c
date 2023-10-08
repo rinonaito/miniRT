@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/06 22:09:51 by naitorino        ###   ########.fr       */
+/*   Updated: 2023/10/08 17:38:37 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,10 @@ static void	_set_closest_point_info(
 	double	current_hit_distance;
 
 	i = 0;
-//	*closest_hit_distance = INFINITY;
 	*closest_hit_distance = INFINITY;
 	*closest_object_index = NOT_HIT;
 	while (i < scene.objects_num)
 	{
-		// if (scene.objects[i].object_type == TUBE)
-		// if (scene.objects[i].object_type == CIRCLE)
-		// {
-		// 	i++;
-		// 	continue ;
-		// }
 		current_hit_distance
 			= scene.objects[i].fp_hit_object(ray, scene.objects[i].object);
 		if (current_hit_distance >= HIT_DISTANCE_MIN
@@ -73,7 +66,8 @@ int	get_pixel_color(
 	if (closest_object_i != NOT_HIT)
 	{
 		if (scene.objects[closest_object_i].object_type == CIRCLE)
-			return (convert_rgb_in_int(((t_circle *)scene.objects[closest_object_i].object)->color));
+			return (convert_rgb_in_int(((t_circle *)scene
+						.objects[closest_object_i].object)->color));
 		normal_vector
 			= scene.objects[closest_object_i].fp_get_normal_vector_for_object(
 				*ray,

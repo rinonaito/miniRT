@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/06 16:17:33 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/08 17:28:20 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ typedef struct s_object
 	double		(*fp_hit_object)(
 			const t_ray,
 			const void *);
-	 t_vector3d	(*fp_get_normal_vector_for_object)(
-	 	const t_ray,
-	 	const double,
-	 	const void *);
+	t_vector3d	(*fp_get_normal_vector_for_object)(
+		const t_ray,
+		const double,
+		const void *);
 	int			(*fp_get_pixel_color_for_object)(
 			const void *,
 			const t_ray ray,

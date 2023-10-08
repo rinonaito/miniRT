@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color_for_tube.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:06:39 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/06 20:38:41 by naitorino        ###   ########.fr       */
+/*   Updated: 2023/10/08 17:32:30 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	get_pixel_color_for_tube(
 	t_tube	*tube;
 
 	tube = (t_tube *)object;
-	return (get_pixel_color_for_object(tube->color, 
+	return (get_pixel_color_for_object(tube->color,
 			ray.rgb,
 			ambient_lighting_ratio,
 			ray.lighting_ratio));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color_for_plane.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:04:02 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/06 20:39:28 by naitorino        ###   ########.fr       */
+/*   Updated: 2023/10/08 17:33:33 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_pixel_color_for_plane(
 	t_plane	*plane;
 
 	plane = (t_plane *)object;
-	return (get_pixel_color_for_object(plane->color, 
+	return (get_pixel_color_for_object(plane->color,
 			ray.rgb,
 			ambient_lighting_ratio,
 			ray.lighting_ratio));

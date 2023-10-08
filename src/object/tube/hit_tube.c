@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_tube.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:18:56 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/06 21:09:36 by naitorino        ###   ########.fr       */
+/*   Updated: 2023/10/08 17:33:10 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static double	_get_b(
 		t_vector3d ray_dir,
 		t_vector3d cylinder_dir)
 {
-	return (2 * dot_vector3d(point_minus_center, ray_dir)
-		* dot_vector3d(cylinder_dir, cylinder_dir)
-		- dot_vector3d(point_minus_center, cylinder_dir)
-		* dot_vector3d(ray_dir, cylinder_dir));
+	return (2 * (dot_vector3d(point_minus_center, ray_dir)
+			* dot_vector3d(cylinder_dir, cylinder_dir)
+			- dot_vector3d(point_minus_center, cylinder_dir)
+			* dot_vector3d(ray_dir, cylinder_dir)));
 }
 
 static double	_get_c(
@@ -60,7 +60,7 @@ static bool	_is_out_of_height_range(
 			vector3d_dot_double(ray.direction_vec, hit_distance));
 	a = dot_vector3d(subtraction_vector3d(point, tube.center),
 			tube.direction_vec);
-	if (pow(a, 2) >= pow(tube.height, 2) / 4)
+	if (pow(a, 2) >= pow(tube.height / 2, 2))
 		return (true);
 	else
 		return (false);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/06 20:28:36 by naitorino        ###   ########.fr       */
+/*   Updated: 2023/10/08 17:30:27 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
-#define OBJECT_H
+# define OBJECT_H
 
-#include "types.h"
+# include "types.h"
 
 //common.h
 t_vector3d	get_normal_vector_for_2d(
@@ -27,10 +27,10 @@ t_vector3d	get_normal_vector_for_3d(
 				const t_vector3d object_center);
 
 int			get_pixel_color_for_object(
-				t_rgb	object_rgb,
-				t_rgb	ray_rgb,
-				double	ambient_lighting_ratio,
-				double	direct_lighting_ratio);
+				t_rgb object_rgb,
+				t_rgb ray_rgb,
+				double ambient_lighting_ratio,
+				double direct_lighting_ratio);
 
 //sphere.h
 double		hit_sphere(const t_ray ray, const void *object);
@@ -49,9 +49,9 @@ int			get_pixel_color_for_sphere(
 double		hit_plane(const t_ray ray, const void *object);
 
 t_vector3d	get_normal_vector_for_plane(
-			const t_ray ray,
-			const double hit_distance,
-			const void *object);
+				const t_ray ray,
+				const double hit_distance,
+				const void *object);
 
 int			get_pixel_color_for_plane(
 				const void *object,
