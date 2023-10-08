@@ -3,16 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_lighting_ratio.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:38 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/01 16:05:23 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/08 19:31:56 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "config.h"
 #include "vector.h"
+#include <stdbool.h>
+
+static bool	_is_smaller_than_vertical(double cos_theta)
+{
+	return (cos_theta > VERTICAL);
+}
 
 /**
  * 入射ベクトル（ray）と法線ベクトル（normal_vector）から、照明の強度を計算する
@@ -30,7 +36,7 @@ double	calculate_lighting_ratio(
 	dot_length = get_len_of_vector3d(ray)
 		* get_len_of_vector3d(normal_vector);
 	cos_theta = dot_result / dot_length;
-	if (cos_theta > NO_LIGHT_STRENGTH)
+	if (_is_smaller_than_vertical(cos_theta))
 		return (lighting_ratio * cos_theta);
 	else
 		return (NO_LIGHT_STRENGTH);

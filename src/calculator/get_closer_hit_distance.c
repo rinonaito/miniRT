@@ -21,13 +21,13 @@
  * 解は、⑴ -b - sqrt(result)) / (2 * a)、⑵ -b + sqrt(result)) / (2 * a)なので
  * より小さい ⑴ を返す。
  * */
-double	get_hit_distance(double a, double b, double c)
+double	get_closer_hit_distance(double a, double b, double c)
 {
 	double	result;
 
 	result = b * b - 4 * a * c;
-	if (result < 0)
+	if (result < 0.0)
 		return (NOT_HIT);
 	else
-		return ((-b - sqrt(result)) / (2 * a));
+		return ((-b - sqrt(result)) / (2.0 * a));
 }

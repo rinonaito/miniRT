@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/04 19:25:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:42:25 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define ON_KEYDOWN			2
 # define ON_DESTROY			17
 
+//定数
+# define DBL_MAX			1.797693e+308
+
 //raytracing情報
 # define SCENE_SCALE		2.0
 # define SCENE_OFFSET		1.0
@@ -40,5 +43,8 @@
 # define GREEN_SHIFT		8
 # define SECOND_COEFFICIENT	2.0
 # define NOT_HIT			-1.0
+# define BLACK				0
+# define VERTICAL			0.0
+# define REFLECT_STRENGTH	64
 
 #endif
