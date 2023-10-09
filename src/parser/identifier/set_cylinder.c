@@ -6,13 +6,13 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/07 19:12:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:21:05 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 
-void	set_cylinder(t_scene *scene, char *line)
+void	set_cylinder(t_scene *scene, const char *const line)
 {
 
 }

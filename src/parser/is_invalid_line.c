@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 12:47:05 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:24:34 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,39 @@ static void	_init_parser(t_parser **parser)
 	(*parser)[cy].fp_set_identifier = set_sphere;
 }
 
-bool	is_invalid_line(char *line, t_scene *scene)
+/**
+ * lineにNULLが来ることはない
+*/
+//TODO:get_identifier_typeの実装から
+//・is_invalid_ambient
+//・is_invalid_camera
+//・is_invalid_cylinder
+//・is_invalid_light
+//・is_invalid_plane
+//・is_invalid_sphere
+//・set_ambient
+//・set_camera
+//・set_cylinder
+//・set_light
+//・set_plane
+//・set_sphere
+//・is_invalid_double_ratio
+//・is_invalid_int_ratio
+//・is_invalid_coordinates_ratio
+//・is_invalid_fov_ratio
+//・is_invalid_lighting_ratio
+//・is_invalid_normalized_vector_ratio
+//・is_invalid_rgb_ratio
+//・skip_spaces
+bool	is_invalid_line(const char *const line, t_scene *scene)
 {
 	t_parser		*parser;
 	t_identifier	identifier_type;
 	size_t			index;
 
 	_init_parser(&parser);
-	if (line == NULL || ft_strlen(line) == 0)
-		return (true);
+	if (ft_strlen(line) == 0)
+		return (false);
 	index = 0;
 	identifier_type = get_identifier_type(line, &index);
 	if (identifier_type == UNDEFINED)

@@ -6,13 +6,13 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/17 22:08:09 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:18:09 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 
-void	set_light(t_scene *scene, char *line)
+void	set_light(t_scene *scene, const char *const line)
 {
 
 }

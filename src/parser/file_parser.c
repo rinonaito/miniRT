@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 12:46:21 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:28:47 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	file_parser(t_scene *scene, int argc, char **argv)
 	if (is_invalid_argc(argc)
 		|| is_invalid_file_extension(argv[1]))
 		return (EXIT_FAILURE);
-	fd = open(argv[1], O_RDONLY);
+	fd = open(argv[FILE_NAME_NUM], O_RDONLY);
 	while (true)
 	{
 		line = get_next_line(fd);
