@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/08 17:30:27 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/10 14:23:26 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@
 //common.h
 t_vector3d	get_normal_vector_for_2d(
 				const t_ray ray,
-				const double hit_distance,
 				const t_vector3d object_direction);
 
 t_vector3d	get_normal_vector_for_3d(
 				const t_ray ray,
-				const double hit_distance,
 				const t_vector3d object_center);
 
 int			get_pixel_color_for_object(
@@ -37,7 +35,6 @@ double		hit_sphere(const t_ray ray, const void *object);
 
 t_vector3d	get_normal_vector_for_sphere(
 				const t_ray ray,
-				const double hit_distance,
 				const void *object);
 
 int			get_pixel_color_for_sphere(
@@ -50,7 +47,6 @@ double		hit_plane(const t_ray ray, const void *object);
 
 t_vector3d	get_normal_vector_for_plane(
 				const t_ray ray,
-				const double hit_distance,
 				const void *object);
 
 int			get_pixel_color_for_plane(
@@ -63,7 +59,6 @@ double		hit_circle(const t_ray ray, const void *object);
 
 t_vector3d	get_normal_vector_for_circle(
 				const t_ray ray,
-				const double hit_distance,
 				const void *object);
 
 int			get_pixel_color_for_circle(
@@ -76,7 +71,6 @@ double		hit_tube(const t_ray ray, const void *object);
 
 t_vector3d	get_normal_vector_for_tube(
 				const t_ray ray,
-				const double hit_distance,
 				const void *object);
 
 int			get_pixel_color_for_tube(

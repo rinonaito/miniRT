@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/04 21:30:21 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/10 20:44:52 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 	t_ray			ray;
 	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
 
-	xyz.z = _get_normalized_focal_len(scene->camera.fov);
+//	xyz.z = _get_normalized_focal_len(scene->camera.fov);
 	uv.y = SCREEN_HEIGHT - 1;
 	while (uv.y >= 0)
 	{
@@ -74,10 +74,14 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 		while (uv.x < SCREEN_WIDTH)
 		{
 			xyz.x = scale_to_minus_one_to_one(
-					(double)uv.x / (SCREEN_WIDTH - 1), true);
+					(double)uv.x / (SCREEN_WIDTH - 1.0), true);
 			xyz.y = scale_to_minus_one_to_one(
-					(double)uv.y / (SCREEN_HEIGHT - 1), false) / aspect_ratio;
-			set_ray(&ray, scene->camera, xyz);
+					(double)uv.y / (SCREEN_HEIGHT - 1.0), false) / aspect_ratio;
+			set_ray(&ray, scene->camera.origin, xyz);
+			xyz.z = _get_normalized_focal_len(scene->camera.fov) * ray.direction_vec.z;
+	//		printf("ray[%lf, %lf, %lf]\n", ray.direction_vec.x, ray.direction_vec.y, ray.direction_vec.z);
+	//		printf("camera[%lf, %lf, %lf]\n", scene->camera.origin.x, scene->camera.origin.y, scene->camera.origin.z);
+	//		printf("xyz[%lf, %lf, %lf]\n", xyz.x, xyz.y, xyz.z);
 			my_mlx_pixel_put(mlx_data, (int)uv.x, (int)uv.y,
 				get_pixel_color(&ray, xyz, *scene));
 			uv.x++;

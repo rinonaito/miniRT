@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_normal_vector_for_sphere.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:22:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/03 01:19:30 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:21:24 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@
 */
 t_vector3d	get_normal_vector_for_sphere(
 	const t_ray ray,
-	const double hit_distance,
 	const void *object)
 {
 	t_sphere	*sphere;
 
 	sphere = (t_sphere *)object;
-	return (get_normal_vector_for_3d(ray, hit_distance, sphere->center));
+	return (get_normal_vector_for_3d(ray, sphere->center));
 }

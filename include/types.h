@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/08 17:28:20 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/10 14:25:52 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TYPES_H
 
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef enum e_object_type
 {
@@ -49,6 +50,8 @@ typedef struct s_ray
 	t_vector3d	origin;
 	t_vector3d	direction_vec;
 	double		lighting_ratio;
+	double		hit_distance;
+	ssize_t		hit_object_index;
 	t_rgb		rgb;
 }	t_ray;
 
@@ -86,7 +89,6 @@ typedef struct s_object
 			const void *);
 	t_vector3d	(*fp_get_normal_vector_for_object)(
 		const t_ray,
-		const double,
 		const void *);
 	int			(*fp_get_pixel_color_for_object)(
 			const void *,

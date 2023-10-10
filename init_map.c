@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 17:14:31 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/10 20:45:47 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	init_map(t_scene *scene)
 	int index = 0;
 	scene->objects = malloc(sizeof(t_object) * 100);
 	scene->objects_num = 0;
-	// init_sphere(scene, &index);
+	init_sphere(scene, &index);
 	(void)init_sphere;
-	// init_plane(scene, &index);
+	//init_plane(scene, &index);
 	(void)init_plane;
-	init_cylinder(scene, &index);
+	//init_cylinder(scene, &index);
 	(void)init_cylinder;
 	init_camera(scene);
 	init_lighs(scene);
@@ -61,14 +61,14 @@ static void	init_plane(t_scene *scene, int *index)
 {
 	t_plane	*plane = malloc(sizeof(t_plane) * 1);
 	plane->coordinate.x = 5.0;
-	plane->coordinate.y = 5.0;
+	plane->coordinate.y = -5.0;
 	plane->coordinate.z = 2.0;
 	plane->direction_vec.x = 0.0;
 	plane->direction_vec.y = 1.0;
 	plane->direction_vec.z = 0.0;
-	plane->color.red = 0;
-	plane->color.green = 50;
-	plane->color.blue = 200;
+	plane->color.red = 255;
+	plane->color.green = 255;
+	plane->color.blue = 255;
 	scene->objects[*index].object = plane;
 	scene->objects[*index].object_type = PLANE;
 	scene->objects[*index].fp_hit_object = hit_plane;
@@ -151,18 +151,18 @@ static void	init_camera(t_scene *scene)
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
 	scene->camera.fov = 90;
 	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 20.0);
-	scene->ambient.lighting_ratio = 0.5;
+	scene->ambient.lighting_ratio = 0.3;
 }
 
 static void	init_lighs(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
-	scene->lights[0].origin.x = 20;
-	scene->lights[0].origin.y = 20;
-	scene->lights[0].origin.z = 0;
+	scene->lights[0].origin.x = 10;
+	scene->lights[0].origin.y = 10;
+	scene->lights[0].origin.z = -10.6;
 	scene->lights[0].lighting_ratio = 1.0;
-	scene->lights[0].color.blue = 0;
-	scene->lights[0].color.green = 0;
+	scene->lights[0].color.blue = 255;
+	scene->lights[0].color.green = 255;
 	scene->lights[0].color.red = 255;
 	scene->lights[1].origin.x = -20;
 	scene->lights[1].origin.y = -20;
@@ -171,5 +171,5 @@ static void	init_lighs(t_scene *scene)
 	scene->lights[1].color.blue = 0;
 	scene->lights[1].color.green = 255;
 	scene->lights[1].color.red = 0;
-	scene->lights_num = 2;
+	scene->lights_num = 1;
 }
