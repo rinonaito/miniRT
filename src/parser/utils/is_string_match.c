@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_rgb_ratio.c                             :+:      :+:    :+:   */
+/*   is_string_match.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 19:22:50 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:23:30 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/10 21:16:26 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/10 21:22:23 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "libft.h"
 #include <stdbool.h>
 
-bool	is_invalid_rgb_ratio(const int r, const int g, const int b)
+bool	is_string_match(const char *s1, const char *s2)
 {
-	return (is_invalid_int_ratio(r, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
-		&& is_invalid_int_ratio(g, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
-		&& is_invalid_int_ratio(b, MAX_COLOR_RANGE, MIN_COLOR_RANGE));
+	const size_t	s1_len = ft_strlen(s1);
+
+	if (s1_len != ft_strlen(s2))
+		return (false);
+	return (ft_strncmp(s1, s2, s1_len) == 0);
 }

@@ -6,12 +6,13 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/09 18:21:05 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:34:04 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 
+//cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
 void	set_cylinder(t_scene *scene, const char *const line)
 {
 

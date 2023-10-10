@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/09 17:44:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:49:18 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	is_invalid_argc(const int argc)
 {
 	bool	ret;
 
-	ret = argc != INVALID_ARGC_NUM;
+	ret = (argc != INVALID_ARGC_NUM);
 	if (ret)
 	{
 		print_error_msg(INVALID_ARGC);
