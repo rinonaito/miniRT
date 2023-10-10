@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_identifier_type.c                              :+:      :+:    :+:   */
+/*   skip_next_space.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 17:38:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 20:50:24 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/10 19:42:52 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/10 19:55:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include <stdlib.h>
 
 /**
- * ファイルの1行から識別子を取得する
+ * 次のスペースまでindexを進める関数
 */
-t_identifier	get_identifier_type(const char *const line, size_t *index)
+void	skip_next_space(size_t *index, const char *const str)
 {
-	const char	*first_word = get_first_word(line, index);
-
-	//TODO:
-	//以下から開始。
-	//文字列を取れたため、判定。
+	while (str[*index] != '\n'
+		&& str[*index] != ' '
+		&& str[*index] != '\t')
+	{
+		(*index)++;
+	}
 }

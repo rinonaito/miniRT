@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/09 18:04:50 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:29:07 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define CYLINDER			"cy"
 # define FILE_NAME_NUM		1
 # define INVALID_ARGC_NUM	2
+# define IDENTIFIER_NUM		6
 
 typedef enum e_identifier
 {
@@ -73,6 +74,7 @@ bool			is_invalid_rgb_ratio(const int r, const int g, const int b);
 bool			is_invalid_argc(const int argc);
 bool			is_invalid_file_extension(const char *const file_name);
 void			skip_spaces(size_t *index, char *str);
+void			skip_next_space(size_t *index, const char *const str);
 t_identifier	get_identifier_type(const char *const line, size_t *index);
 
 #endif
