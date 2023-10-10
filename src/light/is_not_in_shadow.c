@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 13:38:54 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 20:27:20 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/10 21:35:14 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ bool	is_not_in_shadow(
 //	printf("point[%lf, %lf, %lf]\n", point.x, point.y, point.z);
 	if (point_to_light.hit_distance < distance_point_to_light && point_to_light.hit_distance != DBL_MAX)
 	{
-		printf("hit_dustance = %lf distance = %lf\n", point_to_light.hit_distance, distance_point_to_light);
+//		printf("hit_dustance = %lf distance = %lf\n", point_to_light.hit_distance, distance_point_to_light);
 		return (false);
 	}
-	printf("is NOT in shadow!\n");
+//	printf("is NOT in shadow!\n");
 	return (true);
 }

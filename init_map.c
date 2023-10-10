@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 20:45:47 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/10 21:36:45 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_map(t_scene *scene)
 	scene->objects_num = 0;
 	init_sphere(scene, &index);
 	(void)init_sphere;
-	//init_plane(scene, &index);
+	init_plane(scene, &index);
 	(void)init_plane;
 	//init_cylinder(scene, &index);
 	(void)init_cylinder;
@@ -151,6 +151,8 @@ static void	init_camera(t_scene *scene)
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
 	scene->camera.fov = 90;
 	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 20.0);
+	scene->camera.direction_vec
+		= normalize_vector3d(scene->camera.direction_vec);
 	scene->ambient.lighting_ratio = 0.3;
 }
 

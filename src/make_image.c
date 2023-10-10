@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 20:44:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/10 23:06:16 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ static double	_get_normalized_focal_len(int fov)
 		- SCENE_OFFSET);
 }
 
+// static void	_set_z(t_camera camera, t_vector3d *xyz)
+// {
+// 	double	focal_len;
+// 	double	a;
+// 	double	b;
+// 	double	c;
+
+// 	focal_len = _get_normalized_focal_len(camera.fov);
+// 	a = 1.0;
+// 	b = -2.0 * camera.origin.z;
+// 	c = pow(camera.origin.z, 2)
+// 		+ pow(xyz->x - camera.origin.x, 2)
+// 		+ pow(xyz->y - camera.origin.y, 2)
+// 		- pow(focal_len, 2);
+// 	xyz->z = get_solution(a, b, c, camera);
+// }
+
 /**
  * uv座標 ：screenの2次元座標
  *	(範囲： 0 <= u <= SCREEN_WIDTH, 0 <= v <= SCREEN_HEIGHT)
@@ -77,9 +94,13 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 					(double)uv.x / (SCREEN_WIDTH - 1.0), true);
 			xyz.y = scale_to_minus_one_to_one(
 					(double)uv.y / (SCREEN_HEIGHT - 1.0), false) / aspect_ratio;
+			// xyz.z = _get_normalized_focal_len(scene->camera.fov)
+			// 	* scene->camera.direction_vec.z;
+	//		_set_z(scene->camera, &xyz);
 			set_ray(&ray, scene->camera.origin, xyz);
 			xyz.z = _get_normalized_focal_len(scene->camera.fov) * ray.direction_vec.z;
-	//		printf("ray[%lf, %lf, %lf]\n", ray.direction_vec.x, ray.direction_vec.y, ray.direction_vec.z);
+			printf("ray[%lf, %lf, %lf]\n", ray.direction_vec.x, ray.direction_vec.y, ray.direction_vec.z);
+	//		printf("cemera[%lf, %lf, %lf]\n", scene->camera.direction_vec.x, scene->camera.direction_vec.y, scene->camera.direction_vec.z);
 	//		printf("camera[%lf, %lf, %lf]\n", scene->camera.origin.x, scene->camera.origin.y, scene->camera.origin.z);
 	//		printf("xyz[%lf, %lf, %lf]\n", xyz.x, xyz.y, xyz.z);
 			my_mlx_pixel_put(mlx_data, (int)uv.x, (int)uv.y,
