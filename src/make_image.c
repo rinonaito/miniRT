@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 23:06:16 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/11 23:42:50 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * angle_radians→角度をラジアンに変換したもの（π / 180.0）
  * focal_len→焦点距離
 */
-static double	_get_focal_len(int fov)
+static double	_get_focal_len(double fov)
 {
 	double	theta;
 	double	angle_radians;
@@ -36,17 +36,32 @@ static double	_get_focal_len(int fov)
 	return (focal_len);
 }
 
+// static double _get_focal_len(double fov)
+// {
+// 	double angle_radians;
+// 	double focal_len;
+
+// 	// Converting fov to radians
+// 	angle_radians = fov * M_PI / 180.0; 
+
+// 	// Computing focal length based on the width of the screen
+// 	focal_len = 0.5 * SCREEN_WIDTH / tan(angle_radians / 2.0);  
+
+// 	return (focal_len);
+// }
+
+
 /**
  * screenまでの距離を取得し、正規化する（0 ~ 1へスケールダウン）
 */
-static double	_get_normalized_focal_len(int fov)
+static double	_get_normalized_focal_len(double fov)
 {
 	const double	max_focal_len = _get_focal_len(MIN_FOV);
 	const double	min_focal_len = _get_focal_len(MAX_FOV);
 	const double	focal_len = _get_focal_len(fov);
 
-	return (SCENE_SCALE * focal_len / (max_focal_len - min_focal_len)
-		- SCENE_OFFSET);
+	printf("<focal_len> focal_len = %lf, max = %lf, min = %lf, max - min = %lf\n", focal_len, max_focal_len, min_focal_len, max_focal_len - min_focal_len);
+	return (focal_len / (max_focal_len - min_focal_len));
 }
 
 // static void	_set_z(t_camera camera, t_vector3d *xyz)
@@ -91,15 +106,15 @@ void	make_image(t_mlx_data *mlx_data, t_scene *scene)
 		while (uv.x < SCREEN_WIDTH)
 		{
 			xyz.x = scale_to_minus_one_to_one(
-					(double)uv.x / (SCREEN_WIDTH - 1.0), true);
+					(double)uv.x / (SCREEN_WIDTH - 1.0), false);
 			xyz.y = scale_to_minus_one_to_one(
-					(double)uv.y / (SCREEN_HEIGHT - 1.0), false) / aspect_ratio;
-			// xyz.z = _get_normalized_focal_len(scene->camera.fov)
+					(double)uv.y / (SCREEN_HEIGHT - 1.0), true) / aspect_ratio;
+			//xyz.z = _get_focal_len(scene->camera.fov) * scene->camera.direction_vec.z;
+			xyz.z = _get_normalized_focal_len(scene->camera.fov);
 			// 	* scene->camera.direction_vec.z;
 	//		_set_z(scene->camera, &xyz);
 			set_ray(&ray, scene->camera.origin, xyz);
-			xyz.z = _get_normalized_focal_len(scene->camera.fov) * ray.direction_vec.z;
-			printf("ray[%lf, %lf, %lf]\n", ray.direction_vec.x, ray.direction_vec.y, ray.direction_vec.z);
+			printf("ray[%lf, %lf, %lf], focal_len = [%lf]\n", ray.direction_vec.x, ray.direction_vec.y, ray.direction_vec.z, xyz.z);
 	//		printf("cemera[%lf, %lf, %lf]\n", scene->camera.direction_vec.x, scene->camera.direction_vec.y, scene->camera.direction_vec.z);
 	//		printf("camera[%lf, %lf, %lf]\n", scene->camera.origin.x, scene->camera.origin.y, scene->camera.origin.z);
 	//		printf("xyz[%lf, %lf, %lf]\n", xyz.x, xyz.y, xyz.z);

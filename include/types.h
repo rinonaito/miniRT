@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 14:25:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/11 23:31:38 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_camera
 {
 	t_vector3d	origin;
 	t_vector3d	direction_vec;
-	int			fov;
+	double		fov;
 }	t_camera;
 
 typedef struct s_light

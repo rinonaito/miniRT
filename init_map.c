@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 21:36:45 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/11 23:32:41 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	init_sphere(t_scene *scene, int *index)
 	t_sphere	*sphere = malloc(sizeof(t_sphere) * 1);
 	sphere->center.x = 0.0;
 	sphere->center.y = 0.0;
-	sphere->center.z = 10.6;
-	sphere->diameter = 3.8;
+	sphere->center.z = 10.0;
+	sphere->diameter = 10.0;
 	sphere->color.red = 40;
 	sphere->color.green = 53;
 	sphere->color.blue = 158;
@@ -149,7 +149,7 @@ static void	init_cylinder(t_scene *scene, int *index)
 static void	init_camera(t_scene *scene)
 {
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
-	scene->camera.fov = 90;
+	scene->camera.fov = 120;
 	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 20.0);
 	scene->camera.direction_vec
 		= normalize_vector3d(scene->camera.direction_vec);
