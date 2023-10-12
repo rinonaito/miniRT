@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 14:25:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/12 22:46:42 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef enum e_object_type
 	TUBE,
 	CIRCLE,
 }	t_object_type;
+
+typedef enum e_view_port
+{
+	CENTER = 0,
+	RIGHT = 1,
+	DOWN = 2,
+}	t_view_port;
 
 typedef struct s_rgb
 {
@@ -70,7 +77,7 @@ typedef struct s_camera
 {
 	t_vector3d	origin;
 	t_vector3d	direction_vec;
-	int			fov;
+	double		fov;
 }	t_camera;
 
 typedef struct s_light

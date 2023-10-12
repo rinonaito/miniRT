@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 20:26:26 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/12 22:46:44 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 //スクリーン情報
 # define SCREEN_HEIGHT		360.0
 # define SCREEN_WIDTH		640.0
+# define NORMALIZED_WIDTH	2.0
 # define TITLE				"miniRT"
 
 //mlx情報

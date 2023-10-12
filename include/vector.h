@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:00:07 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 15:01:03 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:16:13 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "types.h"
 
 double		dot_vector3d(const t_vector3d a, const t_vector3d b);
+
+t_vector3d	cross_vector3d(const t_vector3d a, const t_vector3d b);
 
 t_vector3d	subtraction_vector3d_xyz(
 				const t_vector3d a,

@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 23:06:16 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/12 22:55:54 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "mlx_utils.h"
 #include "calculator.h"
 #include "config.h"
+#include "vector.h"
 #include <math.h>
 #include <stdbool.h>
 
@@ -24,7 +25,7 @@
  * angle_radians→角度をラジアンに変換したもの（π / 180.0）
  * focal_len→焦点距離
 */
-static double	_get_focal_len(int fov)
+static double	_get_focal_len(double fov)
 {
 	double	theta;
 	double	angle_radians;
@@ -32,39 +33,52 @@ static double	_get_focal_len(int fov)
 
 	theta = fov / HALF_ANGLE_DIVISOR;
 	angle_radians = theta * M_PI / HALF_FULL_DEGREE;
-	focal_len = (SCREEN_WIDTH / HALF_FACTOR) / tan(angle_radians);
+	focal_len = (NORMALIZED_WIDTH / HALF_FACTOR) / tan(angle_radians);
 	return (focal_len);
 }
 
-/**
- * screenまでの距離を取得し、正規化する（0 ~ 1へスケールダウン）
-*/
-static double	_get_normalized_focal_len(int fov)
+static t_vector3d	_get_right_vector(t_vector3d camera_dir)
 {
-	const double	max_focal_len = _get_focal_len(MIN_FOV);
-	const double	min_focal_len = _get_focal_len(MAX_FOV);
-	const double	focal_len = _get_focal_len(fov);
+	t_vector3d	y;
+	t_vector3d	right_vector;
 
-	return (SCENE_SCALE * focal_len / (max_focal_len - min_focal_len)
-		- SCENE_OFFSET);
+	set_vector3d(&y, 0.0, 1.0, 0.0);
+	right_vector = normalize_vector3d(cross_vector3d(y, camera_dir));
+	if (isnan(right_vector.x))
+	{
+		set_vector3d(&y, 0.0, 0.0, 1.0);
+		right_vector = normalize_vector3d(cross_vector3d(y, camera_dir));
+	}
+	return (right_vector);
 }
 
-// static void	_set_z(t_camera camera, t_vector3d *xyz)
-// {
-// 	double	focal_len;
-// 	double	a;
-// 	double	b;
-// 	double	c;
+static void	_set_view_port_info(t_vector3d *view_port, const t_camera camera)
+{
+	view_port[CENTER] = addition_vector3d(camera.origin,
+			vector3d_dot_double(camera.direction_vec,
+				_get_focal_len(camera.fov)));
+	view_port[RIGHT] = _get_right_vector(camera.direction_vec);
+	view_port[DOWN] = normalize_vector3d(
+			cross_vector3d(camera.direction_vec, view_port[RIGHT]));
+}
 
-// 	focal_len = _get_normalized_focal_len(camera.fov);
-// 	a = 1.0;
-// 	b = -2.0 * camera.origin.z;
-// 	c = pow(camera.origin.z, 2)
-// 		+ pow(xyz->x - camera.origin.x, 2)
-// 		+ pow(xyz->y - camera.origin.y, 2)
-// 		- pow(focal_len, 2);
-// 	xyz->z = get_solution(a, b, c, camera);
-// }
+static void	_set_view_port_xyz(
+			t_vector3d *xyz,
+			const t_vector2d uv,
+			const t_scene *scene,
+			const t_vector3d *view_port)
+{
+	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
+
+	xyz->x = scene->camera.origin.x + scale_to_minus_one_to_one(
+			(double)uv.x / (SCREEN_WIDTH - 1.0), false);
+	xyz->y = (scene->camera.origin.y + scale_to_minus_one_to_one(
+				(double)uv.y / (SCREEN_HEIGHT - 1.0), false))
+		/ aspect_ratio;
+	xyz->z = view_port[CENTER].z
+		+ view_port[RIGHT].z * (xyz->x - view_port[CENTER].x)
+		+ view_port[DOWN].z * (xyz->y - view_port[CENTER].y);
+}
 
 /**
  * uv座標 ：screenの2次元座標
@@ -76,34 +90,24 @@ static double	_get_normalized_focal_len(int fov)
  *
  * aspect_ratio:スクリーンの縦横比が画像へ影響しないようにする 
 */
-void	make_image(t_mlx_data *mlx_data, t_scene *scene)
+void	make_image(t_mlx_data *mlx_data, const t_scene *scene)
 {
 	t_vector3d		xyz;
 	t_vector2d		uv;
 	t_ray			ray;
-	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
+	t_vector3d		view_port[3];
 
-//	xyz.z = _get_normalized_focal_len(scene->camera.fov);
+	_set_view_port_info(view_port, scene->camera);
 	uv.y = SCREEN_HEIGHT - 1;
 	while (uv.y >= 0)
 	{
 		uv.x = 0;
 		while (uv.x < SCREEN_WIDTH)
 		{
-			xyz.x = scale_to_minus_one_to_one(
-					(double)uv.x / (SCREEN_WIDTH - 1.0), true);
-			xyz.y = scale_to_minus_one_to_one(
-					(double)uv.y / (SCREEN_HEIGHT - 1.0), false) / aspect_ratio;
-			// xyz.z = _get_normalized_focal_len(scene->camera.fov)
-			// 	* scene->camera.direction_vec.z;
-	//		_set_z(scene->camera, &xyz);
+			_set_view_port_xyz(&xyz, uv, scene, view_port);
 			set_ray(&ray, scene->camera.origin, xyz);
-			xyz.z = _get_normalized_focal_len(scene->camera.fov) * ray.direction_vec.z;
-			printf("ray[%lf, %lf, %lf]\n", ray.direction_vec.x, ray.direction_vec.y, ray.direction_vec.z);
-	//		printf("cemera[%lf, %lf, %lf]\n", scene->camera.direction_vec.x, scene->camera.direction_vec.y, scene->camera.direction_vec.z);
-	//		printf("camera[%lf, %lf, %lf]\n", scene->camera.origin.x, scene->camera.origin.y, scene->camera.origin.z);
-	//		printf("xyz[%lf, %lf, %lf]\n", xyz.x, xyz.y, xyz.z);
-			my_mlx_pixel_put(mlx_data, (int)uv.x, (int)uv.y,
+			my_mlx_pixel_put(mlx_data, (int)uv.x, (SCREEN_HEIGHT - 1)
+				- (int)uv.y,
 				get_pixel_color(&ray, xyz, *scene));
 			uv.x++;
 		}
