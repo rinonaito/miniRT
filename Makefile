@@ -52,6 +52,7 @@ ${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
 ${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
 ${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
 ${SRC_DIR}/vector/addition_vector3d.c \
+${SRC_DIR}/vector/cross_vector3d.c \
 ${SRC_DIR}/vector/dot_vector3d.c \
 ${SRC_DIR}/vector/get_len_of_vector3d.c \
 ${SRC_DIR}/vector/normalize_vector3d.c \

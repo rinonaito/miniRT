@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/11 23:32:41 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/12 22:55:28 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	init_sphere(t_scene *scene, int *index)
 	sphere->center.x = 0.0;
 	sphere->center.y = 0.0;
 	sphere->center.z = 10.0;
-	sphere->diameter = 10.0;
+	sphere->diameter = 4.0;
 	sphere->color.red = 40;
 	sphere->color.green = 53;
 	sphere->color.blue = 158;
@@ -149,8 +149,8 @@ static void	init_cylinder(t_scene *scene, int *index)
 static void	init_camera(t_scene *scene)
 {
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
-	scene->camera.fov = 120;
-	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 20.0);
+	scene->camera.fov = 60;
+	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 10.0);
 	scene->camera.direction_vec
 		= normalize_vector3d(scene->camera.direction_vec);
 	scene->ambient.lighting_ratio = 0.3;
@@ -159,9 +159,9 @@ static void	init_camera(t_scene *scene)
 static void	init_lighs(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
-	scene->lights[0].origin.x = 10;
-	scene->lights[0].origin.y = 10;
-	scene->lights[0].origin.z = -10.6;
+	scene->lights[0].origin.x = 13;
+	scene->lights[0].origin.y = 13;
+	scene->lights[0].origin.z = -15.6;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;
