@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/12 22:55:28 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:42:11 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	init_plane(t_scene *scene, int *index)
 {
 	t_plane	*plane = malloc(sizeof(t_plane) * 1);
 	plane->coordinate.x = 5.0;
-	plane->coordinate.y = -5.0;
+	plane->coordinate.y = -2.0;
 	plane->coordinate.z = 2.0;
 	plane->direction_vec.x = 0.0;
 	plane->direction_vec.y = 1.0;
@@ -150,7 +150,7 @@ static void	init_camera(t_scene *scene)
 {
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
 	scene->camera.fov = 60;
-	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 10.0);
+	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 1.0);
 	scene->camera.direction_vec
 		= normalize_vector3d(scene->camera.direction_vec);
 	scene->ambient.lighting_ratio = 0.3;
