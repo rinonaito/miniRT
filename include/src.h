@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:14:35 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/14 18:00:32 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 18:26:45 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ void	set_closest_point_info_in_ray(
 int		get_pixel_color(
 			t_ray *ray,
 			const t_scene scene);
-
 
 #endif

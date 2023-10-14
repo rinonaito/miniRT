@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/14 17:51:38 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 18:24:47 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static bool	_is_smaller_than_vertical(
 
 /**
  * シーン内の各光源に基づいてレイの照明比率と色を計算する
+ * diffuse : 拡散反射光の照明率
+ * specular: 鏡面反射光の照明率
 */
 void	set_lighting_ratio(
 	t_ray *ray,
@@ -68,8 +70,8 @@ void	set_lighting_ratio(
 	{
 		light_vector = normalize_vector3d(
 				subtraction_vector3d(scene.lights[i].origin, point));
-		if (_is_smaller_than_vertical(light_vector, normal_vector)
-			&& is_hit_by_spot_light(scene, point, scene.lights[i]))
+		if (is_hit_by_spot_light(scene, point, scene.lights[i])
+			&& _is_smaller_than_vertical(light_vector, normal_vector))
 		{
 			diffuse = calculate_lighting_ratio(light_vector,
 					normal_vector, scene.lights[i].lighting_ratio);
