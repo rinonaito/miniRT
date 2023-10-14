@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/13 18:11:30 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 20:51:52 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,8 +161,8 @@ static void init_ambient(t_scene *scene)
 {
 	scene->ambient.lighting_ratio = 0.3;
 	scene->ambient.color.red = 200;
-	scene->ambient.color.green = 200;
-	scene->ambient.color.blue = 200;
+	scene->ambient.color.green = 0;
+	scene->ambient.color.blue = 0;
 }
 
 static void	init_lighs(t_scene *scene)
