@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/09/30 12:15:23 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 21:36:13 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int	main(void)
 	t_scene		scene;
 
 	mlx_data.mlx = mlx_init();
-	mlx_data.win = mlx_new_window(mlx_data.mlx, SCREEN_WIDTH,
-			SCREEN_HEIGHT, TITLE);
-	mlx_data.image = mlx_new_image(mlx_data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	mlx_data.win = mlx_new_window(mlx_data.mlx, VIEW_PORT_WIDTH,
+			VIEW_PORT_HEIGHT, TITLE);
+	mlx_data.image = mlx_new_image(mlx_data.mlx, VIEW_PORT_WIDTH,
+			VIEW_PORT_HEIGHT);
 	mlx_data.addr = mlx_get_data_addr(mlx_data.image,
 			&mlx_data.bits_per_pixel, &mlx_data.line_length, &mlx_data.endian);
 	init_map(&scene);

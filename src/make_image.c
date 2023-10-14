@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/14 19:29:05 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 21:37:04 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ static bool	_camera_dir_is_horizontal_to_y(t_vector3d camera_dir, t_vector3d y)
  * ⑴ view_port[CENTER]：ビューポートの中心座標
  * ⑵ view_port[RIGHT]：ビューポート上を右方向へ移動する方向ベクトル
  * ⑶ view_port[DOWN]：ビューポート上を下方向へ移動する方向ベクトル
- *  
- * aspect_ratio:スクリーンの縦横比が画像へ影響しないようにする 
- * screen_x:空間内のxyz座標（3次元）へ変換された、ビューポート上のx座標
- * screen_y空間内のxyz座標（3次元）へ変換された、ビューポート上のy座標
 */
 static void	_set_view_port_info(t_vector3d *view_port, const t_camera camera)
 {
@@ -87,9 +83,9 @@ static void	_set_view_port_info(t_vector3d *view_port, const t_camera camera)
 /**
  * ビューポート上の座標を、３次元空間内のxyz座標へ変換する
  * 
- * uv座標 ：screenの2次元座標
- *	(範囲： 0 <= u <= (SCREEN_WIDTH-1), 0 <= v <= (SCREEN_HEIGHT-1))
- * xyz座標：scene空間内の3次元座標
+ * uv座標 ：view_portの2次元座標
+ *	(範囲： 0 <= u <= (VIEW_PORT_WIDTH-1), 0 <= v <= (VIEW_PORT_HEIGHT-1))
+ * xyz座標：view_port空間内の3次元座標
  * 	(範囲：-1.0 <= x <= 1.0, -1.0 <= y <= 1.0, -1.0 <= z <= 1.0)
 */
 static void	_set_view_port_xyz(
@@ -97,21 +93,22 @@ static void	_set_view_port_xyz(
 			const t_vector2d uv,
 			const t_vector3d *view_port)
 {
-	const double	aspect_ratio = (double)SCREEN_WIDTH / (double)SCREEN_HEIGHT;
-	const double	screen_x = scale_to_minus_one_to_one(
-			(double)uv.x / (SCREEN_WIDTH - 1.0), true);
-	const double	screen_y = scale_to_minus_one_to_one(
-			(double)uv.y / (SCREEN_HEIGHT - 1.0), true) / aspect_ratio;
+	const double	aspect_ratio
+		= (double)VIEW_PORT_WIDTH / (double)VIEW_PORT_HEIGHT;
+	const double	scale_downed_x = scale_to_minus_one_to_one(
+			(double)uv.x / (VIEW_PORT_WIDTH - 1.0));
+	const double	scale_downed_y = scale_to_minus_one_to_one(
+			(double)uv.y / (VIEW_PORT_HEIGHT - 1.0)) / aspect_ratio;
 
 	xyz->x = view_port[CENTER].x
-		+ view_port[RIGHT].x * (screen_x - view_port[CENTER].x)
-		+ view_port[DOWN].x * (screen_y - view_port[CENTER].y);
+		+ view_port[RIGHT].x * (scale_downed_x - view_port[CENTER].x)
+		+ view_port[DOWN].x * (scale_downed_y - view_port[CENTER].y);
 	xyz->y = view_port[CENTER].y
-		+ view_port[RIGHT].y * (screen_x - view_port[CENTER].x)
-		+ view_port[DOWN].y * (screen_y - view_port[CENTER].y);
+		+ view_port[RIGHT].y * (scale_downed_x - view_port[CENTER].x)
+		+ view_port[DOWN].y * (scale_downed_y - view_port[CENTER].y);
 	xyz->z = view_port[CENTER].z
-		+ view_port[RIGHT].z * (screen_x - view_port[CENTER].x)
-		+ view_port[DOWN].z * (screen_y - view_port[CENTER].y);
+		+ view_port[RIGHT].z * (scale_downed_x - view_port[CENTER].x)
+		+ view_port[DOWN].z * (scale_downed_y - view_port[CENTER].y);
 }
 
 /**
@@ -126,15 +123,15 @@ void	make_image(t_mlx_data *mlx_data, const t_scene *scene)
 	t_vector3d		view_port[3];
 
 	_set_view_port_info(view_port, scene->camera);
-	uv.y = SCREEN_HEIGHT - 1;
+	uv.y = VIEW_PORT_HEIGHT - 1;
 	while (uv.y >= 0)
 	{
 		uv.x = 0;
-		while (uv.x < SCREEN_WIDTH)
+		while (uv.x < VIEW_PORT_WIDTH)
 		{
 			_set_view_port_xyz(&xyz, uv, view_port);
 			set_ray(&ray, scene->camera.origin, xyz, scene->ambient);
-			my_mlx_pixel_put(mlx_data, (int)uv.x, (SCREEN_HEIGHT - 1)
+			my_mlx_pixel_put(mlx_data, (int)uv.x, (VIEW_PORT_HEIGHT - 1)
 				- (int)uv.y, get_pixel_color(&ray, *scene));
 			uv.x++;
 		}
