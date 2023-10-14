@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_normal_vector_for_tube.c                       :+:      :+:    :+:   */
+/*   cross_vector3d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:02:17 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 14:23:22 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/12 17:07:53 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/13 17:45:25 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
-#include "vector.h"
-#include "object.h"
 
-t_vector3d	get_normal_vector_for_tube(
-	const t_ray ray,
-	const void *object)
+/**
+ * ベクトルの外積（クロス積）を求める関数
+ * 
+ * 外積により、2つのベクトルに対して垂直なベクトルが求められる
+*/
+t_vector3d	cross_vector3d(const t_vector3d a, const t_vector3d b)
 {
-	t_tube	*tube;
+	t_vector3d	result;
 
-	tube = (t_tube *)object;
-	return (get_normal_vector_for_3d(ray, tube->center));
+	result.x = a.y * b.z - a.z * b.y;
+	result.y = a.z * b.x - a.x * b.z;
+	result.z = a.x * b.y - a.y * b.x;
+	return (result);
 }

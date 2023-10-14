@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_normal_vector_for_plane.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:01:19 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/03 01:43:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:19:43 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@
  */
 t_vector3d	get_normal_vector_for_plane(
 	const t_ray ray,
-	const double hit_distance,
 	const void *object)
 {
 	t_plane	*plane;
 
 	plane = (t_plane *)object;
-	return (get_normal_vector_for_2d(ray, hit_distance, plane->direction_vec));
+	return (get_normal_vector_for_2d(ray, plane->direction_vec));
 }

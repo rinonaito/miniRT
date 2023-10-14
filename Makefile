@@ -27,6 +27,7 @@ ${SRC_DIR}/init/set_vector2d.c \
 ${SRC_DIR}/init/set_vector3d.c \
 ${SRC_DIR}/light/calculate_lighting_ratio.c \
 ${SRC_DIR}/light/get_specular_lighting_ratio.c \
+${SRC_DIR}/light/is_hit_by_spot_light.c \
 ${SRC_DIR}/light/set_lighting_ratio.c \
 ${SRC_DIR}/make_image.c \
 ${SRC_DIR}/object/circle/get_normal_vector_for_circle.c \
@@ -44,12 +45,14 @@ ${SRC_DIR}/object/sphere/hit_sphere.c \
 ${SRC_DIR}/object/tube/get_normal_vector_for_tube.c \
 ${SRC_DIR}/object/tube/get_pixel_color_for_tube.c \
 ${SRC_DIR}/object/tube/hit_tube.c \
+${SRC_DIR}/set_closest_point_info_in_ray.c \
 ${SRC_DIR}/utils/error_utils/exit_with_errno.c \
 ${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
 ${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
 ${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
 ${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
 ${SRC_DIR}/vector/addition_vector3d.c \
+${SRC_DIR}/vector/cross_vector3d.c \
 ${SRC_DIR}/vector/dot_vector3d.c \
 ${SRC_DIR}/vector/get_len_of_vector3d.c \
 ${SRC_DIR}/vector/normalize_vector3d.c \
@@ -60,6 +63,7 @@ ${SRC_DIR}/vector/vector3d_dot_double.c \
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
 RM		=	rm -rf
+
 MKDIR	=	mkdir -p
 
 .DEFAULT_GOAL = all

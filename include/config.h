@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/08 19:42:25 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/12 22:46:44 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define CONFIG_H
 
 //スクリーン情報
-# define SCREEN_HEIGHT		180
-# define SCREEN_WIDTH		320
+# define SCREEN_HEIGHT		360.0
+# define SCREEN_WIDTH		640.0
+# define NORMALIZED_WIDTH	2.0
 # define TITLE				"miniRT"
 
 //mlx情報
@@ -45,6 +46,6 @@
 # define NOT_HIT			-1.0
 # define BLACK				0
 # define VERTICAL			0.0
-# define REFLECT_STRENGTH	64
+# define REFLECT_STRENGTH	32
 
 #endif
