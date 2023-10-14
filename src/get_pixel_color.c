@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 20:46:49 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 17:55:14 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 int	get_pixel_color(
 	t_ray *ray,
-	const t_vector3d xyz,
 	const t_scene scene)
 {
 	t_vector3d	normal_vector;
@@ -37,7 +36,10 @@ int	get_pixel_color(
 			= scene.objects[ray->hit_object_index]
 			.fp_get_normal_vector_for_object(*ray,
 				scene.objects[ray->hit_object_index].object);
-		set_lighting_ratio(ray, xyz, scene, normal_vector);
+		set_lighting_ratio(ray,
+			addition_vector3d(ray->origin,
+				vector3d_dot_double(ray->direction_vec, ray->hit_distance)),
+			scene, normal_vector);
 		return (scene.objects[ray->hit_object_index]
 			.fp_get_pixel_color_for_object(
 				scene.objects[ray->hit_object_index].object,

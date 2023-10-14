@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 21:00:43 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 17:21:13 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 17:51:01 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ double	calculate_lighting_ratio(
 			const t_vector3d normal_vector,
 			const double lighting_ratio);
 
-bool	is_not_in_shadow(
+bool	is_hit_by_spot_light(
 			const t_scene scene,
-			const t_ray ray,
 			const t_vector3d point,
 			const t_light light);
 

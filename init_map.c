@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/13 17:42:11 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/13 18:11:30 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	init_sphere(t_scene *scene, int *index);
 static void	init_plane(t_scene *scene, int *index);
 static void	init_cylinder(t_scene *scene, int *index);
 static void	init_camera(t_scene *scene);
+static void	init_ambient(t_scene *scene);
 static void	init_lighs(t_scene *scene);
 
 #include <stdio.h>
@@ -35,6 +36,7 @@ void	init_map(t_scene *scene)
 	//init_cylinder(scene, &index);
 	(void)init_cylinder;
 	init_camera(scene);
+	init_ambient(scene);
 	init_lighs(scene);
 }
 
@@ -153,15 +155,22 @@ static void	init_camera(t_scene *scene)
 	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 1.0);
 	scene->camera.direction_vec
 		= normalize_vector3d(scene->camera.direction_vec);
+}
+
+static void init_ambient(t_scene *scene)
+{
 	scene->ambient.lighting_ratio = 0.3;
+	scene->ambient.color.red = 200;
+	scene->ambient.color.green = 200;
+	scene->ambient.color.blue = 200;
 }
 
 static void	init_lighs(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
-	scene->lights[0].origin.x = 13;
-	scene->lights[0].origin.y = 13;
-	scene->lights[0].origin.z = -15.6;
+	scene->lights[0].origin.x = 3;
+	scene->lights[0].origin.y = 3;
+	scene->lights[0].origin.z = -5.6;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;

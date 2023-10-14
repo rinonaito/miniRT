@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:07:52 by rnaito            #+#    #+#             */
-/*   Updated: 2023/09/30 14:23:13 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:56:02 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 # define MLX_UTILS_H
 
 # include "types.h"
-
-int		get_pixel_color(
-			t_ray *ray,
-			const t_vector3d xyz,
-			const t_scene scene);
 
 void	my_mlx_pixel_put(
 			t_mlx_data *mlx_data,

@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 17:27:26 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 17:51:38 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	set_lighting_ratio(
 	{
 		light_vector = normalize_vector3d(
 				subtraction_vector3d(scene.lights[i].origin, point));
-		if (_is_smaller_than_vertical(light_vector, normal_vector))
+		if (_is_smaller_than_vertical(light_vector, normal_vector)
+			&& is_hit_by_spot_light(scene, point, scene.lights[i]))
 		{
 			diffuse = calculate_lighting_ratio(light_vector,
 					normal_vector, scene.lights[i].lighting_ratio);
@@ -76,8 +77,7 @@ void	set_lighting_ratio(
 					normal_vector, point, scene.camera.origin);
 			ray->rgb = _get_ray_color(ray->rgb, scene.lights[i].color,
 					ray->lighting_ratio, diffuse + specular);
-			if (is_not_in_shadow(scene, *ray, point, scene.lights[i]))
-				ray->lighting_ratio += (diffuse + specular);
+			ray->lighting_ratio += (diffuse + specular);
 		}
 		i++;
 	}

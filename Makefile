@@ -27,7 +27,7 @@ ${SRC_DIR}/init/set_vector2d.c \
 ${SRC_DIR}/init/set_vector3d.c \
 ${SRC_DIR}/light/calculate_lighting_ratio.c \
 ${SRC_DIR}/light/get_specular_lighting_ratio.c \
-${SRC_DIR}/light/is_not_in_shadow.c \
+${SRC_DIR}/light/is_hit_by_spot_light.c \
 ${SRC_DIR}/light/set_lighting_ratio.c \
 ${SRC_DIR}/make_image.c \
 ${SRC_DIR}/object/circle/get_normal_vector_for_circle.c \

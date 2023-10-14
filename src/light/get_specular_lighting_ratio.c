@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_specular_lighting_ratio.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:30 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/08 18:50:46 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:45:39 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double	get_specular_lighting_ratio(
 	t_vector3d	inverse_camera_vector;
 	double		lighting_ratio;
 
-	incident_light = subtraction_vector3d(light.origin, point);
+	incident_light = subtraction_vector3d(point, light.origin);
 	reflect_light = subtraction_vector3d(incident_light,
 			vector3d_dot_double(normal_vector,
 				SECOND_COEFFICIENT * dot_vector3d(incident_light,

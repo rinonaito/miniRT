@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:42:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 19:19:03 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:20:47 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 static double	_get_closer_hit_distance_for_sphere(
 	const t_ray ray,
-	const t_vector3d normal_vector,
+	const t_vector3d ray_origin_minus_center,
 	const double radius)
 {
 	double	a;
@@ -28,8 +28,8 @@ static double	_get_closer_hit_distance_for_sphere(
 	double	hit_distance;
 
 	a = dot_vector3d(ray.direction_vec, ray.direction_vec);
-	b = -2.0 * dot_vector3d(ray.direction_vec, normal_vector);
-	c = dot_vector3d(normal_vector, normal_vector)
+	b = -2.0 * dot_vector3d(ray.direction_vec, ray_origin_minus_center);
+	c = dot_vector3d(ray_origin_minus_center, ray_origin_minus_center)
 		- pow(radius, 2.0);
 	hit_distance = get_closer_hit_distance(a, b, c);
 	if (hit_distance < 0.0)
@@ -50,10 +50,11 @@ static double	_get_closer_hit_distance_for_sphere(
 double	hit_sphere(const t_ray ray, const void *object)
 {
 	t_sphere	*sphere;
-	t_vector3d	normal_vector;
+	t_vector3d	ray_origin_minus_center;
 
 	sphere = (t_sphere *)object;
-	normal_vector = subtraction_vector3d(sphere->center, ray.origin);
+	ray_origin_minus_center
+		= subtraction_vector3d(sphere->center, ray.origin);
 	return (_get_closer_hit_distance_for_sphere(
-			ray, normal_vector, sphere->diameter / 2.0));
+			ray, ray_origin_minus_center, sphere->diameter / 2.0));
 }

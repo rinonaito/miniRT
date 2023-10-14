@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/13 17:38:48 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/14 17:56:25 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "calculator.h"
 #include "config.h"
 #include "vector.h"
+#include "src.h"
 #include <math.h>
 #include <stdbool.h>
 
@@ -133,9 +134,12 @@ void	make_image(t_mlx_data *mlx_data, const t_scene *scene)
 		{
 			_set_view_port_xyz(&xyz, uv, view_port);
 			set_ray(&ray, scene->camera.origin, xyz);
+			// printf("ray: Origin (%lf, %lf, %lf), Direction (%lf, %lf, %lf)\n",
+			// 	ray.origin.x, ray.origin.y, ray.origin.z,
+			// 	ray.direction_vec.x, ray.direction_vec.y, ray.direction_vec.z);
 			my_mlx_pixel_put(mlx_data, (int)uv.x, (SCREEN_HEIGHT - 1)
 				- (int)uv.y,
-				get_pixel_color(&ray, xyz, *scene));
+				get_pixel_color(&ray, *scene));
 			uv.x++;
 		}
 		uv.y--;
