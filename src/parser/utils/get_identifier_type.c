@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:38:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:29:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/15 16:56:05 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_identifier_type	get_identifier_type(
 	size_t *index,
 	const t_parser parser)
 {
-	const char	*first_word = get_first_word(line, index);
+	const char	*first_word = get_first_word_by_space(line, index);
 	size_t		i;
 
 	i = 0;

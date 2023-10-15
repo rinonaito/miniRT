@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_file_extension.c                        :+:      :+:    :+:   */
+/*   get_first_word_by_comma.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:20:31 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/14 17:20:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/15 16:57:04 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/15 16:59:08 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include "error_utils.h"
-#include "config.h"
-#include <stdbool.h>
-#include <stdlib.h>
+#include "x_wrapper.h"
 
-bool	is_invalid_file_extension(const char *const file_name)
+char	*get_first_word_by_comma(const char *const str, size_t *index)
 {
-	size_t	str_len;
+	size_t	start;
+	size_t	len;
 
-	str_len = ft_strlen(file_name);
-	if (file_name == NULL
-		|| str_len < 3
-		|| file_name[str_len - 3] != '.'
-		|| file_name[str_len - 2] != 'r'
-		|| file_name[str_len - 1] != 't')
-	{
-		print_error_msg(INVALID_FILE);
-		return (true);
-	}
-	return (false);
+	start = 0;
+	len = 0;
+	skip_comma(&start, str);
+	*index += start;
+	skip_next_comma(&len, str + start);
+	*index += len;
+	return (ft_xsubstr(str, start, len));
 }

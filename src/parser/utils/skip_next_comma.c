@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_file_extension.c                        :+:      :+:    :+:   */
+/*   skip_next_comma.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:20:31 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/14 17:20:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/11 19:49:47 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/11 19:50:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "error_utils.h"
-#include "config.h"
-#include <stdbool.h>
 #include <stdlib.h>
 
-bool	is_invalid_file_extension(const char *const file_name)
+/**
+ * 次のスペースまでindexを進める関数
+*/
+void	skip_next_comma(size_t *index, const char *const str)
 {
-	size_t	str_len;
-
-	str_len = ft_strlen(file_name);
-	if (file_name == NULL
-		|| str_len < 3
-		|| file_name[str_len - 3] != '.'
-		|| file_name[str_len - 2] != 'r'
-		|| file_name[str_len - 1] != 't')
+	while (str[*index] != '\n'
+		&& str[*index] != ',')
 	{
-		print_error_msg(INVALID_FILE);
-		return (true);
+		(*index)++;
 	}
-	return (false);
 }

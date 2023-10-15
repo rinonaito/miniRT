@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:23:02 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:15:47 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+
 # define AMBIENT				"A"
 # define CAMERA					"C"
 # define LIGHT					"L"
 # define SPHERE					"sp"
 # define PLANE					"pl"
 # define CYLINDER				"cy"
+# define IDENTIFIER_NUM			6
 # define FILE_NAME_NUM			1
 # define INVALID_ARGC_NUM		2
-# define IDENTIFIER_NUM			6
 # define MAX_FOV				180
 # define MIN_FOV				0
 # define MAX_LIGHTING_RATIO		1.0
@@ -48,6 +52,9 @@ Accepted identifiers are: \
 A (AMBIENT), C (CAMERA), L (LIGHT), \
 sp (SPHERE), pl (PLANE), cy (CYLINDER)."
 
+# define FILE_NOT_FOUND      "File not found. \
+Please ensure the provided file path is correct and try again."
+
 typedef enum e_identifier_type
 {
 	A = 0,
@@ -67,7 +74,10 @@ typedef struct s_parser
 }	t_parser;
 
 int					file_parser(t_scene *scene, int argc, char **argv);
-bool				is_invalid_line(const char *const line, t_scene *scene);
+bool				is_invalid_line(
+						const char *const line,
+						const t_parser *parser,
+						t_scene *scene);
 
 //identifier
 bool				is_invalid_ambient(const char *const line, t_scene *scene, const size_t index);
@@ -107,5 +117,9 @@ t_identifier_type	get_identifier_type(
 						const char *const line,
 						size_t *index,
 						const t_parser parser);
+void				skip_spaces(size_t *index, const char *const str);
+void				skip_next_space(size_t *index, const char *const str);
+void				skip_comma(size_t *index, const char *const str);
+void				skip_next_comma(size_t *index, const char *const str);
 
 #endif

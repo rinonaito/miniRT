@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_file_extension.c                        :+:      :+:    :+:   */
+/*   get_next_line_no_nl.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:20:31 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/14 17:20:10 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/13 20:08:45 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/13 20:12:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include "error_utils.h"
-#include "config.h"
-#include <stdbool.h>
-#include <stdlib.h>
 
-bool	is_invalid_file_extension(const char *const file_name)
+/**
+ * 改行を削除したget_next_line
+*/
+char	*get_next_line_no_nl(int fd)
 {
-	size_t	str_len;
+	char	*line_no_nl;
+	size_t	len;
 
-	str_len = ft_strlen(file_name);
-	if (file_name == NULL
-		|| str_len < 3
-		|| file_name[str_len - 3] != '.'
-		|| file_name[str_len - 2] != 'r'
-		|| file_name[str_len - 1] != 't')
-	{
-		print_error_msg(INVALID_FILE);
-		return (true);
-	}
-	return (false);
+	line_no_nl = get_next_line(fd);
+	if (line_no_nl == NULL)
+		return (NULL);
+	len = ft_strlen(line_no_nl);
+	if (len > 0 && line_no_nl[len - 1] == '\n')
+		line_no_nl[len - 1] = '\0';
+	return (line_no_nl);
 }
