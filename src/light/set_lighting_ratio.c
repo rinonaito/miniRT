@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/15 17:29:19 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 17:58:23 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ static bool	_is_smaller_than_vertical(
 	return (dot_vector3d(light_vector, normal_vector) > VERTICAL);
 }
 
-t_ray	_get_spot_light_ray(t_vector3d light_origin, t_vector3d point, t_ambient_lighting ambient)
+static t_ray	_get_spot_light_ray(
+		const t_vector3d light_origin,
+		t_vector3d point,
+		const t_ambient_lighting ambient)
 {
 	t_ray			spot_light_ray;
 	t_vector3d		spot_light_ray_direction;

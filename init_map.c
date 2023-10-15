@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/15 17:41:38 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 17:54:57 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	init_map(t_scene *scene)
 	int index = 0;
 	scene->objects = malloc(sizeof(t_object) * 100);
 	scene->objects_num = 0;
-	//init_sphere(scene, &index);
+	init_sphere(scene, &index);
 	(void)init_sphere;
 	init_plane(scene, &index);
 	(void)init_plane;
-	init_cylinder(scene, &index);
+	//init_cylinder(scene, &index);
 	(void)init_cylinder;
 	init_camera(scene);
 	init_ambient(scene);
@@ -171,9 +171,9 @@ static void init_ambient(t_scene *scene)
 static void	init_lighs(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
-	scene->lights[0].origin.x = 5;
+	scene->lights[0].origin.x = 3;
 	scene->lights[0].origin.y = 0;
-	scene->lights[0].origin.z = 0;
+	scene->lights[0].origin.z = 10;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;
