@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:30 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/14 14:45:39 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 17:46:04 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ double	get_specular_lighting_ratio(
 			vector3d_dot_double(normal_vector,
 				SECOND_COEFFICIENT * dot_vector3d(incident_light,
 					normal_vector)));
-	inverse_camera_vector = subtraction_vector3d(camera_origin, point);
+	inverse_camera_vector = normalize_vector3d(
+			subtraction_vector3d(camera_origin, point));
 	lighting_ratio = calculate_lighting_ratio(reflect_light,
 			inverse_camera_vector, light.lighting_ratio);
 	if (lighting_ratio == NO_LIGHT_STRENGTH)

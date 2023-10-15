@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/12 22:46:42 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:27:30 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ typedef struct s_object
 		const void *);
 	int			(*fp_get_pixel_color_for_object)(
 			const void *,
-			const t_ray ray,
-			const double ambient_lighting_ratio);
+			const t_ray ray);
 }	t_object;
 
 typedef struct s_sphere

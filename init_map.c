@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/14 20:51:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 17:41:38 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	init_map(t_scene *scene)
 	int index = 0;
 	scene->objects = malloc(sizeof(t_object) * 100);
 	scene->objects_num = 0;
-	init_sphere(scene, &index);
+	//init_sphere(scene, &index);
 	(void)init_sphere;
 	init_plane(scene, &index);
 	(void)init_plane;
-	//init_cylinder(scene, &index);
+	init_cylinder(scene, &index);
 	(void)init_cylinder;
 	init_camera(scene);
 	init_ambient(scene);
@@ -50,6 +50,9 @@ static void	init_sphere(t_scene *scene, int *index)
 	sphere->color.red = 40;
 	sphere->color.green = 53;
 	sphere->color.blue = 158;
+	// sphere->color.red = 0;
+	// sphere->color.green = 0;
+	// sphere->color.blue = 255;
 	scene->objects[*index].object = sphere;
 	scene->objects[*index].object_type = SPHERE;
 	scene->objects[*index].fp_hit_object = hit_sphere;
@@ -68,9 +71,9 @@ static void	init_plane(t_scene *scene, int *index)
 	plane->direction_vec.x = 0.0;
 	plane->direction_vec.y = 1.0;
 	plane->direction_vec.z = 0.0;
-	plane->color.red = 255;
-	plane->color.green = 255;
-	plane->color.blue = 255;
+	plane->color.red = 100;
+	plane->color.green = 100;
+	plane->color.blue = 100;
 	scene->objects[*index].object = plane;
 	scene->objects[*index].object_type = PLANE;
 	scene->objects[*index].fp_hit_object = hit_plane;
@@ -91,9 +94,9 @@ static void	init_cylinder(t_scene *scene, int *index)
 	tube->direction_vec.z = -3.0;
 	tube->diameter = 3.6;
 	tube->height = 5.8;
-	tube->color.red = 0;
-	tube->color.green = 255;
-	tube->color.blue = 0;
+	tube->color.red = 200;
+	tube->color.green = 200;
+	tube->color.blue = 200;
 	scene->objects[*index].object = tube;
 	scene->objects[*index].object_type = TUBE;
 	scene->objects[*index].fp_hit_object = hit_tube;
@@ -160,17 +163,17 @@ static void	init_camera(t_scene *scene)
 static void init_ambient(t_scene *scene)
 {
 	scene->ambient.lighting_ratio = 0.3;
-	scene->ambient.color.red = 200;
-	scene->ambient.color.green = 0;
-	scene->ambient.color.blue = 0;
+	scene->ambient.color.red = 255;
+	scene->ambient.color.green = 255;
+	scene->ambient.color.blue = 255;
 }
 
 static void	init_lighs(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
-	scene->lights[0].origin.x = 3;
-	scene->lights[0].origin.y = 3;
-	scene->lights[0].origin.z = -5.6;
+	scene->lights[0].origin.x = 5;
+	scene->lights[0].origin.y = 0;
+	scene->lights[0].origin.z = 0;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;

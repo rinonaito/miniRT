@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/10 14:23:26 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:27:24 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ t_vector3d	get_normal_vector_for_3d(
 int			get_pixel_color_for_object(
 				t_rgb object_rgb,
 				t_rgb ray_rgb,
-				double ambient_lighting_ratio,
-				double direct_lighting_ratio);
+				double lighting_ratio);
 
 //sphere.h
 double		hit_sphere(const t_ray ray, const void *object);
@@ -39,8 +38,7 @@ t_vector3d	get_normal_vector_for_sphere(
 
 int			get_pixel_color_for_sphere(
 				const void *object,
-				const t_ray ray,
-				const double ambient_lighting_ratio);
+				const t_ray ray);
 
 //plane.h
 double		hit_plane(const t_ray ray, const void *object);
@@ -51,8 +49,7 @@ t_vector3d	get_normal_vector_for_plane(
 
 int			get_pixel_color_for_plane(
 				const void *object,
-				const t_ray ray,
-				const double ambient_lighting_ratio);
+				const t_ray ray);
 
 //circle.h
 double		hit_circle(const t_ray ray, const void *object);
@@ -63,8 +60,7 @@ t_vector3d	get_normal_vector_for_circle(
 
 int			get_pixel_color_for_circle(
 				const void *object,
-				const t_ray ray,
-				const double ambient_lighting_ratio);
+				const t_ray ray);
 
 //tube.h
 double		hit_tube(const t_ray ray, const void *object);
@@ -75,7 +71,6 @@ t_vector3d	get_normal_vector_for_tube(
 
 int			get_pixel_color_for_tube(
 				const void *object,
-				const t_ray ray,
-				const double ambient_lighting_ratio);
+				const t_ray ray);
 
 #endif
