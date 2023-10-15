@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color_for_sphere.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naitorino <naitorino@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:45:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/06 20:38:31 by naitorino        ###   ########.fr       */
+/*   Updated: 2023/10/15 16:27:38 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,13 @@
  */
 int	get_pixel_color_for_sphere(
 	const void *object,
-	const t_ray ray,
-	const double ambient_lighting_ratio)
+	const t_ray ray)
 {
 	t_sphere	*sphere;
-	t_rgb		rgb;
 
 	sphere = (t_sphere *)object;
-	rgb = reflect_lighting_ratio_in_color(
+	return (get_pixel_color_for_object(
 			sphere->color,
 			ray.rgb,
-			ambient_lighting_ratio,
-			ray.lighting_ratio);
-	return (convert_rgb_in_int(rgb));
+			ray.lighting_ratio));
 }

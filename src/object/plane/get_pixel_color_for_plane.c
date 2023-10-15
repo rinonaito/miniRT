@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:04:02 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 17:33:33 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:27:40 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@
  */
 int	get_pixel_color_for_plane(
 	const void *object,
-	const t_ray ray,
-	const double ambient_lighting_ratio)
+	const t_ray ray)
 {
 	t_plane	*plane;
 
 	plane = (t_plane *)object;
-	return (get_pixel_color_for_object(plane->color,
+	return (get_pixel_color_for_object(
+			plane->color,
 			ray.rgb,
-			ambient_lighting_ratio,
 			ray.lighting_ratio));
 }

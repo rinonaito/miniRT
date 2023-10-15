@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/14 18:11:31 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:27:37 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int	get_pixel_color(
 		return (scene.objects[ray->hit_object_index]
 			.fp_get_pixel_color_for_object(
 				scene.objects[ray->hit_object_index].object,
-				*ray,
-				scene.ambient.lighting_ratio));
+				*ray));
 	}
 	else
 		return (BLACK);
