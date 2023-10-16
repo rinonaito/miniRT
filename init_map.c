@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/17 18:58:58 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 20:49:18 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_map(t_scene *scene)
 	(void)init_sphere;
 	//init_plane(scene, &index);
 	(void)init_plane;
-	//init_cylinder(scene, &index);
+	init_cylinder(scene, &index);
 	(void)init_cylinder;
 	init_cone(scene, &index);
 	(void)init_cone;
@@ -58,6 +58,24 @@ static void	init_sphere(t_scene *scene, int *index)
 	sphere->color.green = 0;
 	sphere->color.blue = 0;
 	scene->objects[*index].object = sphere;
+	scene->objects[*index].object_type = SPHERE;
+	scene->objects[*index].fp_hit_object = hit_sphere;
+	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_sphere;
+	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_sphere;
+	scene->objects_num++;
+	(*index)++;
+	t_sphere	*sphere2 = malloc(sizeof(t_sphere) * 1);
+	sphere2->center.x = -1.0;
+	sphere2->center.y = 1.0;
+	sphere2->center.z = 2.0;
+	sphere2->diameter = 1.0;
+	sphere2->color.red = 40;
+	sphere2->color.green = 53;
+	sphere2->color.blue = 158;
+	// sphere2->color.red = 0;
+	// sphere2->color.green = 0;
+	// sphere2->color.blue = 255;
+	scene->objects[*index].object = sphere2;
 	scene->objects[*index].object_type = SPHERE;
 	scene->objects[*index].fp_hit_object = hit_sphere;
 	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_sphere;
@@ -139,15 +157,15 @@ static void	init_cylinder(t_scene *scene, int *index)
 	t_tube *tube = malloc(sizeof(t_tube) * 1);
 	tube->center.x = 0.0;
 	tube->center.y = 0.0;
-	tube->center.z = 10.6;
+	tube->center.z = -10.6;
 	tube->direction_vec.x = 3.0;
 	tube->direction_vec.y = 3.0;
-	tube->direction_vec.z = -3.0;
+	tube->direction_vec.z = 3.0;
 	tube->diameter = 3.6;
 	tube->height = 5.8;
-	tube->color.red = 200;
-	tube->color.green = 200;
-	tube->color.blue = 200;
+	tube->color.red = 100;
+	tube->color.green = 100;
+	tube->color.blue = 100;
 	scene->objects[*index].object = tube;
 	scene->objects[*index].object_type = TUBE;
 	scene->objects[*index].fp_hit_object = hit_tube;

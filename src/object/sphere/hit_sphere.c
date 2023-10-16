@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:42:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/14 17:20:47 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/16 20:18:08 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@
 
 static double	_get_closer_hit_distance_for_sphere(
 	const t_ray ray,
-	const t_vector3d ray_origin_minus_center,
+	const t_vector3d center,
 	const double radius)
 {
-	double	a;
-	double	b;
-	double	c;
-	double	hit_distance;
+	double		a;
+	double		b;
+	double		c;
+	double		hit_distance;
+	t_vector3d	ray_origin_minus_center;
 
+	ray_origin_minus_center = subtraction_vector3d(center, ray.origin);
 	a = dot_vector3d(ray.direction_vec, ray.direction_vec);
 	b = -2.0 * dot_vector3d(ray.direction_vec, ray_origin_minus_center);
 	c = dot_vector3d(ray_origin_minus_center, ray_origin_minus_center)
@@ -50,11 +52,8 @@ static double	_get_closer_hit_distance_for_sphere(
 double	hit_sphere(const t_ray ray, const void *object)
 {
 	t_sphere	*sphere;
-	t_vector3d	ray_origin_minus_center;
 
 	sphere = (t_sphere *)object;
-	ray_origin_minus_center
-		= subtraction_vector3d(sphere->center, ray.origin);
 	return (_get_closer_hit_distance_for_sphere(
-			ray, ray_origin_minus_center, sphere->diameter / 2.0));
+			ray, sphere->center, sphere->diameter / 2.0));
 }
