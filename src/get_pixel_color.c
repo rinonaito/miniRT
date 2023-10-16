@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/15 16:27:37 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/16 18:56:39 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int	get_pixel_color(
 	set_closest_point_info_in_ray(ray, scene);
 	if (ray->hit_object_index != NOT_HIT)
 	{
+		if (scene.objects[ray->hit_object_index].object_type == CONE)
+		{
+			printf("hit with cylinder\n");
+			return(0x00FF00);
+		}
 		normal_vector
 			= scene.objects[ray->hit_object_index]
 			.fp_get_normal_vector_for_object(*ray,

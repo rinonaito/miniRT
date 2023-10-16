@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/15 17:54:57 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/16 14:57:36 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 
 static void	init_sphere(t_scene *scene, int *index);
+static void	init_cone(t_scene *scene, int *index);
 static void	init_plane(t_scene *scene, int *index);
 static void	init_cylinder(t_scene *scene, int *index);
 static void	init_camera(t_scene *scene);
@@ -29,12 +30,14 @@ void	init_map(t_scene *scene)
 	int index = 0;
 	scene->objects = malloc(sizeof(t_object) * 100);
 	scene->objects_num = 0;
-	init_sphere(scene, &index);
+	//init_sphere(scene, &index);
 	(void)init_sphere;
-	init_plane(scene, &index);
+	//init_plane(scene, &index);
 	(void)init_plane;
 	//init_cylinder(scene, &index);
 	(void)init_cylinder;
+	init_cone(scene, &index);
+	(void)init_cone;
 	init_camera(scene);
 	init_ambient(scene);
 	init_lighs(scene);
@@ -46,16 +49,39 @@ static void	init_sphere(t_scene *scene, int *index)
 	sphere->center.x = 0.0;
 	sphere->center.y = 0.0;
 	sphere->center.z = 10.0;
-	sphere->diameter = 4.0;
+	sphere->diameter = 30.0;
 	sphere->color.red = 40;
 	sphere->color.green = 53;
 	sphere->color.blue = 158;
-	// sphere->color.red = 0;
-	// sphere->color.green = 0;
-	// sphere->color.blue = 255;
+	sphere->color.red = 255;
+	sphere->color.green = 0;
+	sphere->color.blue = 0;
 	scene->objects[*index].object = sphere;
 	scene->objects[*index].object_type = SPHERE;
 	scene->objects[*index].fp_hit_object = hit_sphere;
+	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_sphere;
+	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_sphere;
+	scene->objects_num++;
+	(*index)++;
+}
+
+static void	init_cone(t_scene *scene, int *index)
+{
+	t_cone	*cone = malloc(sizeof(t_cone) * 1);
+	cone->top.x = 0.0;
+	cone->top.y = 2.0;
+	cone->top.z = 10.0;
+//	cone->diameter = 30.0;
+	cone->direction_vec.x = 0.0;
+	cone->direction_vec.y = -1.0;
+	cone->direction_vec.z = 0.0;
+	cone->color.red = 40;
+	cone->color.green = 53;
+	cone->color.blue = 158;
+	cone->phi = 30.0;
+	scene->objects[*index].object = cone;
+	scene->objects[*index].object_type = CONE;
+	scene->objects[*index].fp_hit_object = hit_cone;
 	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_sphere;
 	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_sphere;
 	scene->objects_num++;

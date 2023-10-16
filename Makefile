@@ -36,6 +36,7 @@ ${SRC_DIR}/object/circle/hit_circle.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_3d.c \
 ${SRC_DIR}/object/common/get_pixel_color_for_object.c \
+${SRC_DIR}/object/cone/hit_cone.c \
 ${SRC_DIR}/object/plane/get_normal_vector_for_plane.c \
 ${SRC_DIR}/object/plane/get_pixel_color_for_plane.c \
 ${SRC_DIR}/object/plane/hit_plane.c \
