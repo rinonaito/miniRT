@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/16 14:50:34 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 11:15:52 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,13 @@ int			get_pixel_color_for_tube(
 
 //cone.h
 double		hit_cone(const t_ray ray, const void *object);
+
+t_vector3d	get_normal_vector_for_cone(
+				const t_ray ray,
+				const void *object);
+
+int			get_pixel_color_for_cone(
+				const void *object,
+				const t_ray ray);
 
 #endif

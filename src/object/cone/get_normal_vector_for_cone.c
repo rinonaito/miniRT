@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_normal_vector_for_tube.c                       :+:      :+:    :+:   */
+/*   get_normal_vector_for_cone.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:02:17 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/10 14:23:22 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/17 11:03:40 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/17 11:04:49 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include "vector.h"
 #include "object.h"
 
-t_vector3d	get_normal_vector_for_tube(
+t_vector3d	get_normal_vector_for_cone(
 	const t_ray ray,
 	const void *object)
 {
-	t_tube	*tube;
+	t_cone	*cone;
 
-	tube = (t_tube *)object;
-	return (get_normal_vector_for_3d(ray, tube->center));
+	cone = (t_cone *)object;
+	return (get_normal_vector_for_3d(ray, cone->top));
 }

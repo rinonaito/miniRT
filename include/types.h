@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 10:40:47 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 10:59:15 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ typedef struct s_cone
 {
 	t_vector3d	top;
 	t_vector3d	direction_vec;
-	double		phi;//頂点の半角	
+	double		phi;
 	double		height;
 	t_rgb		color;
 }	t_cone;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pixel_color_for_tube.c                         :+:      :+:    :+:   */
+/*   get_pixel_color_for_cone.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:06:39 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/15 16:27:43 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/17 11:14:10 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/17 11:14:49 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "color.h"
 #include "object.h"
 
-int	get_pixel_color_for_tube(
+int	get_pixel_color_for_cone(
 	const void *object,
 	const t_ray ray)
 {
-	t_tube	*tube;
+	t_cone	*cone;
 
-	tube = (t_tube *)object;
-	return (get_pixel_color_for_object(tube->color,
+	cone = (t_cone *)object;
+	return (get_pixel_color_for_object(cone->color,
 			ray.rgb,
 			ray.lighting_ratio));
 }

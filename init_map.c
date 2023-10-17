@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/17 10:40:05 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 13:12:59 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ static void	init_cone(t_scene *scene, int *index)
 	cone->height = 10.0;
 	cone->direction_vec.x = 0.0;
 	cone->direction_vec.y = -1.0;
-	cone->direction_vec.z = 0.0;
+	cone->direction_vec.z = 0.3;
 	cone->color.red = 40;
 	cone->color.green = 53;
 	cone->color.blue = 158;
-	cone->phi = 30.0;
+	cone->phi = 15.0;
 	scene->objects[*index].object = cone;
 	scene->objects[*index].object_type = CONE;
 	scene->objects[*index].fp_hit_object = hit_cone;
-	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_sphere;
-	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_sphere;
+	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_cone;
+	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_cone;
 	scene->objects_num++;
 	(*index)++;
 }
@@ -198,8 +198,8 @@ static void	init_lighs(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
 	scene->lights[0].origin.x = 3;
-	scene->lights[0].origin.y = 0;
-	scene->lights[0].origin.z = 10;
+	scene->lights[0].origin.y = -2;
+	scene->lights[0].origin.z = 3;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;
