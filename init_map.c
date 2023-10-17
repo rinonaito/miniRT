@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/16 14:57:36 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 10:40:05 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	init_cone(t_scene *scene, int *index)
 	cone->top.x = 0.0;
 	cone->top.y = 2.0;
 	cone->top.z = 10.0;
-//	cone->diameter = 30.0;
+	cone->height = 10.0;
 	cone->direction_vec.x = 0.0;
 	cone->direction_vec.y = -1.0;
 	cone->direction_vec.z = 0.0;
@@ -180,7 +180,7 @@ static void	init_cylinder(t_scene *scene, int *index)
 static void	init_camera(t_scene *scene)
 {
 	set_vector3d(&scene->camera.origin, 0.0, 0.0, 0.0);
-	scene->camera.fov = 60;
+	scene->camera.fov = 90;
 	set_vector3d(&scene->camera.direction_vec, 0.0, 0.0, 1.0);
 	scene->camera.direction_vec
 		= normalize_vector3d(scene->camera.direction_vec);
