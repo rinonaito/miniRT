@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:50:28 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 13:07:16 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 19:54:33 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ t_vector3d	get_normal_vector_for_3d(
 	normalized = normalize_vector3d(normal_vector);
 	return (normalized);
 }
- 

@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 11:02:07 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 19:53:26 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ void	make_image(t_mlx_data *mlx_data, const t_scene *scene)
 		uv.x = 0;
 		while (uv.x < VIEW_PORT_WIDTH)
 		{
-		//	printf("(x, y) = (%f, %f)\n", uv.x, uv.y);
 			_set_view_port_xyz(&xyz, uv, view_port);
 			set_ray(&ray, scene->camera.origin, xyz, scene->ambient);
 			my_mlx_pixel_put(mlx_data, (int)uv.x, (VIEW_PORT_HEIGHT - 1)

@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 18:45:43 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 19:53:50 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	set_lighting_ratio(
 					normal_vector, scene.lights[i].lighting_ratio);
 			specular = get_specular_lighting_ratio(scene.lights[i],
 					normal_vector, original_point, scene.camera.origin);
-		//	specular = 0;
 			ray->rgb = _get_ray_color(ray->rgb, scene.lights[i].color,
 					ray->lighting_ratio, diffuse + specular);
 			ray->lighting_ratio += (diffuse + specular);
