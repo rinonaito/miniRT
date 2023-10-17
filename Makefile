@@ -36,6 +36,9 @@ ${SRC_DIR}/object/circle/hit_circle.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_3d.c \
 ${SRC_DIR}/object/common/get_pixel_color_for_object.c \
+${SRC_DIR}/object/cone/get_normal_vector_for_cone.c \
+${SRC_DIR}/object/cone/get_pixel_color_for_cone.c \
+${SRC_DIR}/object/cone/hit_cone.c \
 ${SRC_DIR}/object/plane/get_normal_vector_for_plane.c \
 ${SRC_DIR}/object/plane/get_pixel_color_for_plane.c \
 ${SRC_DIR}/object/plane/hit_plane.c \
@@ -59,6 +62,7 @@ ${SRC_DIR}/vector/normalize_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
+
 
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}

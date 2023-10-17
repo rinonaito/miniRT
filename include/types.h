@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/15 16:27:30 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 10:59:15 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef enum e_object_type
 	PLANE,
 	TUBE,
 	CIRCLE,
+	CONE,
 }	t_object_type;
 
 typedef enum e_view_port
@@ -132,6 +133,15 @@ typedef struct s_circle
 	double		diameter;
 	t_rgb		color;
 }	t_circle;
+
+typedef struct s_cone
+{
+	t_vector3d	top;
+	t_vector3d	direction_vec;
+	double		phi;
+	double		height;
+	t_rgb		color;
+}	t_cone;
 
 typedef struct s_scene
 {
