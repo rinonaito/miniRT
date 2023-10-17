@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/17 11:15:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 21:32:33 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OBJECT_H
 
 # include "types.h"
+# include <stdbool.h>
 
 //common.h
 t_vector3d	get_normal_vector_for_2d(
@@ -28,6 +29,10 @@ int			get_pixel_color_for_object(
 				t_rgb object_rgb,
 				t_rgb ray_rgb,
 				double lighting_ratio);
+
+bool		camera_is_inside_of_object(
+				t_vector3d normal_vector,
+				t_vector3d ray_direction);
 
 //sphere.h
 double		hit_sphere(const t_ray ray, const void *object);

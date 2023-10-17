@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/17 20:49:18 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 21:36:49 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	init_map(t_scene *scene)
 	int index = 0;
 	scene->objects = malloc(sizeof(t_object) * 100);
 	scene->objects_num = 0;
-	//init_sphere(scene, &index);
+	init_sphere(scene, &index);
 	(void)init_sphere;
-	//init_plane(scene, &index);
+	init_plane(scene, &index);
 	(void)init_plane;
-	init_cylinder(scene, &index);
+	//init_cylinder(scene, &index);
 	(void)init_cylinder;
-	init_cone(scene, &index);
+	//init_cone(scene, &index);
 	(void)init_cone;
 	init_camera(scene);
 	init_ambient(scene);
@@ -50,7 +50,7 @@ static void	init_sphere(t_scene *scene, int *index)
 	sphere->center.x = 0.0;
 	sphere->center.y = 0.0;
 	sphere->center.z = 10.0;
-	sphere->diameter = 30.0;
+	sphere->diameter = 5.0;
 	sphere->color.red = 40;
 	sphere->color.green = 53;
 	sphere->color.blue = 158;
@@ -64,24 +64,24 @@ static void	init_sphere(t_scene *scene, int *index)
 	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_sphere;
 	scene->objects_num++;
 	(*index)++;
-	t_sphere	*sphere2 = malloc(sizeof(t_sphere) * 1);
-	sphere2->center.x = -1.0;
-	sphere2->center.y = 1.0;
-	sphere2->center.z = 2.0;
-	sphere2->diameter = 1.0;
-	sphere2->color.red = 40;
-	sphere2->color.green = 53;
-	sphere2->color.blue = 158;
-	// sphere2->color.red = 0;
-	// sphere2->color.green = 0;
-	// sphere2->color.blue = 255;
-	scene->objects[*index].object = sphere2;
-	scene->objects[*index].object_type = SPHERE;
-	scene->objects[*index].fp_hit_object = hit_sphere;
-	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_sphere;
-	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_sphere;
-	scene->objects_num++;
-	(*index)++;
+//	t_sphere	*sphere2 = malloc(sizeof(t_sphere) * 1);
+//	sphere2->center.x = -1.0;
+//	sphere2->center.y = 1.0;
+//	sphere2->center.z = 2.0;
+//	sphere2->diameter = 1.0;
+//	sphere2->color.red = 40;
+//	sphere2->color.green = 53;
+//	sphere2->color.blue = 158;
+//	// sphere2->color.red = 0;
+//	// sphere2->color.green = 0;
+//	// sphere2->color.blue = 255;
+//	scene->objects[*index].object = sphere2;
+//	scene->objects[*index].object_type = SPHERE;
+//	scene->objects[*index].fp_hit_object = hit_sphere;
+//	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_sphere;
+//	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_sphere;
+//	scene->objects_num++;
+//	(*index)++;
 }
 
 static void	init_cone(t_scene *scene, int *index)
@@ -135,7 +135,7 @@ static void	init_plane(t_scene *scene, int *index)
 {
 	t_plane	*plane = malloc(sizeof(t_plane) * 1);
 	plane->coordinate.x = 5.0;
-	plane->coordinate.y = -2.0;
+	plane->coordinate.y = -1.0;
 	plane->coordinate.z = 2.0;
 	plane->direction_vec.x = 0.0;
 	plane->direction_vec.y = 1.0;
@@ -157,14 +157,14 @@ static void	init_cylinder(t_scene *scene, int *index)
 	t_tube *tube = malloc(sizeof(t_tube) * 1);
 	tube->center.x = 0.0;
 	tube->center.y = 0.0;
-	tube->center.z = -10.6;
+	tube->center.z = 10.6;
 	tube->direction_vec.x = 3.0;
 	tube->direction_vec.y = 3.0;
 	tube->direction_vec.z = 3.0;
 	tube->diameter = 3.6;
 	tube->height = 5.8;
 	tube->color.red = 100;
-	tube->color.green = 100;
+	tube->color.green = 200;
 	tube->color.blue = 100;
 	scene->objects[*index].object = tube;
 	scene->objects[*index].object_type = TUBE;
@@ -240,9 +240,9 @@ static void init_ambient(t_scene *scene)
 static void	init_lighs(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
-	scene->lights[0].origin.x = -2;
-	scene->lights[0].origin.y = -2;
-	scene->lights[0].origin.z = 8;
+	scene->lights[0].origin.x = 3;
+	scene->lights[0].origin.y = 0;
+	scene->lights[0].origin.z = 5;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;
