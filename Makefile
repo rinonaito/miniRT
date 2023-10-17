@@ -33,6 +33,7 @@ ${SRC_DIR}/make_image.c \
 ${SRC_DIR}/object/circle/get_normal_vector_for_circle.c \
 ${SRC_DIR}/object/circle/get_pixel_color_for_circle.c \
 ${SRC_DIR}/object/circle/hit_circle.c \
+${SRC_DIR}/object/common/camera_is_inside_of_object.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_3d.c \
 ${SRC_DIR}/object/common/get_pixel_color_for_object.c \
@@ -62,8 +63,7 @@ ${SRC_DIR}/vector/normalize_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
-
-
+			
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
 RM		=	rm -rf
