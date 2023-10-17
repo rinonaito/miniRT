@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:09:46 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 10:51:51 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:18:40 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static bool	_is_out_of_height_range(
 			cone.direction_vec);
 	if (a < 0)
 		return (true);
-	if (pow(a, 2.0) >= pow(cone.height / 2.0, 2.0))
+	if (pow(a, 2.0) >= pow(cone.height, 2.0))
 		return (true);
 	return (false);
 }
