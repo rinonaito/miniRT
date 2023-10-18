@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:16:04 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 19:53:26 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/18 21:36:17 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,14 @@ static void	_set_view_port_xyz(
 			(double)uv.y / (VIEW_PORT_HEIGHT - 1.0)) / aspect_ratio;
 
 	xyz->x = view_port[CENTER].x
-		+ view_port[RIGHT].x * (scale_downed_x - view_port[CENTER].x)
-		+ view_port[DOWN].x * (scale_downed_y - view_port[CENTER].y);
+		+ view_port[RIGHT].x * scale_downed_x
+		+ view_port[DOWN].x * scale_downed_y;
 	xyz->y = view_port[CENTER].y
-		+ view_port[RIGHT].y * (scale_downed_x - view_port[CENTER].x)
-		+ view_port[DOWN].y * (scale_downed_y - view_port[CENTER].y);
+		+ view_port[RIGHT].y * scale_downed_x
+		+ view_port[DOWN].y * scale_downed_y;
 	xyz->z = view_port[CENTER].z
-		+ view_port[RIGHT].z * (scale_downed_x - view_port[CENTER].x)
-		+ view_port[DOWN].z * (scale_downed_y - view_port[CENTER].y);
+		+ view_port[RIGHT].z * scale_downed_x
+		+ view_port[DOWN].z * scale_downed_y;
 }
 
 /**

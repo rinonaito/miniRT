@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:01:19 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 14:19:43 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/18 21:51:01 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@
  */
 t_vector3d	get_normal_vector_for_plane(
 	const t_ray ray,
+	const t_vector3d point,
 	const void *object)
 {
 	t_plane	*plane;
 
+	(void)point;
 	plane = (t_plane *)object;
 	return (get_normal_vector_for_2d(ray, plane->direction_vec));
 }
