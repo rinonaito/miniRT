@@ -35,7 +35,6 @@ ${SRC_DIR}/object/circle/get_pixel_color_for_circle.c \
 ${SRC_DIR}/object/circle/hit_circle.c \
 ${SRC_DIR}/object/common/camera_is_inside_of_object.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
-${SRC_DIR}/object/common/get_normal_vector_for_3d.c \
 ${SRC_DIR}/object/common/get_pixel_color_for_object.c \
 ${SRC_DIR}/object/cone/get_normal_vector_for_cone.c \
 ${SRC_DIR}/object/cone/get_pixel_color_for_cone.c \
@@ -59,10 +58,12 @@ ${SRC_DIR}/vector/addition_vector3d.c \
 ${SRC_DIR}/vector/cross_vector3d.c \
 ${SRC_DIR}/vector/dot_vector3d.c \
 ${SRC_DIR}/vector/get_len_of_vector3d.c \
+${SRC_DIR}/vector/get_projection_vector.c \
 ${SRC_DIR}/vector/normalize_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
+
 			
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}

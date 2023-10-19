@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 10:59:15 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/18 21:48:28 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_object
 			const void *);
 	t_vector3d	(*fp_get_normal_vector_for_object)(
 		const t_ray,
+		const t_vector3d,
 		const void *);
 	int			(*fp_get_pixel_color_for_object)(
 			const void *,
