@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:50:28 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 21:35:03 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/19 20:51:04 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
  * 法線ベクトルとカメラの方向ベクトルが同方向を向く場合、
  * 法線ベクトルを逆にする
 */
+//TODO:最後に削除
 t_vector3d	get_normal_vector_for_3d(
 	const t_ray ray,
 	const t_vector3d object_center)

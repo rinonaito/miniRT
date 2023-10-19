@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/18 22:38:29 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/19 20:33:49 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_map(t_scene *scene)
 	scene->objects_num = 0;
 	init_sphere(scene, &index);
 	(void)init_sphere;
-	//init_plane(scene, &index);
+	init_plane(scene, &index);
 	(void)init_plane;
 	init_cylinder(scene, &index);
 	(void)init_cylinder;
@@ -159,6 +159,7 @@ static void	init_cylinder(t_scene *scene, int *index)
 	tube->direction_vec.x = 0.0;
 	tube->direction_vec.y = 1.0;
 	tube->direction_vec.z = 0.0;
+	tube->direction_vec = normalize_vector3d(tube->direction_vec);
 	tube->diameter = 2.0;
 	tube->height = 4.0;
 	tube->color.red = 100;
@@ -171,18 +172,17 @@ static void	init_cylinder(t_scene *scene, int *index)
 	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_tube;
 	scene->objects_num++;
 
-	t_vector3d vector = normalize_vector3d(((t_tube *)scene->objects[*index].object)->direction_vec);
 	t_circle *circle_top = malloc(sizeof(t_circle) * 1);
 	circle_top->center.x = ((t_tube *)scene->objects[*index].object)->center.x
-		+ vector.x
+		+ ((t_tube *)scene->objects[*index].object)->direction_vec.x
 		* ((t_tube *)scene->objects[*index].object)->height / 2;
 	circle_top->center.y = ((t_tube *)scene->objects[*index].object)->center.y
-		+ vector.y
+		+ ((t_tube *)scene->objects[*index].object)->direction_vec.y
 		* ((t_tube *)scene->objects[*index].object)->height / 2;
 	circle_top->center.z = ((t_tube *)scene->objects[*index].object)->center.z
-		+ vector.z
+		+ ((t_tube *)scene->objects[*index].object)->direction_vec.z
 		* ((t_tube *)scene->objects[*index].object)->height / 2;
-	circle_top->direction_vec = vector;
+	circle_top->direction_vec = ((t_tube *)scene->objects[*index].object)->direction_vec;
 	circle_top->diameter = ((t_tube *)scene->objects[*index].object)->diameter;
 	circle_top->color = ((t_tube *)scene->objects[*index].object)->color;
 	scene->objects[*index + 1].object = circle_top;
@@ -194,15 +194,15 @@ static void	init_cylinder(t_scene *scene, int *index)
 
 	t_circle *circle_bottom = malloc(sizeof(t_circle) * 1);
 	circle_bottom->center.x = ((t_tube *)scene->objects[*index].object)->center.x
-		- vector.x
+		- ((t_tube *)scene->objects[*index].object)->direction_vec.x
 		* ((t_tube *)scene->objects[*index].object)->height / 2;
 	circle_bottom->center.y = ((t_tube *)scene->objects[*index].object)->center.y
-		- vector.y
+		- ((t_tube *)scene->objects[*index].object)->direction_vec.y
 		* ((t_tube *)scene->objects[*index].object)->height / 2;
 	circle_bottom->center.z = ((t_tube *)scene->objects[*index].object)->center.z
-		- vector.z
+		- ((t_tube *)scene->objects[*index].object)->direction_vec.z
 		* ((t_tube *)scene->objects[*index].object)->height / 2;
-	circle_bottom->direction_vec = vector;
+	circle_bottom->direction_vec = ((t_tube *)scene->objects[*index].object)->direction_vec;
 	circle_bottom->diameter = ((t_tube *)scene->objects[*index].object)->diameter;
 	circle_bottom->color = ((t_tube *)scene->objects[*index].object)->color;
 	scene->objects[*index + 2].object = circle_bottom;
@@ -239,8 +239,8 @@ static void	init_lights(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
 	scene->lights[0].origin.x = 0.0;
-	scene->lights[0].origin.y = 0.0;
-	scene->lights[0].origin.z = 6.0;
+	scene->lights[0].origin.y = 0.5;
+	scene->lights[0].origin.z = 8.0;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;

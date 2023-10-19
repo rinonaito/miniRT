@@ -59,10 +59,12 @@ ${SRC_DIR}/vector/addition_vector3d.c \
 ${SRC_DIR}/vector/cross_vector3d.c \
 ${SRC_DIR}/vector/dot_vector3d.c \
 ${SRC_DIR}/vector/get_len_of_vector3d.c \
+${SRC_DIR}/vector/get_projection_vector.c \
 ${SRC_DIR}/vector/normalize_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
+
 			
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
