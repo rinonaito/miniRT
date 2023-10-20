@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/18 21:48:28 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/20 15:13:22 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ typedef enum e_object_type
 	CIRCLE,
 	CONE,
 }	t_object_type;
+
+typedef enum e_texture_type
+{
+	NORMAL,
+	CHECKER,
+	BUMP,
+}	t_texture_type;
 
 typedef enum e_view_port
 {
@@ -90,18 +97,19 @@ typedef struct s_light
 
 typedef struct s_object
 {
-	void		*object;
-	int			object_type;
-	double		(*fp_hit_object)(
+	void			*object;
+	int				object_type;
+	double			(*fp_hit_object)(
 			const t_ray,
 			const void *);
-	t_vector3d	(*fp_get_normal_vector_for_object)(
+	t_vector3d		(*fp_get_normal_vector_for_object)(
 		const t_ray,
 		const t_vector3d,
 		const void *);
-	int			(*fp_get_pixel_color_for_object)(
+	int				(*fp_get_pixel_color_for_object)(
 			const void *,
-			const t_ray ray);
+			const t_ray,
+			const t_vector3d);
 }	t_object;
 
 typedef struct s_sphere
@@ -113,9 +121,10 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_vector3d	coordinate;
-	t_vector3d	direction_vec;
-	t_rgb		color;
+	t_vector3d		coordinate;
+	t_vector3d		direction_vec;
+	t_rgb			color;
+	t_texture_type	texture;
 }	t_plane;
 
 typedef struct s_tube

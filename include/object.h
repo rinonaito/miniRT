@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/19 21:08:32 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/20 15:38:57 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ t_vector3d	get_normal_vector_for_sphere(
 
 int			get_pixel_color_for_sphere(
 				const void *object,
-				const t_ray ray);
+				const t_ray ray,
+				const t_vector3d point);
 
 //plane.h
 double		hit_plane(const t_ray ray, const void *object);
@@ -52,7 +53,8 @@ t_vector3d	get_normal_vector_for_plane(
 
 int			get_pixel_color_for_plane(
 				const void *object,
-				const t_ray ray);
+				const t_ray ray,
+				const t_vector3d point);
 
 //circle.h
 double		hit_circle(const t_ray ray, const void *object);
@@ -64,7 +66,8 @@ t_vector3d	get_normal_vector_for_circle(
 
 int			get_pixel_color_for_circle(
 				const void *object,
-				const t_ray ray);
+				const t_ray ray,
+				const t_vector3d point);
 
 //tube.h
 double		hit_tube(const t_ray ray, const void *object);
@@ -76,7 +79,8 @@ t_vector3d	get_normal_vector_for_tube(
 
 int			get_pixel_color_for_tube(
 				const void *object,
-				const t_ray ray);
+				const t_ray ray,
+				const t_vector3d point);
 
 //cone.h
 double		hit_cone(const t_ray ray, const void *object);
@@ -88,6 +92,7 @@ t_vector3d	get_normal_vector_for_cone(
 
 int			get_pixel_color_for_cone(
 				const void *object,
-				const t_ray ray);
+				const t_ray ray,
+				const t_vector3d point);
 
 #endif

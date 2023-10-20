@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:14:10 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 11:14:49 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/20 15:38:37 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 
 int	get_pixel_color_for_cone(
 	const void *object,
-	const t_ray ray)
+	const t_ray ray,
+	const t_vector3d point)
 {
 	t_cone	*cone;
 
+	(void)point;
 	cone = (t_cone *)object;
 	return (get_pixel_color_for_object(cone->color,
 			ray.rgb,
