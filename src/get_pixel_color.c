@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/18 21:43:43 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/20 15:12:32 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "light.h"
 #include "init.h"
 #include "src.h"
+#include "object.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -44,7 +45,8 @@ int	get_pixel_color(
 		return (scene.objects[ray->hit_object_index]
 			.fp_get_pixel_color_for_object(
 				scene.objects[ray->hit_object_index].object,
-				*ray));
+				*ray,
+				point_on_object));
 	}
 	else
 		return (BLACK);

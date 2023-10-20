@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/19 21:02:07 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/20 16:08:44 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	init_map(t_scene *scene)
 	int index = 0;
 	scene->objects = malloc(sizeof(t_object) * 100);
 	scene->objects_num = 0;
-	//init_sphere(scene, &index);
+	init_sphere(scene, &index);
 	(void)init_sphere;
-	//init_plane(scene, &index);
+	init_plane(scene, &index);
 	(void)init_plane;
 	//init_cylinder(scene, &index);
 	(void)init_cylinder;
-	init_cone(scene, &index);
+	// init_cone(scene, &index);
 	(void)init_cone;
 	init_camera(scene);
 	init_ambient(scene);
@@ -47,9 +47,9 @@ void	init_map(t_scene *scene)
 static void	init_sphere(t_scene *scene, int *index)
 {
 	t_sphere	*sphere = malloc(sizeof(t_sphere) * 1);
-	sphere->center.x = 3.0;
-	sphere->center.y = -2.0;
-	sphere->center.z = 10.0;
+	sphere->center.x = 0.0;
+	sphere->center.y = 0.0;
+	sphere->center.z = 3.0;
 	sphere->diameter = 2.0;
 	sphere->color.red = 40;
 	sphere->color.green = 53;
@@ -125,7 +125,7 @@ static void	init_cone(t_scene *scene, int *index)
 	scene->objects[*index + 1].fp_get_normal_vector_for_object = get_normal_vector_for_circle;
 	scene->objects[*index + 1].fp_get_pixel_color_for_object = get_pixel_color_for_circle;
 	scene->objects_num++;
-	printf("r = %lf, height = %lf\n", ((t_circle *)scene->objects[(*index) + 1].object)->diameter, ((t_cone *)scene->objects[*index].object)->height);
+	// printf("r = %lf, height = %lf\n", ((t_circle *)scene->objects[(*index) + 1].object)->diameter, ((t_cone *)scene->objects[*index].object)->height);
 	(*index) += 2;
 }
 
@@ -133,15 +133,35 @@ static void	init_plane(t_scene *scene, int *index)
 {
 	t_plane	*plane = malloc(sizeof(t_plane) * 1);
 	plane->coordinate.x = 5.0;
-	plane->coordinate.y = -1.0;
+	plane->coordinate.y = 1.0;
 	plane->coordinate.z = 2.0;
-	plane->direction_vec.x = 0.0;
-	plane->direction_vec.y = 1.0;
+	plane->direction_vec.x = 0.5;
+	plane->direction_vec.y = 0.5;
 	plane->direction_vec.z = 0.0;
-	plane->color.red = 100;
-	plane->color.green = 100;
-	plane->color.blue = 100;
+	plane->color.red = 10;
+	plane->color.green = 200;
+	plane->color.blue = 50;
+	plane->texture = CHECKER;
 	scene->objects[*index].object = plane;
+	scene->objects[*index].object_type = PLANE;
+	scene->objects[*index].fp_hit_object = hit_plane;
+	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_plane;
+	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_plane;
+	scene->objects_num++;
+	(*index)++;
+
+	t_plane	*plane2 = malloc(sizeof(t_plane) * 1);
+	plane2->coordinate.x = -5.0;
+	plane2->coordinate.y = -1.0;
+	plane2->coordinate.z = 15.0;
+	plane2->direction_vec.x = -5.0;
+	plane2->direction_vec.y = 0.0;
+	plane2->direction_vec.z = 1.0;
+	plane2->color.red = 200;
+	plane2->color.green = 100;
+	plane2->color.blue = 100;
+	plane2->texture = CHECKER;
+	scene->objects[*index].object = plane2;
 	scene->objects[*index].object_type = PLANE;
 	scene->objects[*index].fp_hit_object = hit_plane;
 	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_plane;
@@ -239,8 +259,8 @@ static void	init_lights(t_scene *scene)
 {
 	scene->lights = malloc(sizeof(t_light) * 2);
 	scene->lights[0].origin.x = 0.0;
-	scene->lights[0].origin.y = 0.0;
-	scene->lights[0].origin.z = 13.0;
+	scene->lights[0].origin.y = 2.0;
+	scene->lights[0].origin.z = 0.0;
 	scene->lights[0].lighting_ratio = 1.0;
 	scene->lights[0].color.blue = 255;
 	scene->lights[0].color.green = 255;
