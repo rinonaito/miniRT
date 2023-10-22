@@ -6,12 +6,13 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:19:10 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 12:20:34 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/22 21:26:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error_utils.h"
 #include "libft.h"
-#include "errno.h"
+#include <errno.h>
 
 char	*ft_xsubstr(char const *s, unsigned int start, size_t len)
 {

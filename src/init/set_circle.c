@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_no_nl.c                              :+:      :+:    :+:   */
+/*   set_circle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 20:08:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/13 20:12:30 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:12:27 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 19:47:04 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "object.h"
+#include "types.h"
 
-/**
- * 改行を削除したget_next_line
-*/
-char	*get_next_line_no_nl(int fd)
+t_circle	*set_circle(
+	const t_vector3d center,
+	const double diameter,
+	const t_vector3d direction_vec,
+	const t_rgb rgb)
 {
-	char	*line_no_nl;
-	size_t	len;
+	t_circle	*circle;
 
-	line_no_nl = get_next_line(fd);
-	if (line_no_nl == NULL)
-		return (NULL);
-	len = ft_strlen(line_no_nl);
-	if (len > 0 && line_no_nl[len - 1] == '\n')
-		line_no_nl[len - 1] = '\0';
-	return (line_no_nl);
+	circle = malloc(sizeof(t_circle) * 1);
+	circle->center = center;
+	circle->diameter = diameter;
+	circle->direction_vec = direction_vec;
+	circle->color = rgb;
+	return (circle);
 }

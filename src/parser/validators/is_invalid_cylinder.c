@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_normalized_vector_ratio.c               :+:      :+:    :+:   */
+/*   is_invalid_cylinder.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 19:22:11 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:17:03 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 18:32:59 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 20:13:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "types.h"
 #include <stdbool.h>
 
-bool	is_invalid_normalized_vector_ratio(
-	const double x,
-	const double y,
-	const double z)
+bool	is_invalid_cylinder(
+	const char *const line,
+	t_scene *scene,
+	const size_t index)
 {
-	return (is_invalid_double_ratio(x, MAX_VECTOR_RATIO, MIN_VECTOR_RATIO)
-		&& is_invalid_double_ratio(y, MAX_VECTOR_RATIO, MIN_VECTOR_RATIO)
-		&& is_invalid_double_ratio(z, MAX_VECTOR_RATIO, MIN_VECTOR_RATIO));
+	(void)line;
+	(void)scene;
+	(void)index;
+	return (true);
 }

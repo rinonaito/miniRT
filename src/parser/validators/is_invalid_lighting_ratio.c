@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_cylinder.c                              :+:      :+:    :+:   */
+/*   is_invalid_lighting_ratio.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:32:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/09 18:18:43 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:21:23 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 19:43:38 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
+#include "parser.h"
+#include "config.h"
 #include <stdbool.h>
 
-bool	is_invalid_cylinder(
-	const char *const line,
-	t_scene *scene,
-	const size_t index)
+bool	is_invalid_lighting_ratio(const double a)
 {
-
+	return (is_invalid_double_ratio(a, MAX_LIGHTING_RATIO, MIN_LIGHTING_RATIO));
 }

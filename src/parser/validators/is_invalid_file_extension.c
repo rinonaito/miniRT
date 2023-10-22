@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_plane.c                                 :+:      :+:    :+:   */
+/*   is_invalid_file_extension.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:33:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/09 18:19:39 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 18:20:31 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 21:25:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
+#include "parser.h"
+#include "error_utils.h"
+#include "config.h"
+#include "libft.h"
 #include <stdbool.h>
+#include <stdlib.h>
 
-bool	is_invalid_plane(
-	const char *const line,
-	t_scene *scene,
-	const size_t index)
+bool	is_invalid_file_extension(const char *const file_name)
 {
+	size_t	str_len;
 
+	str_len = ft_strlen(file_name);
+	if (file_name == NULL
+		|| str_len < 3
+		|| file_name[str_len - 3] != '.'
+		|| file_name[str_len - 2] != 'r'
+		|| file_name[str_len - 1] != 't')
+	{
+		print_error_msg(INVALID_FILE);
+		return (true);
+	}
+	return (false);
 }

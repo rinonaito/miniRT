@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_light.c                                 :+:      :+:    :+:   */
+/*   get_next_line_no_nl.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:33:20 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/09 18:19:09 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/13 20:08:45 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 21:18:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
-#include <stdbool.h>
+#include "parser.h"
+#include "libft.h"
 
-bool	is_invalid_light(
-	const char *const line,
-	t_scene *scene,
-	const size_t index)
+/**
+ * 改行を削除したget_next_line
+*/
+char	*get_next_line_no_nl(int fd)
 {
+	char	*line_no_nl;
+	size_t	len;
 
+	line_no_nl = get_next_line(fd);
+	if (line_no_nl == NULL)
+		return (NULL);
+	len = ft_strlen(line_no_nl);
+	if (len > 0 && line_no_nl[len - 1] == '\n')
+		line_no_nl[len - 1] = '\0';
+	return (line_no_nl);
 }

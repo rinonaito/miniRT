@@ -6,12 +6,13 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:56:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/13 20:00:03 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/22 20:10:56 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
+#include "config.h"
 
 /*
  * return_strにbufの改行までを入れて返す

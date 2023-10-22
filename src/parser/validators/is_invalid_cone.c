@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_lighting_ratio.c                        :+:      :+:    :+:   */
+/*   is_invalid_cone.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 19:21:23 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:18:09 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/22 19:35:49 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 19:36:06 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "types.h"
 #include <stdbool.h>
 
-bool	is_invalid_lighting_ratio(const double a)
+bool	is_invalid_cone(
+	const char *const line,
+	t_scene *scene,
+	const size_t index)
 {
-	return (is_invalid_double_ratio(a, MAX_LIGHTING_RATIO, MIN_LIGHTING_RATIO));
+	(void)line;
+	(void)scene;
+	(void)index;
+	return (true);
 }

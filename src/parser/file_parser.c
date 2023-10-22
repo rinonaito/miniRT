@@ -6,12 +6,16 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/14 17:17:21 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/22 20:56:57 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "parser.h"
+#include "config.h"
+#include "x_wrapper.h"
+#include "init.h"
+#include "error_utils.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -26,18 +30,21 @@ static void	_init_parser(t_parser **parser)
 	(*parser)[sp].fp_is_invalid_identifier = is_invalid_sphere;
 	(*parser)[pl].fp_is_invalid_identifier = is_invalid_plane;
 	(*parser)[cy].fp_is_invalid_identifier = is_invalid_cylinder;
+	(*parser)[co].fp_is_invalid_identifier = is_invalid_cone;
 	(*parser)[A].fp_set_identifier = set_ambient;
 	(*parser)[C].fp_set_identifier = set_camera;
 	(*parser)[L].fp_set_identifier = set_light;
 	(*parser)[sp].fp_set_identifier = set_sphere;
 	(*parser)[pl].fp_set_identifier = set_plane;
 	(*parser)[cy].fp_set_identifier = set_cylinder;
+	(*parser)[co].fp_set_identifier = set_cone;
 	(*parser)[A].identifier_type_str = AMBIENT;
 	(*parser)[C].identifier_type_str = CAMERA;
 	(*parser)[L].identifier_type_str = LIGHT;
 	(*parser)[sp].identifier_type_str = SPHERE;
 	(*parser)[pl].identifier_type_str = PLANE;
 	(*parser)[cy].identifier_type_str = CYLINDER;
+	(*parser)[co].identifier_type_str = CONE;
 }
 
 int	file_parser(t_scene *scene, int argc, char **argv)
@@ -46,6 +53,8 @@ int	file_parser(t_scene *scene, int argc, char **argv)
 	t_parser	*parser;
 	int			fd;
 
+	scene->lights_num = 0;
+	scene->objects_num = 0;
 	if (is_invalid_argc(argc)
 		|| is_invalid_file_extension(argv[1]))
 		return (EXIT_FAILURE);

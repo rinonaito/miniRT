@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_fov_ratio.c                             :+:      :+:    :+:   */
+/*   is_invalid_plane.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 19:20:57 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:37 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 18:33:45 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 20:14:18 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "types.h"
 #include <stdbool.h>
 
-bool	is_invalid_fov_ratio(const int fov)
+bool	is_invalid_plane(
+	const char *const line,
+	t_scene *scene,
+	const size_t index)
 {
-	return (is_invalid_int_ratio(fov, MAX_FOV, MIN_FOV));
+	(void)line;
+	(void)scene;
+	(void)index;
+	return (true);
 }

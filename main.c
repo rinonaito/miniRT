@@ -17,6 +17,7 @@
 #include "src.h"
 #include "init.h"
 #include "mlx_utils.h"
+#include "parser.h"
 
 //TODO:あとで削除
 void	init_map(t_scene *scene);

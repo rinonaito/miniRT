@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_identifier_type.c                              :+:      :+:    :+:   */
+/*   convert_csv_to_rgb.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 17:38:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/15 16:56:05 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/18 20:27:58 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 21:13:13 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "types.h"
+#include "libft.h"
 #include <stdlib.h>
 
-/**
- * ファイルの1行から識別子を取得する
-*/
-t_identifier_type	get_identifier_type(
-	const char *const line,
-	size_t *index,
-	const t_parser parser)
+//10,0,255
+void	convert_csv_to_rgb(t_rgb *rgb, char *str)
 {
-	const char	*first_word = get_first_word_by_space(line, index);
-	size_t		i;
+	size_t	index;
+	char	*word;
 
-	i = 0;
-	while (i < IDENTIFIER_NUM)
-	{
-		if (is_string_match(first_word, parser.identifier_type_str[i]))
-		{
-			free(first_word);
-			return (i);
-		}
-		i++;
-	}
-	free(first_word);
-	return (UNDEFINED);
+	index = 0;
+	word = get_first_word_by_comma(str, &index);
+	rgb->red = ft_atoi(word);
+	free(word);
+	word = get_first_word_by_comma(str, &index);
+	rgb->green = ft_atoi(word);
+	free(word);
+	word = get_first_word_by_comma(str, &index);
+	rgb->blue = ft_atoi(word);
+	free(word);
 }

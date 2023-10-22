@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_first_word_by_comma.c                          :+:      :+:    :+:   */
+/*   is_invalid_sphere.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 16:57:04 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/15 16:59:08 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 18:34:05 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 19:30:32 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "x_wrapper.h"
+#include "types.h"
+#include <stdbool.h>
 
-char	*get_first_word_by_comma(const char *const str, size_t *index)
+bool	is_invalid_sphere(
+	const char *const line,
+	t_scene *scene,
+	const size_t index)
 {
-	size_t	start;
-	size_t	len;
-
-	start = 0;
-	len = 0;
-	skip_comma(&start, str);
-	*index += start;
-	skip_next_comma(&len, str + start);
-	*index += len;
-	return (ft_xsubstr(str, start, len));
+	(void)line;
+	(void)scene;
+	(void)index;
+	return (true);
 }
