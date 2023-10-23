@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   resize_objects_array.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/18 21:40:56 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/23 13:14:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include "types.h"
+#include "x_wrapper.h"
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
+void	resize_objects_array(t_object **objects, const size_t objects_num)
+{
+	t_object	*backup;
+	size_t		i;
 
-#endif
+	backup = *objects;
+	*objects = ft_xcalloc(objects_num + 1, sizeof(t_object));
+	i = 0;
+	while (i < objects_num)
+	{
+		(*objects)[i] = backup[i];
+		i++;
+	}
+	if (objects_num != 0)
+		free(backup);
+}

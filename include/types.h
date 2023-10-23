@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/20 15:13:22 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:44:26 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 typedef enum e_object_type
 {
-	SPHERE,
-	PLANE,
-	TUBE,
-	CIRCLE,
-	CONE,
+	SPHERE_TYPE,
+	PLANE_TYPE,
+	TUBE_TYPE,
+	CIRCLE_TYPE,
+	CONE_TYPE,
 }	t_object_type;
 
 typedef enum e_texture_type
@@ -173,5 +174,29 @@ typedef struct s_mlx_data
 	int		line_length;
 	int		endian;
 }	t_mlx_data;
+
+typedef enum e_identifier_type
+{
+	A = 0,
+	C = 1,
+	L = 2,
+	sp = 3,
+	pl = 4,
+	cy = 5,
+	co = 6,
+	UNDEFINED = 99,
+}	t_identifier_type;
+
+typedef struct s_parser
+{
+	bool	(*fp_is_invalid_identifier)(
+		const char *const,
+		t_scene *,
+		const size_t);
+	void	(*fp_set_identifier)(
+			t_scene *,
+			const char *const);
+	char	*identifier_type_str;
+}	t_parser;
 
 #endif

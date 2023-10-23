@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   is_invalid_lighting_ratio.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:21:23 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 19:43:38 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include "parser.h"
+#include "config.h"
+#include <stdbool.h>
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
-
-#endif
+bool	is_invalid_lighting_ratio(const double a)
+{
+	return (is_invalid_double_ratio(a, MAX_LIGHTING_RATIO, MIN_LIGHTING_RATIO));
+}

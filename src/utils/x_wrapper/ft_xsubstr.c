@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   ft_xsubstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/08 12:19:10 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 21:26:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include "error_utils.h"
+#include "libft.h"
+#include <errno.h>
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
+char	*ft_xsubstr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
 
-#endif
+	str = ft_substr(s, start, len);
+	if (str == NULL)
+		exit_with_errno(errno);
+	return (str);
+}

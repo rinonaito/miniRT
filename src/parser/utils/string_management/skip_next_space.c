@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   skip_next_space.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/10 19:42:52 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/10 19:55:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include <stdlib.h>
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
-
-#endif
+/**
+ * 次のスペースまでindexを進める関数
+*/
+void	skip_next_space(size_t *index, const char *const str)
+{
+	while (str[*index] != '\n'
+		&& str[*index] != ' '
+		&& str[*index] != '\t')
+	{
+		(*index)++;
+	}
+}

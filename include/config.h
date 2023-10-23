@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/20 15:00:20 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/23 15:11:39 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 # define SCENE_SCALE		2.0
 # define SCENE_OFFSET		1.0
 # define HALF_ANGLE_DIVISOR	2.0
-# define MAX_FOV			179
-# define MIN_FOV			1
 # define MIN_COLOR			0
 # define MAX_COLOR			255
 # define HIT_DISTANCE_MIN	0.0
@@ -48,5 +46,39 @@
 # define VERTICAL			0.0
 # define REFLECT_STRENGTH	32
 # define CHECKER_SIZE		1
+
+//parser
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+# define AMBIENT				"A"
+# define CAMERA					"C"
+# define LIGHT					"L"
+# define SPHERE					"sp"
+# define PLANE					"pl"
+# define CYLINDER				"cy"
+# define CONE					"co"
+# define IDENTIFIER_NUM			7
+# define FILE_NAME_NUM			1
+# define INVALID_ARGC_NUM		2
+# define MAX_FOV				180
+# define MIN_FOV				0
+# define MAX_LIGHTING_RATIO		1.0
+# define MIN_LIGHTING_RATIO		0.0
+# define MAX_VECTOR_RATIO		1.0
+# define MIN_VECTOR_RATIO		-1.0
+# define MAX_COLOR_RANGE		0
+# define MIN_COLOR_RANGE		255
+# define ERROR_MSG			"Error"
+# define INVALID_ARGC		"Invalid argument count. \
+Usage: ./miniRT [file_name]"
+# define INVALID_FILE		"Invalid file name. \
+Please provide a .rt file as an argument."
+# define INVALID_IDENTIFIER	"Invalid identifier detected. \
+Accepted identifiers are: \
+A (AMBIENT), C (CAMERA), L (LIGHT), \
+sp (SPHERE), pl (PLANE), cy (CYLINDER)."
+# define FILE_NOT_FOUND      "File not found. \
+Please ensure the provided file path is correct and try again."
 
 #endif

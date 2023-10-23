@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   is_string_match.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/10 21:16:26 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/10 21:22:23 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include "libft.h"
+#include <stdbool.h>
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
+bool	is_string_match(const char *s1, const char *s2)
+{
+	const size_t	s1_len = ft_strlen(s1);
 
-#endif
+	if (s1_len != ft_strlen(s2))
+		return (false);
+	return (ft_strncmp(s1, s2, s1_len) == 0);
+}

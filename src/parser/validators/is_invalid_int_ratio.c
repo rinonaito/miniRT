@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   is_invalid_int_ratio.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:20:24 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/10 22:16:47 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include <stdbool.h>
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
-
-#endif
+bool	is_invalid_int_ratio(
+	const int value,
+	const int max,
+	const int min)
+{
+	return (value <= max && value >= min);
+}

@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   print_error_msg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/08 12:08:39 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/08 12:26:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include "x_wrapper.h"
+#include "config.h"
+#include <unistd.h>
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
-
-#endif
+void	print_error_msg(char *msg)
+{
+	ft_xputendl_fd(ERROR_MSG, STDERR_FILENO);
+	ft_xputendl_fd(msg, STDERR_FILENO);
+}

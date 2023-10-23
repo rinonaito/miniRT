@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   get_first_word_by_comma.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/15 16:57:04 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 19:58:33 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include "parser.h"
+#include "x_wrapper.h"
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
+//19, 255, 0
+char	*get_first_word_by_comma(const char *const str, size_t *index)
+{
+	size_t	start;
+	size_t	len;
 
-#endif
+	start = 0;
+	len = 0;
+	skip_comma(&start, str);
+	*index += start;
+	skip_next_comma(&len, str + start);
+	*index += len;
+	return (ft_xsubstr(str, start, len));
+}

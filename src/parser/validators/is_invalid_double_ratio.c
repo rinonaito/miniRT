@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_utils.h                                      :+:      :+:    :+:   */
+/*   is_invalid_double_ratio.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 13:30:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:56:54 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:19:36 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/10 22:16:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_UTILS_H
-# define ERROR_UTILS_H
+#include <stdbool.h>
 
-void	exit_with_errno(int err_num);
-void	print_error_msg(char *msg);
-
-#endif
+bool	is_invalid_double_ratio(
+	const double value,
+	const double max,
+	const double min)
+{
+	return (value <= max && value >= min);
+}

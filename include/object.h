@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/20 15:38:57 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:59:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int			get_pixel_color_for_object(
 bool		camera_is_inside_of_object(
 				t_vector3d normal_vector,
 				t_vector3d ray_direction);
+
+t_vector3d	get_circle_center(
+				t_vector3d base_point,
+				t_vector3d direction_vec,
+				double distance);
 
 //sphere.h
 double		hit_sphere(const t_ray ray, const void *object);

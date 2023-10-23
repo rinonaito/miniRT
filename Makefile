@@ -22,7 +22,19 @@ ${SRC_DIR}/calculator/scale_to_zero_to_one.c \
 ${SRC_DIR}/color/convert_rgb_in_int.c \
 ${SRC_DIR}/color/reflect_lighting_ratio_in_color.c \
 ${SRC_DIR}/get_pixel_color.c \
+${SRC_DIR}/init/create_object.c \
+${SRC_DIR}/init/resize_objects_array.c \
+${SRC_DIR}/init/set_ambient.c \
+${SRC_DIR}/init/set_camera.c \
+${SRC_DIR}/init/set_circle.c \
+${SRC_DIR}/init/set_cone.c \
+${SRC_DIR}/init/set_cone_side.c \
+${SRC_DIR}/init/set_cylinder.c \
+${SRC_DIR}/init/set_light.c \
+${SRC_DIR}/init/set_plane.c \
 ${SRC_DIR}/init/set_ray.c \
+${SRC_DIR}/init/set_sphere.c \
+${SRC_DIR}/init/set_tube.c \
 ${SRC_DIR}/init/set_vector2d.c \
 ${SRC_DIR}/init/set_vector3d.c \
 ${SRC_DIR}/light/calculate_lighting_ratio.c \
@@ -34,6 +46,7 @@ ${SRC_DIR}/object/circle/get_normal_vector_for_circle.c \
 ${SRC_DIR}/object/circle/get_pixel_color_for_circle.c \
 ${SRC_DIR}/object/circle/hit_circle.c \
 ${SRC_DIR}/object/common/camera_is_inside_of_object.c \
+${SRC_DIR}/object/common/get_circle_center.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
 ${SRC_DIR}/object/common/get_pixel_color_for_object.c \
 ${SRC_DIR}/object/cone/get_normal_vector_for_cone.c \
@@ -48,12 +61,50 @@ ${SRC_DIR}/object/sphere/hit_sphere.c \
 ${SRC_DIR}/object/tube/get_normal_vector_for_tube.c \
 ${SRC_DIR}/object/tube/get_pixel_color_for_tube.c \
 ${SRC_DIR}/object/tube/hit_tube.c \
+${SRC_DIR}/parser/file_parser.c \
+${SRC_DIR}/parser/is_invalid_line.c \
+${SRC_DIR}/parser/utils/conversion/convert_csv_to_rgb.c \
+${SRC_DIR}/parser/utils/conversion/convert_csv_to_vector3d.c \
+${SRC_DIR}/parser/utils/conversion/convert_string_to_double.c \
+${SRC_DIR}/parser/utils/gnl/get_next_line.c \
+${SRC_DIR}/parser/utils/gnl/get_next_line_no_nl.c \
+${SRC_DIR}/parser/utils/string_management/get_first_word_by_comma.c \
+${SRC_DIR}/parser/utils/string_management/get_first_word_by_space.c \
+${SRC_DIR}/parser/utils/string_management/get_identifier_type.c \
+${SRC_DIR}/parser/utils/string_management/set_str_in_double.c \
+${SRC_DIR}/parser/utils/string_management/set_str_in_rgb.c \
+${SRC_DIR}/parser/utils/string_management/set_str_in_vector3d.c \
+${SRC_DIR}/parser/utils/string_management/skip_comma.c \
+${SRC_DIR}/parser/utils/string_management/skip_identifier.c \
+${SRC_DIR}/parser/utils/string_management/skip_next_comma.c \
+${SRC_DIR}/parser/utils/string_management/skip_next_space.c \
+${SRC_DIR}/parser/utils/string_management/skip_spaces.c \
+${SRC_DIR}/parser/validators/is_invalid_ambient.c \
+${SRC_DIR}/parser/validators/is_invalid_argc.c \
+${SRC_DIR}/parser/validators/is_invalid_camera.c \
+${SRC_DIR}/parser/validators/is_invalid_cone.c \
+${SRC_DIR}/parser/validators/is_invalid_coordinates_ratio.c \
+${SRC_DIR}/parser/validators/is_invalid_cylinder.c \
+${SRC_DIR}/parser/validators/is_invalid_double_ratio.c \
+${SRC_DIR}/parser/validators/is_invalid_file_extension.c \
+${SRC_DIR}/parser/validators/is_invalid_fov_ratio.c \
+${SRC_DIR}/parser/validators/is_invalid_int_ratio.c \
+${SRC_DIR}/parser/validators/is_invalid_light.c \
+${SRC_DIR}/parser/validators/is_invalid_lighting_ratio.c \
+${SRC_DIR}/parser/validators/is_invalid_normalized_vector_ratio.c \
+${SRC_DIR}/parser/validators/is_invalid_plane.c \
+${SRC_DIR}/parser/validators/is_invalid_rgb_ratio.c \
+${SRC_DIR}/parser/validators/is_invalid_sphere.c \
+${SRC_DIR}/parser/validators/is_string_match.c \
 ${SRC_DIR}/set_closest_point_info_in_ray.c \
 ${SRC_DIR}/utils/error_utils/exit_with_errno.c \
+${SRC_DIR}/utils/error_utils/print_error_msg.c \
 ${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
 ${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
 ${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
 ${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
+${SRC_DIR}/utils/x_wrapper/ft_xputendl_fd.c \
+${SRC_DIR}/utils/x_wrapper/ft_xsubstr.c \
 ${SRC_DIR}/vector/addition_vector3d.c \
 ${SRC_DIR}/vector/cross_vector3d.c \
 ${SRC_DIR}/vector/dot_vector3d.c \
@@ -64,7 +115,6 @@ ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
 
-			
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
 RM		=	rm -rf

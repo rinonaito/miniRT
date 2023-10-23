@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/14 21:36:13 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:51:56 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@
 #include "src.h"
 #include "init.h"
 #include "mlx_utils.h"
+#include "parser.h"
 
 //TODO:あとで削除
 void	init_map(t_scene *scene);
 
-/**
- * TODO:
- * hit_recordを理解・実装する。
- * 法線を使ったレンダリングを実装する。
-*/
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_mlx_data	mlx_data;
 	t_scene		scene;
 
+	if (file_parser(&scene, argc, argv) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	mlx_data.mlx = mlx_init();
 	mlx_data.win = mlx_new_window(mlx_data.mlx, VIEW_PORT_WIDTH,
 			VIEW_PORT_HEIGHT, TITLE);
@@ -37,7 +35,6 @@ int	main(void)
 			VIEW_PORT_HEIGHT);
 	mlx_data.addr = mlx_get_data_addr(mlx_data.image,
 			&mlx_data.bits_per_pixel, &mlx_data.line_length, &mlx_data.endian);
-	init_map(&scene);
 	make_image(&mlx_data, &scene);
 	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.image, 0, 0);
 	mlx_hook(
