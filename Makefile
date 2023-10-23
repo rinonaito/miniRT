@@ -71,7 +71,11 @@ ${SRC_DIR}/parser/utils/gnl/get_next_line_no_nl.c \
 ${SRC_DIR}/parser/utils/string_management/get_first_word_by_comma.c \
 ${SRC_DIR}/parser/utils/string_management/get_first_word_by_space.c \
 ${SRC_DIR}/parser/utils/string_management/get_identifier_type.c \
+${SRC_DIR}/parser/utils/string_management/set_str_in_double.c \
+${SRC_DIR}/parser/utils/string_management/set_str_in_rgb.c \
+${SRC_DIR}/parser/utils/string_management/set_str_in_vector3d.c \
 ${SRC_DIR}/parser/utils/string_management/skip_comma.c \
+${SRC_DIR}/parser/utils/string_management/skip_identifier.c \
 ${SRC_DIR}/parser/utils/string_management/skip_next_comma.c \
 ${SRC_DIR}/parser/utils/string_management/skip_next_space.c \
 ${SRC_DIR}/parser/utils/string_management/skip_spaces.c \
@@ -111,7 +115,6 @@ ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
 
-			
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}
 RM		=	rm -rf

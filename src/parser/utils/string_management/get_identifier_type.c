@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_identifier_type.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:38:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 21:22:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:16:43 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_identifier_type	get_identifier_type(
 	const t_parser *parser)
 {
 	char	*first_word;
-	size_t		i;
+	size_t	i;
 
 	first_word = get_first_word_by_space(line, index);
 	i = 0;

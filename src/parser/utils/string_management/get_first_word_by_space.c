@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_first_word_by_space.c                                   :+:      :+:    :+:   */
+/*   get_first_word_by_space.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 19:34:39 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/11 20:29:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:46:23 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ char	*get_first_word_by_space(const char *const str, size_t *index)
 //     size_t index = 0;
 //     char *str = "1    aaa　　　　  bbb   ccc ddd\n";
 
-//     printf("str = /%s/, all = |%s|\n", get_first_word_by_space(str, &index), str);
+//     printf("str = /%s/, all = |%s|\n",
+//		get_first_word_by_space(str, &index), str);
 //     printf("index = %zu\n", index);
 //     printf("str = /%s/, all = |%s|\n",
 // 		get_first_word_by_space(str + index, &index), str + index);

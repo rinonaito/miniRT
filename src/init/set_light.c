@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 12:31:46 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:08:28 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 void	set_light(t_scene *scene, const char *const line)
 {
 	size_t	str_index;
-	char	*word;
 	size_t	i;
 	t_light	*backup;
 
@@ -32,17 +31,10 @@ void	set_light(t_scene *scene, const char *const line)
 		i++;
 	}
 	str_index = 0;
-	word = get_first_word_by_space(line + str_index, &str_index);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_csv_to_vector3d(&scene->lights[i].origin, word);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_string_to_double(&scene->lights[i].lighting_ratio, word, 1.0);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_csv_to_rgb(&scene->lights[i].color, word);
-	free(word);
+	skip_identifier(line, &str_index);
+	set_str_in_vector3d(&scene->lights[i].origin, line, &str_index);
+	set_str_in_double(&scene->lights[i].lighting_ratio, line, &str_index);
+	set_str_in_rgb(&scene->lights[i].color, line, &str_index);
 	if (scene->lights_num != 0)
 		free(backup);
 	scene->lights_num++;

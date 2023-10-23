@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:13:04 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 13:15:02 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:08:42 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,14 @@ void	set_sphere(t_scene *scene, const char *const line)
 {
 	t_sphere	*sphere;
 	size_t		str_index;
-	char		*word;
 
 	sphere = ft_xcalloc(1, sizeof(t_sphere));
 	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
-	word = get_first_word_by_space(line + str_index, &str_index);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_csv_to_vector3d(&sphere->center, word);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_string_to_double(&sphere->diameter, word, 100);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_csv_to_rgb(&sphere->color, word);
-	free(word);
+	skip_identifier(line, &str_index);
+	set_str_in_vector3d(&sphere->center, line, &str_index);
+	set_str_in_double(&sphere->diameter, line, &str_index);
+	set_str_in_rgb(&sphere->color, line, &str_index);
 	scene->objects[scene->objects_num] = create_object(
 			(void *)sphere,
 			hit_sphere,

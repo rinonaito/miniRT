@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_circle_center.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:36:56 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 19:37:43 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:15:19 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "parser.h"
 #include "types.h"

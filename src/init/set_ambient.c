@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ambient.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:11:16 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 12:30:47 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:29:03 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,10 @@
 //	
 void	set_ambient(t_scene *scene, const char *const line)
 {
-	size_t	index;
-	char	*word;
+	size_t	str_index;
 
-	index = 0;
-	word = get_first_word_by_space(line + index, &index);
-	free(word);
-	word = get_first_word_by_space(line + index, &index);
-	convert_string_to_double(&scene->ambient.lighting_ratio, word, 300.0);
-	free(word);
-	word = get_first_word_by_space(line + index, &index);
-	convert_csv_to_rgb(&scene->ambient.color, word);
-	free(word);
+	str_index = 0;
+	skip_identifier(line, &str_index);
+	set_str_in_double(&scene->ambient.lighting_ratio, line, &str_index);
+	set_str_in_rgb(&scene->ambient.color, line, &str_index);
 }

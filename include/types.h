@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/23 14:59:43 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:44:26 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,8 +194,8 @@ typedef struct s_parser
 		t_scene *,
 		const size_t);
 	void	(*fp_set_identifier)(
-		t_scene *,
-		const char *const);
+			t_scene *,
+			const char *const);
 	char	*identifier_type_str;
 }	t_parser;
 

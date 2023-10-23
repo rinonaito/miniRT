@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_cone_side.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:00:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 14:42:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:00:55 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,17 @@ void	set_cone_side(t_scene *scene, const char *const line)
 {
 	t_cone	*cone;
 	size_t	str_index;
-	char	*word;
 
 	cone = ft_xcalloc(1, sizeof(t_cone));
 	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
-	word = get_first_word_by_space(line + str_index, &str_index);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_csv_to_vector3d(&cone->top, word);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_csv_to_vector3d(&cone->direction_vec, word);
+	skip_identifier(line, &str_index);
+	set_str_in_vector3d(&cone->top, line, &str_index);
+	set_str_in_vector3d(&cone->direction_vec, line, &str_index);
 	cone->direction_vec = normalize_vector3d(cone->direction_vec);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_string_to_double(&cone->phi, word, 1000.0);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_string_to_double(&cone->height, word, 300.0);
-	free(word);
-	word = get_first_word_by_space(line + str_index, &str_index);
-	convert_csv_to_rgb(&cone->color, word);
-	free(word);
+	set_str_in_double(&cone->phi, line, &str_index);
+	set_str_in_double(&cone->height, line, &str_index);
+	set_str_in_rgb(&cone->color, line, &str_index);
 	scene->objects[scene->objects_num] = create_object(
 			(void *)cone,
 			hit_cone,

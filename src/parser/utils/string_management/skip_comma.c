@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skip_comma.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:48:28 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/11 19:49:37 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:27:38 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 */
 void	skip_comma(size_t *index, const char *const str)
 {
-	while (str[*index] != '\n'
+	while (str[*index] != '\0'
+		&& str[*index] != '\n'
 		&& str[*index] == ',')
 	{
 		(*index)++;

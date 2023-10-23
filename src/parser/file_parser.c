@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 12:16:26 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:32:51 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,14 @@ int	file_parser(t_scene *scene, int argc, char **argv)
 	_init_parser(&parser);
 	fd = open(argv[FILE_NAME_NUM], O_RDONLY);
 	if (fd < 0)
-	{
-		print_error_msg(FILE_NOT_FOUND);
-		return (true);
-	}
+		return (print_error_msg(FILE_NOT_FOUND), true);
 	while (true)
 	{
 		line = get_next_line_no_nl(fd);
 		if (line == NULL)
 			break ;
 		if (is_invalid_line(line, parser, scene))
-		{
-			free(line);
-			close(fd);
-			return (EXIT_FAILURE);
-		}
+			return (free(line), close(fd), EXIT_FAILURE);
 		free(line);
 	}
 	close(fd);
