@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:11:16 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:54:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:30:47 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	set_ambient(t_scene *scene, const char *const line)
 	char	*word;
 
 	index = 0;
-	word = get_first_word_by_space(line, &index);
+	word = get_first_word_by_space(line + index, &index);
 	free(word);
-	word = get_first_word_by_space(line, &index);
+	word = get_first_word_by_space(line + index, &index);
 	convert_string_to_double(&scene->ambient.lighting_ratio, word, 300.0);
 	free(word);
-	word = get_first_word_by_space(line, &index);
+	word = get_first_word_by_space(line + index, &index);
 	convert_csv_to_rgb(&scene->ambient.color, word);
 	free(word);
 }

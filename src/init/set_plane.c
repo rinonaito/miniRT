@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:53 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:47:14 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:51:23 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void	set_plane(t_scene *scene, const char *const line)
 	char	*word;
 
 	plane = ft_xcalloc(1, sizeof(t_plane));
-	resize_objects_array(scene->objects, scene->objects_num);
+	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_csv_to_vector3d(&plane->coordinate, word);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_csv_to_vector3d(&plane->direction_vec, word);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_csv_to_rgb(&plane->color, word);
 	free(word);
 	scene->objects[scene->objects_num] = create_object(

@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 21:21:15 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:39:47 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,38 @@
 #include "config.h"
 #include "libft.h"
 #include <stdbool.h>
+
+void	_print_identifier(t_scene *scene, t_identifier_type identifier_type)
+{
+	if (identifier_type = A)
+	{
+
+	}
+	else if (identifier_type = C)
+	{
+
+	}
+	else if (identifier_type = L)
+	{
+
+	}
+	else if (identifier_type = sp)
+	{
+
+	}
+	else if (identifier_type = pl)
+	{
+
+	}
+	else if (identifier_type = cy)
+	{
+
+	}
+	else if (identifier_type = co)
+	{
+
+	}
+}
 
 /**
  * lineにNULLが来ることはない
@@ -41,5 +73,6 @@ bool	is_invalid_line(
 	// if (parser[identifier_type].fp_is_invalid_identifier(line, scene, index))
 	// 	return (true);
 	parser[identifier_type].fp_set_identifier(scene, line);
+	_print_identifier(scene, identifier_type);
 	return (false);
 }

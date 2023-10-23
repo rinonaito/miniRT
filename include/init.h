@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:48:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:40:02 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:50:45 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void	set_ray(
 			const t_vector3d xyz,
 			const t_ambient_lighting ambient);
 
-void	resize_objects_array(t_object *objects, const size_t objects_num);
+void	resize_objects_array(t_object **objects, const size_t objects_num);
 
 #endif

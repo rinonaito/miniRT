@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:56:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:10:56 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:14:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ char	*get_next_line(int fd)
 	static char	buf[BUFFER_SIZE + 1];
 	char		*return_str;
 
+	return_str = NULL;
 	if (fd < 0 || BUFFER_SIZE < 0 || BUFFER_SIZE > SIZE_MAX)
 		return (NULL);
 	while (1)
@@ -138,5 +139,4 @@ char	*get_next_line(int fd)
 		}
 		buf[bytes] = '\0';
 	}
-	return_str = NULL;
 }

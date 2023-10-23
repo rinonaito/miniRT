@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:51:57 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:50:49 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:51:31 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ void	set_tube(t_scene *scene, const char *const line)
 	char	*word;
 
 	tube = ft_xcalloc(1, sizeof(t_tube));
-	resize_objects_array(scene->objects, scene->objects_num);
+	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_csv_to_vector3d(&tube->center, word);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_csv_to_vector3d(&tube->direction_vec, word);
 	tube->direction_vec = normalize_vector3d(tube->direction_vec);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_string_to_double(&tube->diameter, word, 300.0);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_string_to_double(&tube->height, word, 300.0);
 	free(word);
-	word = get_first_word_by_space(line, &str_index);
+	word = get_first_word_by_space(line + str_index, &str_index);
 	convert_csv_to_rgb(&tube->color, word);
 	free(word);
 	scene->objects[scene->objects_num] = create_object(
