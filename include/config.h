@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/22 20:28:41 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:11:39 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define BLACK				0
 # define VERTICAL			0.0
 # define REFLECT_STRENGTH	32
+# define CHECKER_SIZE		1
 
 //parser
 # ifndef BUFFER_SIZE

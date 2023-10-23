@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 14:59:06 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:02:35 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ static void	init_plane(t_scene *scene, int *index)
 	plane2->color.blue = 100;
 	plane2->texture = CHECKER;
 	scene->objects[*index].object = plane2;
-	scene->objects[*index].object_type = PLANE;
+	scene->objects[*index].object_type = PLANE_TYPE;
 	scene->objects[*index].fp_hit_object = hit_plane;
 	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_plane;
 	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_plane;
