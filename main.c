@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 			VIEW_PORT_HEIGHT);
 	mlx_data.addr = mlx_get_data_addr(mlx_data.image,
 			&mlx_data.bits_per_pixel, &mlx_data.line_length, &mlx_data.endian);
-	// init_map(&scene);
 	make_image(&mlx_data, &scene);
 	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, mlx_data.image, 0, 0);
 	mlx_hook(
