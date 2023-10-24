@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_invalid_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:30:37 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:20:54 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@
 /**
  * lineにNULLが来ることはない
 */
-//TODO:以下をfp_set?identifierの上に入れる。
-//1行の識別子情報までわかっている。
-// if (parser[identifier_type].fp_is_invalid_identifier(line, scene, index))
-// 	return (true);
 bool	is_invalid_line(
 	const char *const line,
 	const t_parser *parser,
@@ -41,6 +37,8 @@ bool	is_invalid_line(
 		print_error_msg(INVALID_IDENTIFIER);
 		return (true);
 	}
-	parser[identifier_type].fp_set_identifier(scene, line);
+	// if (parser[identifier_type].fp_is_invalid_identifier(line + index))
+	// 	return (true);
+	parser[identifier_type].fp_set_identifier(scene, line + index);
 	return (false);
 }

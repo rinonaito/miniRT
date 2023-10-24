@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:13:04 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:08:42 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:17:52 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	set_sphere(t_scene *scene, const char *const line)
 	sphere = ft_xcalloc(1, sizeof(t_sphere));
 	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
-	skip_identifier(line, &str_index);
 	set_str_in_vector3d(&sphere->center, line, &str_index);
 	set_str_in_double(&sphere->diameter, line, &str_index);
 	set_str_in_rgb(&sphere->color, line, &str_index);

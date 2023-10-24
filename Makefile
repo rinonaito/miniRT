@@ -75,7 +75,6 @@ ${SRC_DIR}/parser/utils/string_management/set_str_in_double.c \
 ${SRC_DIR}/parser/utils/string_management/set_str_in_rgb.c \
 ${SRC_DIR}/parser/utils/string_management/set_str_in_vector3d.c \
 ${SRC_DIR}/parser/utils/string_management/skip_comma.c \
-${SRC_DIR}/parser/utils/string_management/skip_identifier.c \
 ${SRC_DIR}/parser/utils/string_management/skip_next_comma.c \
 ${SRC_DIR}/parser/utils/string_management/skip_next_space.c \
 ${SRC_DIR}/parser/utils/string_management/skip_spaces.c \

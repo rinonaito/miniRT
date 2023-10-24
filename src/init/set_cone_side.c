@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_cone_side.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:00:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:00:55 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:17:38 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	set_cone_side(t_scene *scene, const char *const line)
 	cone = ft_xcalloc(1, sizeof(t_cone));
 	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
-	skip_identifier(line, &str_index);
 	set_str_in_vector3d(&cone->top, line, &str_index);
 	set_str_in_vector3d(&cone->direction_vec, line, &str_index);
 	cone->direction_vec = normalize_vector3d(cone->direction_vec);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:06:59 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:17:22 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,15 @@ bool				is_invalid_line(
 						t_scene *scene);
 
 //validators
-bool				is_invalid_ambient(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
+bool				is_invalid_ambient(const char *const line);
 bool				is_invalid_argc(const int argc);
-bool				is_invalid_camera(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
-bool				is_invalid_cone(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
+bool				is_invalid_camera(const char *const line);
+bool				is_invalid_cone(const char *const line);
 bool				is_invalid_coordinates_ratio(
 						const double x,
 						const double y,
 						const double z);
-bool				is_invalid_cylinder(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
+bool				is_invalid_cylinder(const char *const line);
 bool				is_invalid_double_ratio(
 						const double value,
 						const double max,
@@ -56,24 +44,15 @@ bool				is_invalid_int_ratio(
 						const int value,
 						const int max,
 						const int min);
-bool				is_invalid_light(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
+bool				is_invalid_light(const char *const line);
 bool				is_invalid_lighting_ratio(const double a);
 bool				is_invalid_normalized_vector_ratio(
 						const double x,
 						const double y,
 						const double z);
-bool				is_invalid_plane(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
+bool				is_invalid_plane(const char *const line);
 bool				is_invalid_rgb_ratio(const int r, const int g, const int b);
-bool				is_invalid_sphere(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
+bool				is_invalid_sphere(const char *const line);
 bool				is_string_match(const char *s1, const char *s2);
 
 //utils/conversion
@@ -113,6 +92,5 @@ void				set_str_in_vector3d(
 						t_vector3d *vector3d,
 						const char *line,
 						size_t *index);
-void				skip_identifier(const char *line, size_t *index);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_tube.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:51:57 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:08:49 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:17:56 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	set_tube(t_scene *scene, const char *const line)
 	tube = ft_xcalloc(1, sizeof(t_tube));
 	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
-	skip_identifier(line, &str_index);
 	set_str_in_vector3d(&tube->center, line, &str_index);
 	set_str_in_vector3d(&tube->direction_vec, line, &str_index);
 	tube->direction_vec = normalize_vector3d(tube->direction_vec);
