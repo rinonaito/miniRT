@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/24 21:20:54 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/25 22:33:47 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 #include "config.h"
 #include "libft.h"
 #include <stdbool.h>
+
+// static void	_free_scene(t_scene *scene)
+// {
+// 	free(scene->lights);
+// 	free(scene>-objects);
+// }
 
 /**
  * lineにNULLが来ることはない
@@ -34,11 +40,17 @@ bool	is_invalid_line(
 	identifier_type = get_identifier_type(line, &index, parser);
 	if (identifier_type == UNDEFINED)
 	{
-		print_error_msg(INVALID_IDENTIFIER);
+		print_error_msg(INVALID_IDENTIFIER_TYPE);
+		// free_scene();
 		return (true);
 	}
-	// if (parser[identifier_type].fp_is_invalid_identifier(line + index))
-	// 	return (true);
+	//TODO:set_identifierに正常終了か以上終了かの戻り値をつける。
 	parser[identifier_type].fp_set_identifier(scene, line + index);
+	// if (parser[identifier_type].fp_set_identifier(scene, line + index))
+	// {
+	// 	print_error_msg(INVALID_IDENTIFIER);
+	// 	// free_scene();
+	// 	return (true);
+	// }
 	return (false);
 }

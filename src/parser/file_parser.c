@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:32:51 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:54:30 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	_init_parser(t_parser **parser)
 	(*parser)[co].identifier_type_str = CONE;
 }
 
+//TODO:closeの失敗でexitするようにラッパー関数を作成する
 int	file_parser(t_scene *scene, int argc, char **argv)
 {
 	char		*line;

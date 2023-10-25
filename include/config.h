@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/23 15:11:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:41:43 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,18 @@
 # define MIN_VECTOR_RATIO		-1.0
 # define MAX_COLOR_RANGE		0
 # define MIN_COLOR_RANGE		255
-# define ERROR_MSG			"Error"
-# define INVALID_ARGC		"Invalid argument count. \
+# define ERROR_MSG					"Error"
+# define INVALID_ARGC				"Invalid argument count. \
 Usage: ./miniRT [file_name]"
-# define INVALID_FILE		"Invalid file name. \
+# define INVALID_FILE				"Invalid file name. \
 Please provide a .rt file as an argument."
-# define INVALID_IDENTIFIER	"Invalid identifier detected. \
+# define INVALID_IDENTIFIER_TYPE	"Invalid identifier detected. \
 Accepted identifiers are: \
 A (AMBIENT), C (CAMERA), L (LIGHT), \
 sp (SPHERE), pl (PLANE), cy (CYLINDER)."
-# define FILE_NOT_FOUND      "File not found. \
+# define FILE_NOT_FOUND				 "File not found. \
 Please ensure the provided file path is correct and try again."
+# define INVALID_IDENTIFIER 		"Invalid information for the identifier. \
+Please check and correct the details."
 
 #endif

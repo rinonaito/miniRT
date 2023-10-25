@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:45:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 14:28:22 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/25 21:50:59 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static double	_convert(const char *str, const bool is_positive)
 	return (conversion_num);
 }
 
-double	convert_string_to_double(
+int	convert_string_to_double(
 	double *conversion_num,
 	const char *str,
 	const double max_num)

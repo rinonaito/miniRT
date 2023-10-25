@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/24 21:17:22 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/25 21:53:26 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ bool				is_invalid_sphere(const char *const line);
 bool				is_string_match(const char *s1, const char *s2);
 
 //utils/conversion
-void				convert_csv_to_rgb(t_rgb *rgb, char *str);
-void				convert_csv_to_vector3d(t_vector3d *vector3d, char *str);
-double				convert_string_to_double(
+int				convert_csv_to_rgb(t_rgb *rgb, char *str);
+int				convert_csv_to_vector3d(t_vector3d *vector3d, char *str);
+int					convert_string_to_double(
 						double *conversion_num,
 						const char *str,
 						const double max_num);
+int					convert_string_to_int(int *num, const char *str);
 
 //utils/gnl
 char				*get_next_line_no_nl(int fd);
