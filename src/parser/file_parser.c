@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/24 21:54:30 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:43:34 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@
 static void	_init_parser(t_parser **parser)
 {
 	*parser = (t_parser *)ft_xcalloc(IDENTIFIER_NUM, sizeof(t_parser));
-	(*parser)[A].fp_is_invalid_identifier = is_invalid_ambient;
-	(*parser)[C].fp_is_invalid_identifier = is_invalid_camera;
-	(*parser)[L].fp_is_invalid_identifier = is_invalid_light;
-	(*parser)[sp].fp_is_invalid_identifier = is_invalid_sphere;
-	(*parser)[pl].fp_is_invalid_identifier = is_invalid_plane;
-	(*parser)[cy].fp_is_invalid_identifier = is_invalid_cylinder;
-	(*parser)[co].fp_is_invalid_identifier = is_invalid_cone;
 	(*parser)[A].fp_set_identifier = set_ambient;
 	(*parser)[C].fp_set_identifier = set_camera;
 	(*parser)[L].fp_set_identifier = set_light;
