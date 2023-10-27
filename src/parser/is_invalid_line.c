@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 12:44:42 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:36:43 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 #include "types.h"
 #include "error_utils.h"
 #include "config.h"
+#include "common.h"
+#include "x_wrapper.h"
 #include "libft.h"
 #include <stdbool.h>
 
-static void	_free_scene(t_scene *scene)
+void _print_invalid_identifier(const t_identifier_type type, const t_parser *parser)
 {
-	if (scene->lights_num != 0)
-		free(scene->lights);
-	if (scene->objects_num != 0)
-		free(scene->objects);
+	print_error_msg(INVALID_IDENTIFIER);
+	ft_xputstr_fd("The invalid identifier is ", STDERR_FILENO);
+	ft_xputstr_fd(parser[type].identifier_type_str, STDERR_FILENO);
+	ft_xputendl_fd(".", STDERR_FILENO);
 }
 
 /**
@@ -42,14 +44,15 @@ bool	is_invalid_line(
 	identifier_type = get_identifier_type(line, &index, parser);
 	if (identifier_type == UNDEFINED)
 	{
-		_free_scene(scene);
+		free_scene(scene);
 		print_error_msg(INVALID_IDENTIFIER_TYPE);
 		return (true);
 	}
 	if (parser[identifier_type].fp_set_identifier(scene, line + index))
 	{
-		print_error_msg(INVALID_IDENTIFIER);
-		_free_scene(scene);
+		//エラーメッセージをTYPEに合わせて適切にする
+		_print_invalid_identifier(identifier_type, parser);
+		free_scene(scene);
 		return (true);
 	}
 	return (false);

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   skip_spaces.c                                      :+:      :+:    :+:   */
+/*   ft_xputstr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:22:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 13:58:52 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/27 14:33:10 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/27 14:36:26 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "error_utils.h"
+#include "libft.h"
+#include <errno.h>
+#include <unistd.h>
 
-/**
- * スペースを飛ばしてインデックス進める関数
-*/
-void	skip_spaces(size_t *index, const char *const str)
+void	ft_xputstr_fd(char *s, int fd)
 {
-	if (str == NULL)
+	if (s == NULL)
 		return ;
-	while (str[*index] != '\0'
-		&& str[*index] != '\n'
-		&& (str[*index] == ' ' || str[*index] == '\t'))
-	{
-		(*index)++;
-	}
+	if (write(fd, s, ft_strlen(s)) < 0)
+		exit_with_errno(errno);
 }

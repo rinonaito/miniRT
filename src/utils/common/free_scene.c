@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   skip_spaces.c                                      :+:      :+:    :+:   */
+/*   free_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:22:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 13:58:52 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/27 14:15:02 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/27 14:18:41 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "types.h"
 #include <stdlib.h>
 
-/**
- * スペースを飛ばしてインデックス進める関数
-*/
-void	skip_spaces(size_t *index, const char *const str)
+void	free_scene(t_scene *scene)
 {
-	if (str == NULL)
-		return ;
-	while (str[*index] != '\0'
-		&& str[*index] != '\n'
-		&& (str[*index] == ' ' || str[*index] == '\t'))
-	{
-		(*index)++;
-	}
+	if (scene->lights_num != 0)
+		free(scene->lights);
+	if (scene->objects_num != 0)
+		free(scene->objects);
 }

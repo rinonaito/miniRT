@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:11:16 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 11:52:22 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:39:11 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 //A 0.2 255,255,255
 //TODO
-//作成した方が良い関数
-//	数値変換
-//	get_first_word_by_spaceを'\0'まで使えば簡単にできる。
-//	
+//	引数の数チェックが終わっていない
 int	set_ambient(t_scene *scene, const char *const line)
 {
 	size_t	str_index;

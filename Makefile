@@ -4,6 +4,7 @@ LIBFT_NAME	=	libft.a
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
+# CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address
 MLX_CFLAGS	=	-L/usr/X11R6/lib -lX11 -lXext -lm
 
 SRC_DIR		=	./src
@@ -90,6 +91,7 @@ ${SRC_DIR}/parser/validators/identifier_utils/is_invalid_lighting_ratio.c \
 ${SRC_DIR}/parser/validators/identifier_utils/is_invalid_normalized_vector_ratio.c \
 ${SRC_DIR}/parser/validators/identifier_utils/is_invalid_rgb_ratio.c \
 ${SRC_DIR}/set_closest_point_info_in_ray.c \
+${SRC_DIR}/utils/common/free_scene.c \
 ${SRC_DIR}/utils/error_utils/exit_with_errno.c \
 ${SRC_DIR}/utils/error_utils/print_error_msg.c \
 ${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
@@ -97,6 +99,7 @@ ${SRC_DIR}/utils/mlx_utils/handle_window_close.c \
 ${SRC_DIR}/utils/mlx_utils/my_mlx_pixel_put.c \
 ${SRC_DIR}/utils/x_wrapper/ft_xcalloc.c \
 ${SRC_DIR}/utils/x_wrapper/ft_xputendl_fd.c \
+${SRC_DIR}/utils/x_wrapper/ft_xputstr_fd.c \
 ${SRC_DIR}/utils/x_wrapper/ft_xsubstr.c \
 ${SRC_DIR}/vector/addition_vector3d.c \
 ${SRC_DIR}/vector/cross_vector3d.c \
