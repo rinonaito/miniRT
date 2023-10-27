@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:11:16 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/24 21:20:40 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:52:22 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@
 //	数値変換
 //	get_first_word_by_spaceを'\0'まで使えば簡単にできる。
 //	
-void	set_ambient(t_scene *scene, const char *const line)
+int	set_ambient(t_scene *scene, const char *const line)
 {
 	size_t	str_index;
 
 	str_index = 0;
-	set_str_in_double(&scene->ambient.lighting_ratio, line, &str_index);
-	set_str_in_rgb(&scene->ambient.color, line, &str_index);
+	if (set_str_in_double(&scene->ambient.lighting_ratio, line, &str_index)
+		== EXIT_FAILURE
+		|| set_str_in_rgb(&scene->ambient.color, line, &str_index)
+		== EXIT_FAILURE)
+	{
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }

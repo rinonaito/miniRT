@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 11:43:23 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:21:15 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ bool				is_invalid_rgb_ratio(const int r, const int g, const int b);
 bool				is_string_match(const char *s1, const char *s2);
 
 //utils/conversion
-int				convert_csv_to_rgb(t_rgb *rgb, char *str);
-int				convert_csv_to_vector3d(t_vector3d *vector3d, char *str);
+int					convert_csv_to_rgb(t_rgb *rgb, char *str);
+int					convert_csv_to_vector3d(t_vector3d *vector3d, char *str);
 int					convert_string_to_double(
 						double *conversion_num,
 						const char *str,
@@ -74,15 +74,15 @@ void				skip_comma(size_t *index, const char *const str);
 void				skip_next_comma(size_t *index, const char *const str);
 void				skip_next_space(size_t *index, const char *const str);
 void				skip_spaces(size_t *index, const char *const str);
-void				set_str_in_double(
+int					set_str_in_double(
 						double *num,
 						const char *line,
 						size_t *index);
-void				set_str_in_rgb(
+int					set_str_in_rgb(
 						t_rgb *rgb,
 						const char *line,
 						size_t *index);
-void				set_str_in_vector3d(
+int					set_str_in_vector3d(
 						t_vector3d *vector3d,
 						const char *line,
 						size_t *index);

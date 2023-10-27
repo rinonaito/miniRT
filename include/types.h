@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/24 21:11:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:25:16 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,8 +189,7 @@ typedef enum e_identifier_type
 
 typedef struct s_parser
 {
-	bool	(*fp_is_invalid_identifier)(const char *const);
-	void	(*fp_set_identifier)(
+	int		(*fp_set_identifier)(
 			t_scene *,
 			const char *const);
 	char	*identifier_type_str;

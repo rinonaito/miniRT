@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_str_in_rgb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:54:35 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/23 20:29:14 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/27 12:22:07 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "parser.h"
 #include <unistd.h>
 
-void	set_str_in_rgb(
+int	set_str_in_rgb(
 		t_rgb *rgb,
 		const char *line,
 		size_t *index)
@@ -22,6 +22,11 @@ void	set_str_in_rgb(
 	char	*word;
 
 	word = get_first_word_by_space(line + (*index), index);
-	convert_csv_to_rgb(rgb, word);
+	if (convert_csv_to_rgb(rgb, word) == EXIT_FAILURE)
+	{
+		free(word);
+		return (EXIT_FAILURE);
+	}
 	free(word);
+	return (EXIT_SUCCESS);
 }

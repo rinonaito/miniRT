@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:38:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 18:09:58 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/27 12:03:52 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 #include "object.h"
 #include <math.h>
 
-void	set_cone(t_scene *scene, const char *const line)
+int	set_cone(t_scene *scene, const char *const line)
 {
 	t_cone		*cone;
 	t_vector3d	circle_center;
 	double		diameter;
 	t_circle	*circle;
 
-	set_cone_side(scene, line);
+	if (set_cone_side(scene, line) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	cone = ((t_cone *)scene->objects[scene->objects_num - 1].object);
 	resize_objects_array(&scene->objects, scene->objects_num);
 	circle_center
@@ -40,4 +41,5 @@ void	set_cone(t_scene *scene, const char *const line)
 			get_normal_vector_for_circle,
 			get_pixel_color_for_circle);
 	scene->objects_num++;
+	return (EXIT_SUCCESS);
 }
