@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_plane.c                                 :+:      :+:    :+:   */
+/*   is_invalid_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:33:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:14:18 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:20:24 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/28 21:50:01 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
 #include <stdbool.h>
 
-bool	is_invalid_plane(
-	const char *const line,
-	t_scene *scene,
-	const size_t index)
+bool	is_invalid_int(
+	const int value,
+	const int max,
+	const int min)
 {
-	(void)line;
-	(void)scene;
-	(void)index;
-	return (true);
+	return (value > max || value < min);
 }

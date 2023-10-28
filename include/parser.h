@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:06:59 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,70 +19,38 @@
 
 int					file_parser(t_scene *scene, int argc, char **argv);
 
-bool				is_invalid_line(
+int					set_line_info_in_scene(
 						const char *const line,
-						const t_parser *parser,
+						t_parser *parser,
 						t_scene *scene);
 
 //validators
-bool				is_invalid_ambient(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
 bool				is_invalid_argc(const int argc);
-bool				is_invalid_camera(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
-bool				is_invalid_cone(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
-bool				is_invalid_coordinates_ratio(
-						const double x,
-						const double y,
-						const double z);
-bool				is_invalid_cylinder(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
-bool				is_invalid_double_ratio(
+bool				is_invalid_coordinate(const t_vector3d cordinate);
+bool				is_invalid_double(
 						const double value,
 						const double max,
 						const double min);
 bool				is_invalid_file_extension(const char *const file_name);
-bool				is_invalid_fov_ratio(const int fov);
-bool				is_invalid_int_ratio(
+bool				is_invalid_fov(const int fov);
+bool				is_invalid_int(
 						const int value,
 						const int max,
 						const int min);
-bool				is_invalid_light(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
 bool				is_invalid_lighting_ratio(const double a);
-bool				is_invalid_normalized_vector_ratio(
-						const double x,
-						const double y,
-						const double z);
-bool				is_invalid_plane(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
-bool				is_invalid_rgb_ratio(const int r, const int g, const int b);
-bool				is_invalid_sphere(
-						const char *const line,
-						t_scene *scene,
-						const size_t index);
+bool				is_invalid_normalized_vector(
+						const t_vector3d direction_vec);
+bool				is_invalid_rgb(const t_rgb rgb);
 bool				is_string_match(const char *s1, const char *s2);
 
 //utils/conversion
-void				convert_csv_to_rgb(t_rgb *rgb, char *str);
-void				convert_csv_to_vector3d(t_vector3d *vector3d, char *str);
-double				convert_string_to_double(
+int					convert_csv_to_rgb(t_rgb *rgb, char *str);
+int					convert_csv_to_vector3d(t_vector3d *vector3d, char *str);
+int					convert_string_to_double(
 						double *conversion_num,
 						const char *str,
 						const double max_num);
+int					convert_string_to_int(int *num, const char *str);
 
 //utils/gnl
 char				*get_next_line_no_nl(int fd);
@@ -101,18 +69,19 @@ void				skip_comma(size_t *index, const char *const str);
 void				skip_next_comma(size_t *index, const char *const str);
 void				skip_next_space(size_t *index, const char *const str);
 void				skip_spaces(size_t *index, const char *const str);
-void				set_str_in_double(
+int					set_str_in_double(
 						double *num,
 						const char *line,
 						size_t *index);
-void				set_str_in_rgb(
+int					set_str_in_rgb(
 						t_rgb *rgb,
 						const char *line,
 						size_t *index);
-void				set_str_in_vector3d(
+int					set_str_in_vector3d(
 						t_vector3d *vector3d,
 						const char *line,
 						size_t *index);
-void				skip_identifier(const char *line, size_t *index);
+size_t				get_num_of_token(const char *line);
+size_t				get_num_of_element_in_token(const char *token);
 
 #endif

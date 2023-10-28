@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_str_in_vector3d.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:54:39 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/23 20:21:26 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/27 12:22:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 //	②変換したデータを第一引数へ格納
 //	③indexを進める
 //	④不要データのメモリ解放
-void	set_str_in_vector3d(
+int	set_str_in_vector3d(
 		t_vector3d *vector3d,
 		const char *line,
 		size_t *index)
@@ -26,6 +26,11 @@ void	set_str_in_vector3d(
 	char	*word;
 
 	word = get_first_word_by_space(line + (*index), index);
-	convert_csv_to_vector3d(vector3d, word);
+	if (convert_csv_to_vector3d(vector3d, word) == EXIT_FAILURE)
+	{
+		free(word);
+		return (EXIT_FAILURE);
+	}
 	free(word);
+	return (EXIT_SUCCESS);
 }

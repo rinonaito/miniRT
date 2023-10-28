@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_line.c                                  :+:      :+:    :+:   */
+/*   set_line_info_in_scene.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:30:37 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/28 21:19:15 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,49 @@
 #include "types.h"
 #include "error_utils.h"
 #include "config.h"
+#include "common.h"
+#include "x_wrapper.h"
 #include "libft.h"
 #include <stdbool.h>
+
+void	_print_invalid_identifier(
+	const t_identifier_type type,
+	const t_parser *parser)
+{
+	print_error_msg(INVALID_IDENTIFIER1);
+	ft_xputstr_fd(INVALID_IDENTIFIER2, STDERR_FILENO);
+	ft_xputstr_fd(parser[type].identifier_type_str, STDERR_FILENO);
+	ft_xputendl_fd(".", STDERR_FILENO);
+}
 
 /**
  * lineにNULLが来ることはない
 */
-//TODO:以下をfp_set?identifierの上に入れる。
-//1行の識別子情報までわかっている。
-// if (parser[identifier_type].fp_is_invalid_identifier(line, scene, index))
-// 	return (true);
-bool	is_invalid_line(
+int	set_line_info_in_scene(
 	const char *const line,
-	const t_parser *parser,
+	t_parser *parser,
 	t_scene *scene)
 {
 	t_identifier_type	identifier_type;
 	size_t				index;
 
 	if (ft_strlen(line) == 0)
-		return (false);
+		return (EXIT_SUCCESS);
 	index = 0;
 	identifier_type = get_identifier_type(line, &index, parser);
 	if (identifier_type == UNDEFINED)
 	{
-		print_error_msg(INVALID_IDENTIFIER);
-		return (true);
+		free_scene(scene);
+		print_error_msg(INVALID_IDENTIFIER_TYPE);
+		return (EXIT_FAILURE);
 	}
-	parser[identifier_type].fp_set_identifier(scene, line);
-	return (false);
+	parser[identifier_type].num_of_lines++;
+	if (parser[identifier_type].fp_set_identifier(scene, line + index)
+		== EXIT_FAILURE)
+	{
+		_print_invalid_identifier(identifier_type, parser);
+		free_scene(scene);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }

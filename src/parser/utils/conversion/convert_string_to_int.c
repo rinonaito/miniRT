@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_press.c                                 :+:      :+:    :+:   */
+/*   convert_string_to_int.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 21:09:34 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:41:53 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/25 21:52:14 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/27 11:44:27 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
-#include "types.h"
-#include <mlx.h>
+#include "libft.h"
 
-//TODO:printfと共に削除
-#include <stdio.h>
-
-int	handle_key_press(int keycode, void *value)
+int	convert_string_to_int(int *num, const char *str)
 {
-	t_mlx_data	*mlx_data;
+	size_t	i;
 
-	mlx_data = value;
-	printf("key = %d\n", keycode);
-	if (keycode == ESC || keycode == ESC_OS_TPYE_M1 || keycode == 65307)
+	*num = 0;
+	while ((*str != '\0')
+		&& ((*str >= 9 && *str <= 13) || (*str == 32)))
+		str++;
+	i = 0;
+	while (str[i] != '\0')
 	{
-		mlx_destroy_window(mlx_data->mlx, mlx_data->win);
-		exit(EXIT_SUCCESS);
+		if ((str[i] != '-' && str[i] != '+') && !ft_isdigit(str[i]))
+			return (EXIT_FAILURE);
+		if ((i != 0) && !ft_isdigit(str[i]))
+			return (EXIT_FAILURE);
+		i++;
 	}
+	*num = ft_atoi(str);
 	return (EXIT_SUCCESS);
 }

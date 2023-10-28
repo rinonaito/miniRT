@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_cylinder.c                              :+:      :+:    :+:   */
+/*   get_num_of_token.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:32:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:13:30 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/28 19:20:10 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/28 21:39:24 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
-#include <stdbool.h>
+#include <stdlib.h>
+#include "parser.h"
 
-bool	is_invalid_cylinder(
-	const char *const line,
-	t_scene *scene,
-	const size_t index)
+//   	pl 0,-1,0   0,1,0.1      255,255,255
+//上記で4を返す
+size_t	get_num_of_token(const char *line)
 {
-	(void)line;
-	(void)scene;
-	(void)index;
-	return (true);
+	size_t	num_of_token;
+	size_t	i;
+
+	num_of_token = 0;
+	i = 0;
+	skip_spaces(&i, line);
+	while (line[i] != '\0')
+	{
+		skip_next_space(&i, line);
+		num_of_token++;
+		skip_spaces(&i, line);
+	}
+	return (num_of_token);
 }

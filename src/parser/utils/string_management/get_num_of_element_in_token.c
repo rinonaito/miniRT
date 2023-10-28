@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_coordinates_ratio.c                     :+:      :+:    :+:   */
+/*   get_num_of_element_in_token.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:35:18 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:58 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/28 20:03:45 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/28 21:20:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdbool.h>
+#include <stdlib.h>
 
-/**
- * x, y, zの座標が正しい範囲か判定する
-*/
-//TODO:上限値をどうするか相談する
-bool	is_invalid_coordinates_ratio(
-	const double x,
-	const double y,
-	const double z)
+//  255,255,255
+//上記で3を返す
+size_t	get_num_of_element_in_token(const char *token)
 {
-	return (is_invalid_double_ratio(x, 1000, -1000)
-		&& is_invalid_double_ratio(y, 1000, -1000)
-		&& is_invalid_double_ratio(z, 1000, -1000));
+	size_t	num_of_element;
+	size_t	i;
+
+	num_of_element = 0;
+	i = 0;
+	skip_spaces(&i, token);
+	skip_comma(&i, token);
+	while (token[i] != '\0')
+	{
+		skip_next_comma(&i, token);
+		num_of_element++;
+		skip_comma(&i, token);
+		skip_spaces(&i, token);
+	}
+	return (num_of_element);
 }

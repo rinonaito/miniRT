@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/23 15:11:39 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:24:24 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@
 # define PLANE					"pl"
 # define CYLINDER				"cy"
 # define CONE					"co"
+# define AMBIENT_ARGS			2
+# define CAMERA_ARGS			3
+# define LIGHT_ARGS				2
+# define SPHERE_ARGS			3
+# define PLANE_ARGS				3
+# define CYLINDER_ARGS			5
+# define CONE_ARGS				5
+# define BONUS_ARGS				1
 # define IDENTIFIER_NUM			7
 # define FILE_NAME_NUM			1
 # define INVALID_ARGC_NUM		2
@@ -67,18 +75,31 @@
 # define MIN_LIGHTING_RATIO		0.0
 # define MAX_VECTOR_RATIO		1.0
 # define MIN_VECTOR_RATIO		-1.0
-# define MAX_COLOR_RANGE		0
-# define MIN_COLOR_RANGE		255
-# define ERROR_MSG			"Error"
-# define INVALID_ARGC		"Invalid argument count. \
+# define MAX_COLOR_RANGE		255
+# define MIN_COLOR_RANGE		0
+# define MAX_COORDINATE			1000
+# define MIN_COORDINATE			-1000
+# define MAX_HEIGHT				1000.0
+# define MIN_HEIGHT				0.0
+# define MAX_PHI				44.9
+# define MIN_PHI				0
+# define MAX_DIAMETER			1000.0
+# define MIN_DIAMETER			0
+# define RGB_NUM				3
+# define VECTOR_3D_NUM			3
+# define ERROR_MSG					"Error"
+# define INVALID_ARGC				"Invalid argument count. \
 Usage: ./miniRT [file_name]"
-# define INVALID_FILE		"Invalid file name. \
+# define INVALID_FILE				"Invalid file name. \
 Please provide a .rt file as an argument."
-# define INVALID_IDENTIFIER	"Invalid identifier detected. \
+# define INVALID_IDENTIFIER_TYPE	"Invalid identifier detected. \
 Accepted identifiers are: \
 A (AMBIENT), C (CAMERA), L (LIGHT), \
 sp (SPHERE), pl (PLANE), cy (CYLINDER)."
-# define FILE_NOT_FOUND      "File not found. \
+# define FILE_NOT_FOUND				 "File not found. \
 Please ensure the provided file path is correct and try again."
+# define INVALID_IDENTIFIER1 		"Invalid information for the identifier. \
+Please check and correct the details."
+# define INVALID_IDENTIFIER2 		"The invalid identifier is "
 
 #endif

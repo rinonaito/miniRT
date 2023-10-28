@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_rgb_ratio.c                             :+:      :+:    :+:   */
+/*   is_invalid_rgb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:22:50 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 19:44:10 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:49:53 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "config.h"
 #include <stdbool.h>
 
-bool	is_invalid_rgb_ratio(const int r, const int g, const int b)
+bool	is_invalid_rgb(const t_rgb rgb)
 {
-	return (is_invalid_int_ratio(r, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
-		&& is_invalid_int_ratio(g, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
-		&& is_invalid_int_ratio(b, MAX_COLOR_RANGE, MIN_COLOR_RANGE));
+	return (is_invalid_int(rgb.red, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
+		|| is_invalid_int(rgb.green, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
+		|| is_invalid_int(rgb.blue, MAX_COLOR_RANGE, MIN_COLOR_RANGE));
 }

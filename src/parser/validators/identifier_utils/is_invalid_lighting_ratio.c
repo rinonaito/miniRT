@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   skip_identifier.c                                  :+:      :+:    :+:   */
+/*   is_invalid_lighting_ratio.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 19:57:54 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/23 20:16:29 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/07 19:21:23 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/28 21:44:40 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "parser.h"
+#include "config.h"
+#include <stdbool.h>
 
-void	skip_identifier(const char *line, size_t *index)
+bool	is_invalid_lighting_ratio(const double a)
 {
-	char	*word;
-
-	word = get_first_word_by_space(line + (*index), index);
-	free(word);
+	return (is_invalid_double(a, MAX_LIGHTING_RATIO, MIN_LIGHTING_RATIO));
 }

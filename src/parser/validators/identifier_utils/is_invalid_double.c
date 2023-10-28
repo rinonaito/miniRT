@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_camera.c                                :+:      :+:    :+:   */
+/*   is_invalid_double.c         	                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:32:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 20:13:08 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:19:36 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/28 18:05:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
 #include <stdbool.h>
 
-bool	is_invalid_camera(
-	const char *const line,
-	t_scene *scene,
-	const size_t index)
+bool	is_invalid_double(
+	const double value,
+	const double max,
+	const double min)
 {
-	(void)line;
-	(void)scene;
-	(void)index;
-	return (true);
+	return (value > max || value < min);
 }

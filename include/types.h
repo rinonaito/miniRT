@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/23 18:44:26 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/28 21:26:12 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef enum e_object_type
 
 typedef enum e_texture_type
 {
-	NORMAL,
-	CHECKER,
-	BUMP,
+	NORMAL = 0,
+	CHECKER = 1,
+	BUMP = 2,
 }	t_texture_type;
 
 typedef enum e_view_port
@@ -189,14 +189,11 @@ typedef enum e_identifier_type
 
 typedef struct s_parser
 {
-	bool	(*fp_is_invalid_identifier)(
-		const char *const,
-		t_scene *,
-		const size_t);
-	void	(*fp_set_identifier)(
+	int		(*fp_set_identifier)(
 			t_scene *,
 			const char *const);
 	char	*identifier_type_str;
+	size_t	num_of_lines;
 }	t_parser;
 
 #endif

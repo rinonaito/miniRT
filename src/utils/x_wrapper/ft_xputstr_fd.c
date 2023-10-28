@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_double_ratio.c                          :+:      :+:    :+:   */
+/*   ft_xputstr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 19:19:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:16:21 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/27 14:33:10 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/27 14:36:26 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+#include "error_utils.h"
+#include "libft.h"
+#include <errno.h>
+#include <unistd.h>
 
-bool	is_invalid_double_ratio(
-	const double value,
-	const double max,
-	const double min)
+void	ft_xputstr_fd(char *s, int fd)
 {
-	return (value <= max && value >= min);
+	if (s == NULL)
+		return ;
+	if (write(fd, s, ft_strlen(s)) < 0)
+		exit_with_errno(errno);
 }

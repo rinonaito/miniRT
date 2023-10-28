@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:22:55 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 19:45:16 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 19:34:46 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 */
 void	skip_spaces(size_t *index, const char *const str)
 {
-	while (str[*index] != '\n'
+	if (str == NULL)
+		return ;
+	while (str[*index] != '\0'
 		&& (str[*index] == ' ' || str[*index] == '\t'))
 	{
 		(*index)++;

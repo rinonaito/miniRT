@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 18:51:56 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/27 14:16:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "src.h"
 #include "init.h"
 #include "mlx_utils.h"
+#include "common.h"
 #include "parser.h"
 
 //TODO:あとで削除
@@ -42,4 +43,13 @@ int	main(int argc, char **argv)
 	mlx_hook(
 		mlx_data.win, ON_DESTROY, 0, handle_window_close, (void *)&mlx_data);
 	mlx_loop(mlx_data.mlx);
+	free_scene(&scene);
+	return (EXIT_SUCCESS);
 }
+
+// #include <libc.h>
+
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q miniRT");
+// }

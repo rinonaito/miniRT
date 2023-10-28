@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_lighting_ratio.c                        :+:      :+:    :+:   */
+/*   is_invalid_fov.c              		                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 19:21:23 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/22 19:43:38 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:20:57 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/22 19:43:10 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "config.h"
 #include <stdbool.h>
 
-bool	is_invalid_lighting_ratio(const double a)
+bool	is_invalid_fov(const int fov)
 {
-	return (is_invalid_double_ratio(a, MAX_LIGHTING_RATIO, MIN_LIGHTING_RATIO));
+	return (is_invalid_int(fov, MAX_FOV, MIN_FOV));
 }

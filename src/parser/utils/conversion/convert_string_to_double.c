@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:45:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 14:28:22 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:58:32 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static bool	_is_error(const char *str)
 	int		dot_count;
 	size_t	i;
 
+	if (ft_strlen(str) == 1 && !ft_isdigit(str[0]))
+		return (true);
 	if (str[0] != '\0' && str[1] != '\0'
 		&& !ft_isdigit(str[0]) && str[0] != '+' && str[0] != '-'
 		&& !ft_isdigit(str[1]))
@@ -109,7 +111,7 @@ static double	_convert(const char *str, const bool is_positive)
 	return (conversion_num);
 }
 
-double	convert_string_to_double(
+int	convert_string_to_double(
 	double *conversion_num,
 	const char *str,
 	const double max_num)
