@@ -6,11 +6,12 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:51:57 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 12:19:27 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
+#include "config.h"
 #include "object.h"
 #include "parser.h"
 #include "vector.h"
@@ -28,15 +29,17 @@ int	set_tube(t_scene *scene, const char *const line)
 	resize_objects_array(&scene->objects, scene->objects_num);
 	str_index = 0;
 	if (set_str_in_vector3d(&tube->center, line, &str_index) == EXIT_FAILURE
+		|| is_invalid_coordinate(tube->center)
 		|| set_str_in_vector3d(&tube->direction_vec, line, &str_index)
 		== EXIT_FAILURE
+		|| is_invalid_normalized_vector(tube->direction_vec)
 		|| set_str_in_double(&tube->diameter, line, &str_index) == EXIT_FAILURE
+		|| is_invalid_double(tube->diameter, MAX_DIAMETER, MIN_DIAMETER)
 		|| set_str_in_double(&tube->height, line, &str_index) == EXIT_FAILURE
-		|| set_str_in_rgb(&tube->color, line, &str_index) == EXIT_FAILURE)
-	{
+		|| is_invalid_double(tube->height, MAX_HEIGHT, MIN_HEIGHT)
+		|| set_str_in_rgb(&tube->color, line, &str_index) == EXIT_FAILURE
+		|| is_invalid_rgb(tube->color))
 		return (EXIT_FAILURE);
-	}
-	tube->direction_vec = normalize_vector3d(tube->direction_vec);
 	scene->objects[scene->objects_num] = create_object(
 			(void *)tube,
 			hit_tube,

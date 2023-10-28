@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_coordinates_ratio.c                     :+:      :+:    :+:   */
+/*   is_invalid_rgb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:35:18 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:58 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/07 19:22:50 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/28 21:49:53 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "config.h"
 #include <stdbool.h>
 
-/**
- * x, y, zの座標が正しい範囲か判定する
-*/
-//TODO:上限値をどうするか相談する
-bool	is_invalid_coordinates_ratio(
-	const double x,
-	const double y,
-	const double z)
+bool	is_invalid_rgb(const t_rgb rgb)
 {
-	return (is_invalid_double_ratio(x, 1000, -1000)
-		&& is_invalid_double_ratio(y, 1000, -1000)
-		&& is_invalid_double_ratio(z, 1000, -1000));
+	return (is_invalid_int(rgb.red, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
+		|| is_invalid_int(rgb.green, MAX_COLOR_RANGE, MIN_COLOR_RANGE)
+		|| is_invalid_int(rgb.blue, MAX_COLOR_RANGE, MIN_COLOR_RANGE));
 }

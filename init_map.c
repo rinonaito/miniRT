@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/23 20:30:57 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/28 21:08:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,7 @@ static void	init_lights(t_scene *scene)
 	scene->lights_num = 1;
 }
 
-//以下、is_invalid_lineのデバック関数
+//以下、set_line_info_in_sceneのデバック関数
 // #include <stdio.h>
 // void	_print_identifier(t_scene *scene, t_identifier_type identifier_type)
 // {

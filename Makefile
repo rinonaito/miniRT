@@ -63,7 +63,7 @@ ${SRC_DIR}/object/tube/get_normal_vector_for_tube.c \
 ${SRC_DIR}/object/tube/get_pixel_color_for_tube.c \
 ${SRC_DIR}/object/tube/hit_tube.c \
 ${SRC_DIR}/parser/file_parser.c \
-${SRC_DIR}/parser/is_invalid_line.c \
+${SRC_DIR}/parser/set_line_info_in_scene.c \
 ${SRC_DIR}/parser/utils/conversion/convert_csv_to_rgb.c \
 ${SRC_DIR}/parser/utils/conversion/convert_csv_to_vector3d.c \
 ${SRC_DIR}/parser/utils/conversion/convert_string_to_double.c \
@@ -73,6 +73,8 @@ ${SRC_DIR}/parser/utils/gnl/get_next_line_no_nl.c \
 ${SRC_DIR}/parser/utils/string_management/get_first_word_by_comma.c \
 ${SRC_DIR}/parser/utils/string_management/get_first_word_by_space.c \
 ${SRC_DIR}/parser/utils/string_management/get_identifier_type.c \
+${SRC_DIR}/parser/utils/string_management/get_num_of_element_in_token.c \
+${SRC_DIR}/parser/utils/string_management/get_num_of_token.c \
 ${SRC_DIR}/parser/utils/string_management/set_str_in_double.c \
 ${SRC_DIR}/parser/utils/string_management/set_str_in_rgb.c \
 ${SRC_DIR}/parser/utils/string_management/set_str_in_vector3d.c \

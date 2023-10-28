@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/27 12:25:16 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:26:12 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef enum e_object_type
 
 typedef enum e_texture_type
 {
-	NORMAL,
-	CHECKER,
-	BUMP,
+	NORMAL = 0,
+	CHECKER = 1,
+	BUMP = 2,
 }	t_texture_type;
 
 typedef enum e_view_port
@@ -193,6 +193,7 @@ typedef struct s_parser
 			t_scene *,
 			const char *const);
 	char	*identifier_type_str;
+	size_t	num_of_lines;
 }	t_parser;
 
 #endif

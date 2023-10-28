@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 12:21:15 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,28 @@
 
 int					file_parser(t_scene *scene, int argc, char **argv);
 
-bool				is_invalid_line(
+int					set_line_info_in_scene(
 						const char *const line,
-						const t_parser *parser,
+						t_parser *parser,
 						t_scene *scene);
 
 //validators
 bool				is_invalid_argc(const int argc);
-bool				is_invalid_coordinates_ratio(
-						const double x,
-						const double y,
-						const double z);
-bool				is_invalid_double_ratio(
+bool				is_invalid_coordinate(const t_vector3d cordinate);
+bool				is_invalid_double(
 						const double value,
 						const double max,
 						const double min);
 bool				is_invalid_file_extension(const char *const file_name);
-bool				is_invalid_fov_ratio(const int fov);
-bool				is_invalid_int_ratio(
+bool				is_invalid_fov(const int fov);
+bool				is_invalid_int(
 						const int value,
 						const int max,
 						const int min);
 bool				is_invalid_lighting_ratio(const double a);
-bool				is_invalid_normalized_vector_ratio(
-						const double x,
-						const double y,
-						const double z);
-bool				is_invalid_rgb_ratio(const int r, const int g, const int b);
+bool				is_invalid_normalized_vector(
+						const t_vector3d direction_vec);
+bool				is_invalid_rgb(const t_rgb rgb);
 bool				is_string_match(const char *s1, const char *s2);
 
 //utils/conversion
@@ -86,5 +81,7 @@ int					set_str_in_vector3d(
 						t_vector3d *vector3d,
 						const char *line,
 						size_t *index);
+size_t				get_num_of_token(const char *line);
+size_t				get_num_of_element_in_token(const char *token);
 
 #endif

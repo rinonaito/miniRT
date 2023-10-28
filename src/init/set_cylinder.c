@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 12:24:13 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:30:59 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "types.h"
 #include "init.h"
 #include "object.h"
+#include "config.h"
 
 static void	_set_circle(
 	t_scene *scene,
@@ -40,7 +41,8 @@ int	set_cylinder(t_scene *scene, const char *const line)
 {
 	t_tube		*tube;
 
-	if (set_tube(scene, line) == EXIT_FAILURE)
+	if (get_num_of_token(line) != CYLINDER_ARGS
+		|| set_tube(scene, line) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	tube = (t_tube *)scene->objects[scene->objects_num - 1].object;
 	_set_circle(scene, *tube, tube->height / 2);

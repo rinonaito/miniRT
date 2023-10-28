@@ -6,13 +6,14 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 12:42:50 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "x_wrapper.h"
 #include "parser.h"
+#include "config.h"
 #include <stdlib.h>
 
 void	_resize_lights_array(t_light **lights, const size_t lights_num)
@@ -36,18 +37,21 @@ void	_resize_lights_array(t_light **lights, const size_t lights_num)
 int	set_light(t_scene *scene, const char *const line)
 {
 	size_t	str_index;
+	t_light	*light;
 
+	if (get_num_of_token(line) != LIGHT_ARGS + BONUS_ARGS)
+		return (EXIT_FAILURE);
 	_resize_lights_array(&scene->lights, scene->lights_num);
 	str_index = 0;
-	if (set_str_in_vector3d(
-			&scene->lights[scene->lights_num].origin, line, &str_index)
+	light = &scene->lights[scene->lights_num];
+	if (set_str_in_vector3d(&light->origin, line, &str_index)
 		== EXIT_FAILURE
-		|| set_str_in_double(
-			&scene->lights[scene->lights_num].lighting_ratio, line, &str_index)
+		|| is_invalid_coordinate(light->origin)
+		|| set_str_in_double(&light->lighting_ratio, line, &str_index)
 		== EXIT_FAILURE
-		|| set_str_in_rgb(
-			&scene->lights[scene->lights_num].color, line, &str_index)
-		== EXIT_FAILURE)
+		|| is_invalid_lighting_ratio(light->lighting_ratio)
+		|| set_str_in_rgb(&light->color, line, &str_index) == EXIT_FAILURE
+		|| is_invalid_rgb(light->color))
 	{
 		return (EXIT_FAILURE);
 	}

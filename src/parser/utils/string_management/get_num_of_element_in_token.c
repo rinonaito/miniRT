@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_press.c                                 :+:      :+:    :+:   */
+/*   get_num_of_element_in_token.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 21:09:34 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:41:53 by yshimoma         ###   ########.fr       */
+/*   Created: 2023/10/28 20:03:45 by yshimoma          #+#    #+#             */
+/*   Updated: 2023/10/28 21:20:21 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
-#include "types.h"
-#include <mlx.h>
+#include "parser.h"
+#include <stdlib.h>
 
-//TODO:printfと共に削除
-#include <stdio.h>
-
-int	handle_key_press(int keycode, void *value)
+//  255,255,255
+//上記で3を返す
+size_t	get_num_of_element_in_token(const char *token)
 {
-	t_mlx_data	*mlx_data;
+	size_t	num_of_element;
+	size_t	i;
 
-	mlx_data = value;
-	printf("key = %d\n", keycode);
-	if (keycode == ESC || keycode == ESC_OS_TPYE_M1 || keycode == 65307)
+	num_of_element = 0;
+	i = 0;
+	skip_spaces(&i, token);
+	skip_comma(&i, token);
+	while (token[i] != '\0')
 	{
-		mlx_destroy_window(mlx_data->mlx, mlx_data->win);
-		exit(EXIT_SUCCESS);
+		skip_next_comma(&i, token);
+		num_of_element++;
+		skip_comma(&i, token);
+		skip_spaces(&i, token);
 	}
-	return (EXIT_SUCCESS);
+	return (num_of_element);
 }
