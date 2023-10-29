@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/28 21:26:12 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:30:41 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,15 @@ typedef struct s_cone
 	t_rgb		color;
 }	t_cone;
 
+typedef struct s_bumpmap
+{
+	t_vector3d	**map;
+	int			map_height;
+	int			map_width;
+	double		extile_height;
+	double		extile_width;
+}	t_bumpmap;
+
 typedef struct s_scene
 {
 	t_ambient_lighting	ambient;
@@ -162,6 +171,7 @@ typedef struct s_scene
 	t_object			*objects;
 	size_t				objects_num;
 	size_t				lights_num;
+	t_bumpmap			bump_map;
 }	t_scene;
 
 typedef struct s_mlx_data

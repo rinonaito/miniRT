@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:08:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/29 21:07:51 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -371,4 +371,19 @@ static void	init_lights(t_scene *scene)
 // 			circle->color.red, circle->color.green, circle->color.blue);
 // 		printf("\n");
 // 	}
+// }
+
+// void	_print_bumpmap(t_bumpmap bumpmap)
+// {
+// 	printf("< in main >\n");
+// 	for (int i = 0; i < bumpmap.map_height; i++)
+// 	{
+// 		for (int j = 0; j < bumpmap.map_width; j++)
+// 		{
+// 			printf("map[%d][%d] : x = %lf, y = %lf, z = %lf\n",
+// 				i, j, bumpmap.map[i][j].x, bumpmap.map[i][j].y, bumpmap.map[i][j].z);
+// 		}
+// 		printf("\n");
+// 	}
+// 	printf("\n");
 // }

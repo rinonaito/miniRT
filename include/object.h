@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/23 14:59:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:39:03 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ int			get_pixel_color_for_plane(
 				const void *object,
 				const t_ray ray,
 				const t_vector3d point);
+
+t_vector2d	convert_3d_coordinate_on_plane_in_2d(
+				const t_vector3d coordinate_3d,
+				const t_vector3d normal);		
 
 //circle.h
 double		hit_circle(const t_ray ray, const void *object);

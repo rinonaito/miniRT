@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:04:02 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/20 16:45:36 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/10/29 21:11:03 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,6 @@
 #include "object.h"
 #include "config.h"
 #include <math.h>
-
-/**
- * 空間内の3d座標から、2d座標へ変換する
- * 
- * 物体交点における法線ベクトルについて、x, y, zの中で最も大きい要素を定める。
- * その要素の軸に対して、交点の座標を射影することで3d→2d座標への変換ができる。
- */
-static t_vector2d	_convert_coordinate_in_2d(
-		const t_vector3d coordinate_3d,
-		const t_vector3d normal)
-{
-	t_vector2d	coordinate_2d;
-
-	if (fabs(normal.x) > fabs(normal.y)
-		&& fabs(normal.x) > fabs(normal.z))
-	{
-		coordinate_2d.x = coordinate_3d.y;
-		coordinate_2d.y = coordinate_3d.z;
-	}
-	else if (fabs(normal.y) > fabs(normal.z))
-	{
-		coordinate_2d.x = coordinate_3d.x;
-		coordinate_2d.y = coordinate_3d.z;
-	}
-	else
-	{
-		coordinate_2d.x = coordinate_3d.x;
-		coordinate_2d.y = coordinate_3d.y;
-	}
-	return (coordinate_2d);
-}
 
 static t_rgb	_get_plane_color_for_checkerboard(
 		const t_vector3d coordinate_3d,
@@ -57,7 +26,7 @@ static t_rgb	_get_plane_color_for_checkerboard(
 	int			checker_y;
 	t_rgb		opposite_color;
 
-	coordinate_2d = _convert_coordinate_in_2d(coordinate_3d, normal);
+	coordinate_2d = convert_3d_coordinate_on_plane_in_2d(coordinate_3d, normal);
 	checker_x = (int)(floor(coordinate_2d.x / CHECKER_SIZE)) % 2;
 	checker_y = (int)(floor(coordinate_2d.y / CHECKER_SIZE)) % 2;
 	if (pow(checker_x, 2) == pow(checker_y, 2))

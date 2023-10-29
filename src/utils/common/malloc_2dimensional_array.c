@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_argc.c                                  :+:      :+:    :+:   */
+/*   malloc_2dimensional_array.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 18:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 16:58:33 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/29 21:14:40 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/29 21:36:31 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error_utils.h"
-#include "config.h"
-#include "parser.h"
-#include <stdbool.h>
+#include "x_wrapper.h"
+#include <stdlib.h>
 
-bool	is_invalid_argc(const int argc)
+//2次元配列をマロック
+void	malloc_2dimensional_array(
+	void ***array,
+	const size_t size1,
+	const size_t size2,
+	const size_t count_num)
 {
-	bool	ret;
+	size_t	i;
 
-	ret = (argc != INVALID_ARGC_NUM + BONUS_ARGS);
-	if (ret)
+	*array = ft_xcalloc(size1, sizeof(void *));
+	i = 0;
+	while (i < count_num)
 	{
-		print_error_msg(INVALID_ARGC);
-		return (true);
+		(*array)[i] = ft_xcalloc(size2, 1);
+		i++;
 	}
-	return (false);
 }

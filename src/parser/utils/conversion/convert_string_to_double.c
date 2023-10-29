@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_string_to_double.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:45:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 17:58:32 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/29 21:07:02 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static bool	_is_simple_overflow(
 	return (false);
 }
 
-static double	_set_comversion_num(
+static double	_set_conversion_num(
 	char c,
 	double *conversion_num,
 	double *fraction,
@@ -103,7 +103,7 @@ static double	_convert(const char *str, const bool is_positive)
 		i++;
 	while (str[i] != '\0')
 	{
-		_set_comversion_num(str[i], &conversion_num, &fraction, &is_comma);
+		_set_conversion_num(str[i], &conversion_num, &fraction, &is_comma);
 		i++;
 	}
 	if (!is_positive)
