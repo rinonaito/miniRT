@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:53 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/29 21:01:21 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,25 @@
 #include "x_wrapper.h"
 #include "object.h"
 #include "config.h"
+
+static int	_set_str_in_texture(
+	t_texture_type *texture,
+	const char *line,
+	size_t *str_index)
+{
+	double	type;
+
+	if (set_str_in_double(&type, line, str_index)
+		|| is_invalid_double(type, BUMP, NORMAL))
+		return (EXIT_FAILURE);
+	if (NORMAL == (int)type)
+		*texture = NORMAL;
+	else if (CHECKER == (int)type)
+		*texture = CHECKER;
+	else if (BUMP == (int)type)
+		*texture = BUMP;
+	return (EXIT_SUCCESS);
+}
 
 //pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,225
 int	set_plane(t_scene *scene, const char *const line)
@@ -36,8 +55,7 @@ int	set_plane(t_scene *scene, const char *const line)
 		== EXIT_FAILURE
 		|| set_str_in_rgb(&plane->color, line, &str_index) == EXIT_FAILURE
 		|| is_invalid_rgb(plane->color)
-		|| set_str_in_double((double *)&plane->texture, line, &str_index)
-		|| is_invalid_double((double)plane->texture, BUMP, NORMAL))
+		|| _set_str_in_texture(&plane->texture, line, &str_index))
 		return (EXIT_FAILURE);
 	scene->objects[scene->objects_num] = create_object(
 			(void *)plane, hit_plane, get_normal_vector_for_plane,
