@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/29 20:48:30 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:11:07 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@
 # define BONUS_ARGS				1
 # define IDENTIFIER_NUM			7
 # define FILE_NAME_NUM			1
-# define INVALID_ARGC_NUM		2
+# define VALID_ARGC_NUM			2
 # define MAX_FOV				180
 # define MIN_FOV				0
 # define MAX_LIGHTING_RATIO		1.0
@@ -102,5 +102,10 @@ Please ensure the provided file path is correct and try again."
 # define INVALID_IDENTIFIER1 		"Invalid information for the identifier. \
 Please check and correct the details."
 # define INVALID_IDENTIFIER2 		"The invalid identifier is "
+# define INVALID_NUM_OF_DEFINITION	"Invalid number of definitions. \
+You need at least one line for each A, C, L elements."
+# define INVALID_PPM_FILE			"Invalid ppm file"
+# define LACK_OF_PPM				"Missing file.\
+You need to give ppm file as the 2nd parameter."
 
 #endif

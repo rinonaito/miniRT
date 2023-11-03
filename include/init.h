@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:48:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 13:02:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 16:13:22 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,15 @@ t_object	create_object(
 				int (*fp_get_pixel_color_for_object)(
 					const void *, const t_ray));
 
-int			set_ambient(t_scene *scene, const char *const line);
+int			set_ambient(
+				t_scene *scene,
+				const char *const line,
+				bool *have_bump_texture);
 
-int			set_camera(t_scene *scene, const char *const line);
+int			set_camera(
+				t_scene *scene,
+				const char *const line,
+				bool *have_bump_texture);
 
 t_circle	*set_circle(
 				const t_vector3d center,
@@ -38,15 +44,30 @@ t_circle	*set_circle(
 
 int			set_cone_side(t_scene *scene, const char *const line);
 
-int			set_cone(t_scene *scene, const char *const line);
+int			set_cone(
+				t_scene *scene,
+				const char *const line,
+				bool *have_bump_texture);
 
-int			set_cylinder(t_scene *scene, const char *const line);
+int			set_cylinder(
+				t_scene *scene,
+				const char *const line,
+				bool *have_bump_texture);
 
-int			set_light(t_scene *scene, const char *const line);
+int			set_light(
+				t_scene *scene,
+				const char *const line,
+				bool *have_bump_texture);
 
-int			set_plane(t_scene *scene, const char *const line);
+int			set_plane(
+				t_scene *scene,
+				const char *const line,
+				bool *have_bump_texture);
 
-int			set_sphere(t_scene *scene, const char *const line);
+int			set_sphere(
+				t_scene *scene,
+				const char *const line,
+				bool *have_bump_texture);
 
 int			set_tube(t_scene *scene, const char *const line);
 

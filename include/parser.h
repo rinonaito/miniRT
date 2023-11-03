@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 17:14:40 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 16:17:01 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ int					file_parser(t_scene *scene, int argc, char **argv);
 
 int					rt_parser(
 						const char *filename,
-						t_scene *scene);
+						t_scene *scene,
+						bool *have_bump_texture);
 
 int					set_line_info_in_scene(
 						const char *const line,
 						t_parser *parser,
-						t_scene *scene);
+						t_scene *scene,
+						bool *have_bump_texture);
 
 int					ppm_parser(
 						const char *filename,

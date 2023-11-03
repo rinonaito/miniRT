@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:13:04 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:14:08 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@
 #include <stdlib.h>
 
 //sp 0.0,0.0,20.6 12.6 10,0,255
-int	set_sphere(t_scene *scene, const char *const line)
+int	set_sphere(
+	t_scene *scene,
+	const char *const line,
+	bool *have_bump_texture)
 {
 	t_sphere	*sphere;
 	size_t		str_index;
 
+	(void)have_bump_texture;
 	if (get_num_of_token(line) != SPHERE_ARGS)
 		return (EXIT_FAILURE);
 	sphere = ft_xcalloc(1, sizeof(t_sphere));
@@ -38,9 +42,7 @@ int	set_sphere(t_scene *scene, const char *const line)
 			sphere->diameter, MAX_DIAMETER, MIN_DIAMETER)
 		|| set_str_in_rgb(&sphere->color, line, &str_index) == EXIT_FAILURE
 		|| is_invalid_rgb(sphere->color))
-	{
 		return (EXIT_FAILURE);
-	}
 	scene->objects[scene->objects_num] = create_object(
 			(void *)sphere, hit_sphere,
 			get_normal_vector_for_sphere,

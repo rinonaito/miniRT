@@ -152,8 +152,8 @@ norm	:
 	norminette main.c ${SRC_DIR} include ${LIBFT_DIR}
 
 # Test rule
-test: CFLAGS += -fsanitize=address
-test: re
+test	:
+	./map/tester.sh
 
 -include ${DEPS}
 
