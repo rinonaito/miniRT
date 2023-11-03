@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 21:40:33 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 13:38:44 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	_set_map_size(const int fd, t_bumpmap *bump_map)
 	char	*line;
 	size_t	index;
 	bool	is_error;
+	char	*word;
 
 	is_error = false;
 	line = get_next_line_no_nl(fd);
@@ -37,18 +38,18 @@ static int	_set_map_size(const int fd, t_bumpmap *bump_map)
 	if (get_num_of_token(line) != 2)
 		is_error = true;
 	index = 0;
+	word = get_first_word_by_space(line, &index);
 	if (is_error
-		|| convert_string_to_int(&bump_map->map_width,
-			get_first_word_by_space(line, &index)) == EXIT_FAILURE)
+		|| convert_string_to_int(&bump_map->map_width, word) == EXIT_FAILURE)
 		is_error = true;
+	free (word);
+	word = get_first_word_by_space(line + index, &index);
 	if (is_error
-		|| convert_string_to_int(&bump_map->map_height,
-			get_first_word_by_space(line + index, &index)) == EXIT_FAILURE)
+		|| convert_string_to_int(&bump_map->map_height, word) == EXIT_FAILURE)
 		is_error = true;
+	free (word);
 	free(line);
-	if (is_error)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	return (is_error);
 }
 
 //max_color = 最大からーの格納関数
@@ -57,6 +58,7 @@ static int	_set_max_color(const int fd, int *max_color)
 	char	*line;
 	size_t	index;
 	bool	is_error;
+	char	*word;
 
 	is_error = false;
 	line = get_next_line_no_nl(fd);
@@ -65,11 +67,12 @@ static int	_set_max_color(const int fd, int *max_color)
 	if (get_num_of_token(line) != 1)
 		is_error = true;
 	index = 0;
-	if (is_error
-		|| convert_string_to_int(max_color,
-			get_first_word_by_space(line, &index)) == EXIT_FAILURE)
-		is_error = true;
+	word = get_first_word_by_space(line, &index);
 	free(line);
+	if (is_error
+		|| convert_string_to_int(max_color, word) == EXIT_FAILURE)
+		is_error = true;
+	free(word);
 	if (is_error)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

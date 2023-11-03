@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 16:54:41 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/29 21:05:40 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 13:40:59 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,26 @@ static int	_set_normal_bump(
 	size_t *str_index,
 	const int max_color)
 {
-	if (convert_string_to_double(&normal_bump->x,
-			get_first_word_by_space(line + *str_index, str_index), max_color)
+	char	*word;
+
+	word = get_first_word_by_space(line + *str_index, str_index);
+	if (convert_string_to_double(&normal_bump->x, word, max_color)
 		== EXIT_FAILURE
-		|| is_invalid_int(normal_bump->x, max_color, MIN_COLOR_RANGE)
-		|| convert_string_to_double(&normal_bump->y,
-			get_first_word_by_space(line + *str_index, str_index), max_color)
+		|| is_invalid_int(normal_bump->x, max_color, MIN_COLOR_RANGE))
+		return (free(word), EXIT_FAILURE);
+	free(word);
+	word = get_first_word_by_space(line + *str_index, str_index);
+	if (convert_string_to_double(&normal_bump->y, word, max_color)
 		== EXIT_FAILURE
-		|| is_invalid_int(normal_bump->y, max_color, MIN_COLOR_RANGE)
-		|| convert_string_to_double(&normal_bump->z,
-			get_first_word_by_space(line + *str_index, str_index), max_color)
+		|| is_invalid_int(normal_bump->y, max_color, MIN_COLOR_RANGE))
+		return (free(word), EXIT_FAILURE);
+	free(word);
+	word = get_first_word_by_space(line + *str_index, str_index);
+	if (convert_string_to_double(&normal_bump->z, word, max_color)
 		== EXIT_FAILURE
 		|| is_invalid_int(normal_bump->z, max_color, MIN_COLOR_RANGE))
-	{
-		return (EXIT_FAILURE);
-	}
+		return (free(word), EXIT_FAILURE);
+	free(word);
 	*normal_bump = normalize_vector3d(*normal_bump);
 	return (EXIT_SUCCESS);
 }
