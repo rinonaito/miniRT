@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 17:11:07 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 20:06:58 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,14 @@
 # define SPHERE					"sp\0"
 # define PLANE					"pl\0"
 # define CYLINDER				"cy\0"
-# define CONE					"co\0"
 # define AMBIENT_ARGS			2
 # define CAMERA_ARGS			3
 # define LIGHT_ARGS				2
 # define SPHERE_ARGS			3
 # define PLANE_ARGS				3
 # define CYLINDER_ARGS			5
-# define CONE_ARGS				5
 # define BONUS_ARGS				1
-# define IDENTIFIER_NUM			7
+# define IDENTIFIER_NUM			6
 # define FILE_NAME_NUM			1
 # define VALID_ARGC_NUM			2
 # define MAX_FOV				180

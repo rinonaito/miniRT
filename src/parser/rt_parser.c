@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 19:20:40 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:07:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,18 @@ static void	_init_parser(t_parser *parser)
 	parser[sp].fp_set_identifier = set_sphere;
 	parser[pl].fp_set_identifier = set_plane;
 	parser[cy].fp_set_identifier = set_cylinder;
-	parser[co].fp_set_identifier = set_cone;
 	parser[A].identifier_type_str = AMBIENT;
 	parser[C].identifier_type_str = CAMERA;
 	parser[L].identifier_type_str = LIGHT;
 	parser[sp].identifier_type_str = SPHERE;
 	parser[pl].identifier_type_str = PLANE;
 	parser[cy].identifier_type_str = CYLINDER;
-	parser[co].identifier_type_str = CONE;
 	parser[A].num_of_lines = 0;
 	parser[C].num_of_lines = 0;
 	parser[L].num_of_lines = 0;
 	parser[sp].num_of_lines = 0;
 	parser[pl].num_of_lines = 0;
 	parser[cy].num_of_lines = 0;
-	parser[co].num_of_lines = 0;
 }
 
 static int	_read_from_rt_file(

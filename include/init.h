@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:48:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 19:43:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:05:25 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ t_circle	*set_circle(
 				const double diameter,
 				const t_vector3d direction_vec,
 				const t_rgb rgb);
-
-int			set_cone_side(t_scene *scene, const char *const line);
-
-int			set_cone(
-				t_scene *scene,
-				const char *const line);
 
 int			set_cylinder(
 				t_scene *scene,

@@ -31,8 +31,6 @@ ${SRC_DIR}/init/resize_objects_array.c \
 ${SRC_DIR}/init/set_ambient.c \
 ${SRC_DIR}/init/set_camera.c \
 ${SRC_DIR}/init/set_circle.c \
-${SRC_DIR}/init/set_cone.c \
-${SRC_DIR}/init/set_cone_side.c \
 ${SRC_DIR}/init/set_cylinder.c \
 ${SRC_DIR}/init/set_light.c \
 ${SRC_DIR}/init/set_plane.c \
@@ -53,9 +51,6 @@ ${SRC_DIR}/object/common/camera_is_inside_of_object.c \
 ${SRC_DIR}/object/common/get_circle_center.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
 ${SRC_DIR}/object/common/get_pixel_color_for_object.c \
-${SRC_DIR}/object/cone/get_normal_vector_for_cone_side.c \
-${SRC_DIR}/object/cone/get_pixel_color_for_cone_side.c \
-${SRC_DIR}/object/cone/hit_cone_side.c \
 ${SRC_DIR}/object/plane/convert_3d_coordinate_on_plane_in_2d.c \
 ${SRC_DIR}/object/plane/get_normal_vector_for_plane.c \
 ${SRC_DIR}/object/plane/get_pixel_color_for_plane.c \

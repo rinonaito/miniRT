@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/11/03 19:48:58 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:05:33 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,6 @@ t_vector3d	get_normal_vector_for_tube(
 				const void *object);
 
 int			get_pixel_color_for_tube(
-				const void *object,
-				const t_ray ray);
-
-//cone.h
-double		hit_cone_side(const t_ray ray, const void *object);
-
-t_vector3d	get_normal_vector_for_cone_side(
-				const t_ray ray,
-				const t_vector3d point,
-				const void *object);
-
-int			get_pixel_color_for_cone_side(
 				const void *object,
 				const t_ray ray);
 

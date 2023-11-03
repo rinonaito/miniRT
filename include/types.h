@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 19:46:20 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:04:57 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,15 +135,6 @@ typedef struct s_circle
 	double		diameter;
 	t_rgb		color;
 }	t_circle;
-
-typedef struct s_cone
-{
-	t_vector3d	top;
-	t_vector3d	direction_vec;
-	double		phi;
-	double		height;
-	t_rgb		color;
-}	t_cone;
 
 typedef struct s_scene
 {

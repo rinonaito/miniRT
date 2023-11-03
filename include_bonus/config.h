@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 17:11:07 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 20:10:22 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ Please provide a .rt file as an argument."
 # define INVALID_IDENTIFIER_TYPE	"Invalid identifier detected. \
 Accepted identifiers are: \
 A (AMBIENT), C (CAMERA), L (LIGHT), \
-sp (SPHERE), pl (PLANE), cy (CYLINDER)."
+sp (SPHERE), pl (PLANE), cy (CYLINDER), co (CONE)."
 # define FILE_NOT_FOUND				 "File not found. \
 Please ensure the provided file path is correct and try again."
 # define INVALID_IDENTIFIER1 		"Invalid information for the identifier. \
