@@ -11,9 +11,11 @@ MLX_CFLAGS		=	-L/usr/X11R6/lib -lX11 -lXext -lm
 SRC_DIR			=	./src
 SRC_BONUS_DIR	=	./src_bonus
 OBJ_DIR			=	./obj
+OBJ_BONUS_DIR	=	./obj_bonus
 MLX_DIR			=	./minilibx-linux
 LIBFT_DIR		=	./libft
 INCLUDE			=	-Iinclude -I${MLX_DIR} -I${LIBFT_DIR}
+INCLUDE_BONUS	=	-Iinclude_bonus -I${MLX_DIR} -I${LIBFT_DIR}
 
 # find src -type f -name "*.c" | sort | sed 's/^src\//\${SRC_DIR}\//;s/$/ \\/' | pbcopy
 SRCS			=	\
@@ -227,7 +229,7 @@ SRCS_BONUS		=	\
 
 OBJS			=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS			=	${OBJS:.o=.d}
-OBJS_BONUS		=	${addprefix ${OBJ_DIR}/, ${SRCS_BONUS:.c=.o}}
+OBJS_BONUS		=	${addprefix ${OBJ_BONUS_DIR}/, ${SRCS_BONUS:.c=.o}}
 DEPS_BONUS		=	${OBJS_BONUS:.o=.d}
 RM				=	rm -rf
 MKDIR			=	mkdir -p
@@ -247,7 +249,7 @@ ${OBJ_DIR}/%.o : %.c
 clean	:
 	$(MAKE) clean -C ${MLX_DIR}
 	$(MAKE) clean -C ${LIBFT_DIR}
-	${RM} ${OBJ_DIR}
+	${RM} ${OBJ_DIR} ${OBJ_BONUS_DIR}
 
 fclean	:	clean
 	${RM} ${NAME} ${MLX_DIR}/${MLX_NAME} ${LIBFT_DIR}/${LIBFT_NAME} ${NAME_BONUS}
@@ -261,8 +263,12 @@ ${NAME_BONUS}: ${OBJS_BONUS}
 	$(MAKE) -C ${LIBFT_DIR}
 	${CC} ${CFLAGS} ${MLX_DIR}/${MLX_NAME} ${MLX_CFLAGS} ${LIBFT_DIR}/${LIBFT_NAME} -o $@ ${OBJS_BONUS}
 
+${OBJ_BONUS_DIR}/%.o : %.c
+	${MKDIR} $(@D)
+	${CC} ${CFLAGS} ${INCLUDE_BONUS} -MMD -MP -o $@ -c $<
+
 norm	:
-	norminette main.c ${SRC_DIR} include ${LIBFT_DIR}
+	norminette main.c ${SRC_DIR} include include_bonus ${LIBFT_DIR}
 
 test	:
 	./map/tester.sh
