@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 17:12:40 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:47:57 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-//TODO:
-//	バンプマップファイルはあってもなくても良いが、ファイルが2つある場合は、エラーチェックをする
 int	file_parser(t_scene *scene, int argc, char **argv)
 {
 	bool	have_bump_texture;

@@ -18,7 +18,6 @@
 /**
  * x, y, zの座標が正しい範囲か判定する
 */
-//TODO:上限値をどうするか相談する
 bool	is_invalid_coordinate(const t_vector3d cordinate)
 {
 	return (is_invalid_double(cordinate.x, MAX_COORDINATE, MIN_COORDINATE)

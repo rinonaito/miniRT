@@ -6,20 +6,13 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:31:22 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/15 14:18:37 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:46:36 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "types.h"
 #include "calculator.h"
 #include "config.h"
-
-//TODO:削除予定
-//-1.0 ~ 1.0 → 0 ~ 255へ変換する
-// static int	_change_scale_for_color(const double x)
-// {
-// 	return (scale_to_zero_to_one(x) * 255.999);
-// }
 
 /**
  * RGBの各色成分（R、G、B）と照明の比率を受け取り、照明の比率を反映した色成分を返す
