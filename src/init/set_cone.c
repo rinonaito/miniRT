@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:38:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:09:01 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:14:52 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int	set_cone(
 	cone = ((t_cone *)scene->objects[scene->objects_num - 1].object);
 	resize_objects_array(&scene->objects, scene->objects_num);
 	circle_center
-		= get_circle_center(cone->top,
-			cone->direction_vec,
+		= get_circle_center(cone->top, cone->direction_vec,
 			cone->height);
 	diameter
 		= tan(cone->phi * M_PI / 180.0) * cone->height * 2;

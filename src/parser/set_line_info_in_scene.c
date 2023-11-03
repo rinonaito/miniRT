@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:44:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:07:12 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:15:14 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	set_line_info_in_scene(
 		return (EXIT_FAILURE);
 	}
 	parser[identifier_type].num_of_lines++;
-	if (parser[identifier_type].fp_set_identifier(scene, line + index, have_bump_texture)
-		== EXIT_FAILURE)
+	if (parser[identifier_type].fp_set_identifier(
+			scene, line + index, have_bump_texture) == EXIT_FAILURE)
 	{
 		_print_invalid_identifier(identifier_type, parser);
 		free_scene(scene);

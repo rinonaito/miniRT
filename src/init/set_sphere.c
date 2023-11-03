@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:13:04 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:10:17 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:14:08 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int	set_sphere(
 			sphere->diameter, MAX_DIAMETER, MIN_DIAMETER)
 		|| set_str_in_rgb(&sphere->color, line, &str_index) == EXIT_FAILURE
 		|| is_invalid_rgb(sphere->color))
-	{
 		return (EXIT_FAILURE);
-	}
 	scene->objects[scene->objects_num] = create_object(
 			(void *)sphere, hit_sphere,
 			get_normal_vector_for_sphere,

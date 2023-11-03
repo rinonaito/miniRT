@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 15:56:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:11:07 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ Please check and correct the details."
 # define INVALID_NUM_OF_DEFINITION	"Invalid number of definitions. \
 You need at least one line for each A, C, L elements."
 # define INVALID_PPM_FILE			"Invalid ppm file"
-# define LACK_OF_PPM			"Missing file.  You need to give ppm file as the 2nd parameter."
+# define LACK_OF_PPM				"Missing file.\
+You need to give ppm file as the 2nd parameter."
 
 #endif

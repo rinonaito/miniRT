@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:53 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:36:50 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:14:39 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	set_plane(
 	const char *const line,
 	bool *have_bump_texture)
 {
-	t_plane	*plane;
+	t_plane			*plane;
 	const size_t	num_of_token = get_num_of_token(line);
 
 	if (num_of_token != PLANE_ARGS && num_of_token != PLANE_ARGS + BONUS_ARGS)

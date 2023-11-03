@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:05:29 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:13:06 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ int	rt_parser(const char *filename, t_scene *scene, bool *have_bump_texture)
 		print_error_msg(FILE_NOT_FOUND);
 		return (EXIT_FAILURE);
 	}
-	if (_read_from_rt_file(fd, parser, scene, have_bump_texture) == EXIT_FAILURE)
+	if (_read_from_rt_file(fd, parser, scene, have_bump_texture)
+		== EXIT_FAILURE)
 	{
 		close(fd);
 		return (EXIT_FAILURE);
