@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_invalid_argc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 15:39:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:18:35 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	is_invalid_argc(const int argc)
 {
 	bool	ret;
 
-	ret = (argc != VALID_ARGC_NUM && argc != VALID_ARGC_NUM + BONUS_ARGS);
+	ret = (argc != VALID_ARGC_NUM);
 	if (ret)
 	{
 		print_error_msg(INVALID_ARGC);

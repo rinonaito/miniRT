@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:48:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:13:22 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:43:17 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,17 @@ t_object	create_object(
 				t_vector3d (*fp_get_normal_vector_for_object)(
 					const t_ray,
 					const t_vector3d,
-					const void *,
-					const t_bumpmap),
+					const void *),
 				int (*fp_get_pixel_color_for_object)(
 					const void *, const t_ray));
 
 int			set_ambient(
 				t_scene *scene,
-				const char *const line,
-				bool *have_bump_texture);
+				const char *const line);
 
 int			set_camera(
 				t_scene *scene,
-				const char *const line,
-				bool *have_bump_texture);
+				const char *const line);
 
 t_circle	*set_circle(
 				const t_vector3d center,
@@ -46,28 +43,23 @@ int			set_cone_side(t_scene *scene, const char *const line);
 
 int			set_cone(
 				t_scene *scene,
-				const char *const line,
-				bool *have_bump_texture);
+				const char *const line);
 
 int			set_cylinder(
 				t_scene *scene,
-				const char *const line,
-				bool *have_bump_texture);
+				const char *const line);
 
 int			set_light(
 				t_scene *scene,
-				const char *const line,
-				bool *have_bump_texture);
+				const char *const line);
 
 int			set_plane(
 				t_scene *scene,
-				const char *const line,
-				bool *have_bump_texture);
+				const char *const line);
 
 int			set_sphere(
 				t_scene *scene,
-				const char *const line,
-				bool *have_bump_texture);
+				const char *const line);
 
 int			set_tube(t_scene *scene, const char *const line);
 

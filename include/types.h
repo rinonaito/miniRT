@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 16:06:16 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:46:20 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ typedef enum e_object_type
 	CIRCLE_TYPE,
 	CONE_TYPE,
 }	t_object_type;
-
-typedef enum e_texture_type
-{
-	NORMAL = 0,
-	CHECKER = 1,
-	BUMP = 2,
-}	t_texture_type;
 
 typedef enum e_view_port
 {
@@ -96,15 +89,6 @@ typedef struct s_light
 	t_rgb		color;
 }	t_light;
 
-typedef struct s_bumpmap
-{
-	t_vector3d	**map;
-	int			map_height;
-	int			map_width;
-	double		extile_height;
-	double		extile_width;
-}	t_bumpmap;
-
 typedef struct s_object
 {
 	void			*object;
@@ -115,8 +99,7 @@ typedef struct s_object
 	t_vector3d		(*fp_get_normal_vector_for_object)(
 		const t_ray,
 		const t_vector3d,
-		const void *,
-		const t_bumpmap);
+		const void *);
 	int				(*fp_get_pixel_color_for_object)(
 			const void *,
 			const t_ray);
@@ -134,10 +117,6 @@ typedef struct s_plane
 	t_vector3d		coordinate;
 	t_vector3d		direction_vec;
 	t_rgb			color;
-	t_texture_type	texture;
-	t_vector3d		basis_vec1;
-	t_vector3d		basis_vec2;
-	t_vector2d		hit_point;
 }	t_plane;
 
 typedef struct s_tube
@@ -174,7 +153,6 @@ typedef struct s_scene
 	t_object			*objects;
 	size_t				objects_num;
 	size_t				lights_num;
-	t_bumpmap			bump_map;
 }	t_scene;
 
 typedef struct s_mlx_data
@@ -204,8 +182,7 @@ typedef struct s_parser
 {
 	int		(*fp_set_identifier)(
 			t_scene *,
-			const char *const,
-			bool *);
+			const char *const);
 	char	*identifier_type_str;
 	size_t	num_of_lines;
 }	t_parser;

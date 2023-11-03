@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:38:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 17:14:52 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:25:54 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@
 
 int	set_cone(
 	t_scene *scene,
-	const char *const line,
-	bool *have_bump_texture)
+	const char *const line)
 {
 	t_cone		*cone;
 	t_vector3d	circle_center;
 	double		diameter;
 	t_circle	*circle;
 
-	(void)have_bump_texture;
 	if (get_num_of_token(line) != CONE_ARGS
 		|| set_cone_side(scene, line) == EXIT_FAILURE)
 		return (EXIT_FAILURE);

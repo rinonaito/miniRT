@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:42 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:15:59 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:24:56 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ void	_resize_lights_array(t_light **lights, const size_t lights_num)
 }
 
 //L -40.0,50.0,0.0 0.6 10,0,255
-int	set_light(t_scene *scene, const char *const line, bool *have_bump_texture)
+int	set_light(t_scene *scene, const char *const line)
 {
 	size_t	str_index;
 	t_light	*light;
 
-	(void)have_bump_texture;
 	if (get_num_of_token(line) != LIGHT_ARGS + BONUS_ARGS)
 		return (EXIT_FAILURE);
 	_resize_lights_array(&scene->lights, scene->lights_num);

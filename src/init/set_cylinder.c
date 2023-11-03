@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:27 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 16:08:36 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:25:42 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,10 @@ static void	_set_circle(
 //cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
 int	set_cylinder(
 	t_scene *scene,
-	const char *const line,
-	bool *have_bump_texture)
+	const char *const line)
 {
 	t_tube		*tube;
 
-	(void)have_bump_texture;
 	if (get_num_of_token(line) != CYLINDER_ARGS
 		|| set_tube(scene, line) == EXIT_FAILURE)
 		return (EXIT_FAILURE);

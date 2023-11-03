@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 12:53:22 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:30:25 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	get_pixel_color(
 			= scene.objects[ray->hit_object_index]
 			.fp_get_normal_vector_for_object(*ray,
 				point_on_object,
-				scene.objects[ray->hit_object_index].object,
-				scene.bump_map);
+				scene.objects[ray->hit_object_index].object);
 		set_lighting_ratio(ray, point_on_object, scene, normal_vector);
 		return (scene.objects[ray->hit_object_index]
 			.fp_get_pixel_color_for_object(

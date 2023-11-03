@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:53 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 17:14:39 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:51:47 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,9 @@
 #include "object.h"
 #include "config.h"
 
-static int	_set_str_in_texture(
-	t_texture_type *texture,
-	const char *line,
-	size_t *str_index)
-{
-	double	type;
-
-	if (set_str_in_double(&type, line, str_index)
-		|| is_invalid_double(type, BUMP, NORMAL))
-		return (EXIT_FAILURE);
-	if (NORMAL == (int)type)
-		*texture = NORMAL;
-	else if (CHECKER == (int)type)
-		*texture = CHECKER;
-	else if (BUMP == (int)type)
-		*texture = BUMP;
-	return (EXIT_SUCCESS);
-}
-
 static int	_set_plane_utils(
 	t_plane *plane,
-	const char *const line,
-	const size_t num_of_token)
+	const char *const line)
 {
 	size_t	str_index;
 
@@ -55,35 +35,23 @@ static int	_set_plane_utils(
 	{
 		return (EXIT_FAILURE);
 	}
-	if (num_of_token == PLANE_ARGS + BONUS_ARGS)
-	{
-		if (_set_str_in_texture(&plane->texture, line, &str_index))
-			return (EXIT_FAILURE);
-	}
-	else
-		plane->texture = NORMAL;
-	set_vector3d(&plane->basis_vec1, 0, 0, 0);
-	set_vector3d(&plane->basis_vec2, 0, 0, 0);
 	return (EXIT_SUCCESS);
 }
 
 //pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,225
 int	set_plane(
 	t_scene *scene,
-	const char *const line,
-	bool *have_bump_texture)
+	const char *const line)
 {
 	t_plane			*plane;
 	const size_t	num_of_token = get_num_of_token(line);
 
-	if (num_of_token != PLANE_ARGS && num_of_token != PLANE_ARGS + BONUS_ARGS)
+	if (num_of_token != PLANE_ARGS)
 		return (EXIT_FAILURE);
 	plane = ft_xcalloc(1, sizeof(t_plane));
 	resize_objects_array(&scene->objects, scene->objects_num);
-	if (_set_plane_utils(plane, line, num_of_token) == EXIT_FAILURE)
+	if (_set_plane_utils(plane, line) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (plane->texture == BUMP)
-		*have_bump_texture = true;
 	scene->objects[scene->objects_num] = create_object(
 			(void *)plane,
 			hit_plane,

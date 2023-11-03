@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 17:13:06 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 19:20:40 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ static void	_init_parser(t_parser *parser)
 static int	_read_from_rt_file(
 	const int fd,
 	t_parser *parser,
-	t_scene *scene,
-	bool *have_bump_texture)
+	t_scene *scene)
 {
 	char	*line;
 
@@ -71,7 +70,7 @@ static int	_read_from_rt_file(
 		line = get_next_line_no_nl(fd);
 		if (line == NULL)
 			break ;
-		if (set_line_info_in_scene(line, parser, scene, have_bump_texture)
+		if (set_line_info_in_scene(line, parser, scene)
 			== EXIT_FAILURE)
 		{
 			free(line);
@@ -82,7 +81,7 @@ static int	_read_from_rt_file(
 	return (EXIT_SUCCESS);
 }
 
-int	rt_parser(const char *filename, t_scene *scene, bool *have_bump_texture)
+int	rt_parser(const char *filename, t_scene *scene)
 {
 	int			fd;
 	t_parser	parser[IDENTIFIER_NUM];
@@ -94,7 +93,7 @@ int	rt_parser(const char *filename, t_scene *scene, bool *have_bump_texture)
 		print_error_msg(FILE_NOT_FOUND);
 		return (EXIT_FAILURE);
 	}
-	if (_read_from_rt_file(fd, parser, scene, have_bump_texture)
+	if (_read_from_rt_file(fd, parser, scene)
 		== EXIT_FAILURE)
 	{
 		close(fd);
