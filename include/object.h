@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/27 20:39:03 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/02 23:28:05 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,14 @@ int			get_pixel_color_for_plane(
 				const t_vector3d point);
 
 t_vector2d	convert_3d_coordinate_on_plane_in_2d(
-				const t_vector3d coordinate_3d,
-				const t_vector3d normal);		
+				const t_vector3d basis_vec1,
+				const t_vector3d basis_vec2,
+				const t_vector3d coordinate_3d);
+
+t_vector3d	get_normal_vector_with_bump(
+				t_vector2d hit_point,
+				t_vector3d normal_vec,
+				t_bumpmap bumpmap);
 
 //circle.h
 double		hit_circle(const t_ray ray, const void *object);

@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:04:02 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 21:11:03 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/02 21:03:01 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,22 @@
 #include "config.h"
 #include <math.h>
 
-static t_rgb	_get_plane_color_for_checkerboard(
-		const t_vector3d coordinate_3d,
-		const t_vector3d normal,
-		const t_rgb base_color)
+static t_rgb	_get_plane_color_for_checkerboard(const t_plane plane)
 {
-	t_vector2d	coordinate_2d;
 	int			checker_x;
 	int			checker_y;
 	t_rgb		opposite_color;
 
-	coordinate_2d = convert_3d_coordinate_on_plane_in_2d(coordinate_3d, normal);
-	checker_x = (int)(floor(coordinate_2d.x / CHECKER_SIZE)) % 2;
-	checker_y = (int)(floor(coordinate_2d.y / CHECKER_SIZE)) % 2;
+	checker_x = (int)(floor(plane.hit_point.x / CHECKER_SIZE)) % 2;
+	checker_y = (int)(floor(plane.hit_point.y / CHECKER_SIZE)) % 2;
 	if (pow(checker_x, 2) == pow(checker_y, 2))
 	{
-		opposite_color.red = 255 - base_color.red;
-		opposite_color.green = 255 - base_color.green;
-		opposite_color.blue = 255 - base_color.blue;
+		opposite_color.red = MAX_COLOR - plane.color.red;
+		opposite_color.green = MAX_COLOR - plane.color.green;
+		opposite_color.blue = MAX_COLOR - plane.color.blue;
 		return (opposite_color);
 	}
-	return (base_color);
+	return (plane.color);
 }
 
 /**
@@ -48,6 +43,7 @@ static t_rgb	_get_plane_color_for_checkerboard(
  * 関数は、指定された照明比率に基づいて平面の色を修正し、
  * その修正された色を整数のピクセルカラーとして返す。
  */
+ //TODO:pointを削除する
 int	get_pixel_color_for_plane(
 	const void *object,
 	const t_ray ray,
@@ -56,11 +52,11 @@ int	get_pixel_color_for_plane(
 	t_plane	*plane;
 	t_rgb	color;
 
+	(void)point;
 	plane = (t_plane *)object;
 	if (plane->texture == CHECKER)
 	{
-		color = _get_plane_color_for_checkerboard(
-				point, plane->direction_vec, plane->color);
+		color = _get_plane_color_for_checkerboard(*plane);
 	}
 	else
 		color = plane->color;

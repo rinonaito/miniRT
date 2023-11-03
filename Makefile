@@ -55,6 +55,7 @@ ${SRC_DIR}/object/cone/get_pixel_color_for_cone.c \
 ${SRC_DIR}/object/cone/hit_cone.c \
 ${SRC_DIR}/object/plane/convert_3d_coordinate_on_plane_in_2d.c \
 ${SRC_DIR}/object/plane/get_normal_vector_for_plane.c \
+${SRC_DIR}/object/plane/get_normal_vector_with_bump.c \
 ${SRC_DIR}/object/plane/get_pixel_color_for_plane.c \
 ${SRC_DIR}/object/plane/hit_plane.c \
 ${SRC_DIR}/object/sphere/get_normal_vector_for_sphere.c \

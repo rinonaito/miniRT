@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/29 17:30:41 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/02 23:28:12 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,9 @@ typedef struct s_plane
 	t_vector3d		direction_vec;
 	t_rgb			color;
 	t_texture_type	texture;
+	t_vector3d		basis_vec1;
+	t_vector3d		basis_vec2;
+	t_vector2d		hit_point;
 }	t_plane;
 
 typedef struct s_tube

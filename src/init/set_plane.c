@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:12:53 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 21:01:21 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/02 20:50:21 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	set_plane(t_scene *scene, const char *const line)
 		|| is_invalid_rgb(plane->color)
 		|| _set_str_in_texture(&plane->texture, line, &str_index))
 		return (EXIT_FAILURE);
+	set_vector3d(&plane->basis_vec1, 0, 0, 0);
+	set_vector3d(&plane->basis_vec2, 0, 0, 0);
 	scene->objects[scene->objects_num] = create_object(
 			(void *)plane, hit_plane, get_normal_vector_for_plane,
 			get_pixel_color_for_plane);
