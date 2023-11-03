@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 14:58:06 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 15:22:03 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ static bool	_is_invalid_num_of_definitions(t_parser *parser)
 	if (parser[A].num_of_lines != 1
 		|| parser[C].num_of_lines != 1
 		|| parser[L].num_of_lines < 1)
+	{
+		print_error_msg(INVALID_NUM_OF_DEFINITION);
 		return (true);
+	}
 	return (false);
 }
 

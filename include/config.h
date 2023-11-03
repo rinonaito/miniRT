@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/29 20:48:30 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 15:22:36 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,7 @@ Please ensure the provided file path is correct and try again."
 # define INVALID_IDENTIFIER1 		"Invalid information for the identifier. \
 Please check and correct the details."
 # define INVALID_IDENTIFIER2 		"The invalid identifier is "
+# define INVALID_NUM_OF_DEFINITION	"Invalid number of definitions. \
+You need at least one line for each A, C, L elements."
 
 #endif
