@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:29:30 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 14:16:21 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:33:39 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 //TODO:あとで削除
 void	init_map(t_scene *scene);
 
+//TODO:t_bumpmapのmapをfreeする
 int	main(int argc, char **argv)
 {
 	t_mlx_data	mlx_data;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_normal_vector_for_cone.c                       :+:      :+:    :+:   */
+/*   get_normal_vector_for_cone_side.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:03:40 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/19 21:06:07 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 13:06:14 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include "vector.h"
 #include "object.h"
 
-t_vector3d	get_normal_vector_for_cone(
+t_vector3d	get_normal_vector_for_cone_side(
 	const t_ray ray,
 	const t_vector3d point,
-	const void *object)
+	const void *object,
+	const t_bumpmap bumpmap)
 {
 	t_cone		*cone;
 	t_vector3d	bottom_center;
@@ -25,6 +26,7 @@ t_vector3d	get_normal_vector_for_cone(
 	t_vector3d	projection_on_axis;
 	t_vector3d	normal_vector;
 
+	(void) bumpmap;
 	cone = (t_cone *)object;
 	bottom_center = subtraction_vector3d(cone->top,
 			vector3d_dot_double(cone->direction_vec, cone->height / 2.0));

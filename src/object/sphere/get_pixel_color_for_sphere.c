@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:45:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/20 15:36:43 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:36:04 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@
  */
 int	get_pixel_color_for_sphere(
 	const void *object,
-	const t_ray ray,
-	const t_vector3d point)
+	const t_ray ray)
 {
 	t_sphere	*sphere;
 
-	(void)point;
 	sphere = (t_sphere *)object;
 	return (get_pixel_color_for_object(
 			sphere->color,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/10/23 14:59:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:49:37 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ double		hit_sphere(const t_ray ray, const void *object);
 t_vector3d	get_normal_vector_for_sphere(
 				const t_ray ray,
 				const t_vector3d point,
-				const void *object);
+				const void *object,
+				const t_bumpmap bumpmap);
 
 int			get_pixel_color_for_sphere(
 				const void *object,
-				const t_ray ray,
-				const t_vector3d point);
+				const t_ray ray);
 
 //plane.h
 double		hit_plane(const t_ray ray, const void *object);
@@ -54,12 +54,22 @@ double		hit_plane(const t_ray ray, const void *object);
 t_vector3d	get_normal_vector_for_plane(
 				const t_ray ray,
 				const t_vector3d point,
-				const void *object);
+				const void *object,
+				const t_bumpmap bumpmap);
 
 int			get_pixel_color_for_plane(
 				const void *object,
-				const t_ray ray,
-				const t_vector3d point);
+				const t_ray ray);
+
+t_vector2d	convert_3d_coordinate_on_plane_in_2d(
+				const t_vector3d basis_vec1,
+				const t_vector3d basis_vec2,
+				const t_vector3d coordinate_3d);
+
+t_vector3d	get_normal_vector_with_bump(
+				t_vector2d hit_point,
+				t_vector3d normal_vec,
+				t_bumpmap bumpmap);
 
 //circle.h
 double		hit_circle(const t_ray ray, const void *object);
@@ -67,12 +77,12 @@ double		hit_circle(const t_ray ray, const void *object);
 t_vector3d	get_normal_vector_for_circle(
 				const t_ray ray,
 				const t_vector3d point,
-				const void *object);
+				const void *object,
+				const t_bumpmap bumpmap);
 
 int			get_pixel_color_for_circle(
 				const void *object,
-				const t_ray ray,
-				const t_vector3d point);
+				const t_ray ray);
 
 //tube.h
 double		hit_tube(const t_ray ray, const void *object);
@@ -80,24 +90,24 @@ double		hit_tube(const t_ray ray, const void *object);
 t_vector3d	get_normal_vector_for_tube(
 				const t_ray ray,
 				const t_vector3d point,
-				const void *object);
+				const void *object,
+				const t_bumpmap bumpmap);
 
 int			get_pixel_color_for_tube(
 				const void *object,
-				const t_ray ray,
-				const t_vector3d point);
+				const t_ray ray);
 
 //cone.h
-double		hit_cone(const t_ray ray, const void *object);
+double		hit_cone_side(const t_ray ray, const void *object);
 
-t_vector3d	get_normal_vector_for_cone(
+t_vector3d	get_normal_vector_for_cone_side(
 				const t_ray ray,
 				const t_vector3d point,
-				const void *object);
-
-int			get_pixel_color_for_cone(
 				const void *object,
-				const t_ray ray,
-				const t_vector3d point);
+				const t_bumpmap bumpmap);
+
+int			get_pixel_color_for_cone_side(
+				const void *object,
+				const t_ray ray);
 
 #endif

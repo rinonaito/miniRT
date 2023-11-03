@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_cone_side.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:00:33 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:49:33 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	set_cone_side(t_scene *scene, const char *const line)
 		return (EXIT_FAILURE);
 	scene->objects[scene->objects_num] = create_object(
 			(void *)cone,
-			hit_cone,
-			get_normal_vector_for_cone,
-			get_pixel_color_for_cone);
+			hit_cone_side,
+			get_normal_vector_for_cone_side,
+			get_pixel_color_for_cone_side);
 	scene->objects_num++;
 	return (EXIT_SUCCESS);
 }

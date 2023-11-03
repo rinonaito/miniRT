@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pixel_color_for_cone.c                         :+:      :+:    :+:   */
+/*   malloc_2dimensional_array.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 11:14:10 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/20 15:38:37 by rnaito           ###   ########.fr       */
+/*   Created: 2023/10/29 21:14:40 by rnaito            #+#    #+#             */
+/*   Updated: 2023/10/29 21:36:31 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "types.h"
-#include "vector.h"
-#include "color.h"
-#include "object.h"
+#include "x_wrapper.h"
+#include <stdlib.h>
 
-int	get_pixel_color_for_cone(
-	const void *object,
-	const t_ray ray,
-	const t_vector3d point)
+//2次元配列をマロック
+void	malloc_2dimensional_array(
+	void ***array,
+	const size_t size1,
+	const size_t size2,
+	const size_t count_num)
 {
-	t_cone	*cone;
+	size_t	i;
 
-	(void)point;
-	cone = (t_cone *)object;
-	return (get_pixel_color_for_object(cone->color,
-			ray.rgb,
-			ray.lighting_ratio));
+	*array = ft_xcalloc(size1, sizeof(void *));
+	i = 0;
+	while (i < count_num)
+	{
+		(*array)[i] = ft_xcalloc(size2, 1);
+		i++;
+	}
 }

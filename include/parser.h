@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 12:18:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:14:40 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,24 @@
 
 int					file_parser(t_scene *scene, int argc, char **argv);
 
+int					rt_parser(
+						const char *filename,
+						t_scene *scene);
+
 int					set_line_info_in_scene(
 						const char *const line,
 						t_parser *parser,
 						t_scene *scene);
 
+int					ppm_parser(
+						const char *filename,
+						t_scene *scene);
+
+int					set_normal_bump_in_bump_map(
+						const char *const line,
+						t_bumpmap *bump_map,
+						const int max_color,
+						int count_map_height);
 //validators
 bool				is_invalid_argc(const int argc);
 bool				is_invalid_coordinate(const t_vector3d cordinate);

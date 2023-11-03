@@ -50,10 +50,12 @@ ${SRC_DIR}/object/common/camera_is_inside_of_object.c \
 ${SRC_DIR}/object/common/get_circle_center.c \
 ${SRC_DIR}/object/common/get_normal_vector_for_2d.c \
 ${SRC_DIR}/object/common/get_pixel_color_for_object.c \
-${SRC_DIR}/object/cone/get_normal_vector_for_cone.c \
-${SRC_DIR}/object/cone/get_pixel_color_for_cone.c \
-${SRC_DIR}/object/cone/hit_cone.c \
+${SRC_DIR}/object/cone/get_normal_vector_for_cone_side.c \
+${SRC_DIR}/object/cone/get_pixel_color_for_cone_side.c \
+${SRC_DIR}/object/cone/hit_cone_side.c \
+${SRC_DIR}/object/plane/convert_3d_coordinate_on_plane_in_2d.c \
 ${SRC_DIR}/object/plane/get_normal_vector_for_plane.c \
+${SRC_DIR}/object/plane/get_normal_vector_with_bump.c \
 ${SRC_DIR}/object/plane/get_pixel_color_for_plane.c \
 ${SRC_DIR}/object/plane/hit_plane.c \
 ${SRC_DIR}/object/sphere/get_normal_vector_for_sphere.c \
@@ -63,7 +65,10 @@ ${SRC_DIR}/object/tube/get_normal_vector_for_tube.c \
 ${SRC_DIR}/object/tube/get_pixel_color_for_tube.c \
 ${SRC_DIR}/object/tube/hit_tube.c \
 ${SRC_DIR}/parser/file_parser.c \
+${SRC_DIR}/parser/ppm_parser.c \
+${SRC_DIR}/parser/rt_parser.c \
 ${SRC_DIR}/parser/set_line_info_in_scene.c \
+${SRC_DIR}/parser/set_normal_bump_in_bump_map.c \
 ${SRC_DIR}/parser/utils/conversion/convert_csv_to_rgb.c \
 ${SRC_DIR}/parser/utils/conversion/convert_csv_to_vector3d.c \
 ${SRC_DIR}/parser/utils/conversion/convert_string_to_double.c \
@@ -85,15 +90,16 @@ ${SRC_DIR}/parser/utils/string_management/skip_spaces.c \
 ${SRC_DIR}/parser/validators/general/is_invalid_argc.c \
 ${SRC_DIR}/parser/validators/general/is_invalid_file_extension.c \
 ${SRC_DIR}/parser/validators/general/is_string_match.c \
-${SRC_DIR}/parser/validators/identifier_utils/is_invalid_coordinates_ratio.c \
-${SRC_DIR}/parser/validators/identifier_utils/is_invalid_double_ratio.c \
-${SRC_DIR}/parser/validators/identifier_utils/is_invalid_fov_ratio.c \
-${SRC_DIR}/parser/validators/identifier_utils/is_invalid_int_ratio.c \
+${SRC_DIR}/parser/validators/identifier_utils/is_invalid_coordinate.c \
+${SRC_DIR}/parser/validators/identifier_utils/is_invalid_double.c \
+${SRC_DIR}/parser/validators/identifier_utils/is_invalid_fov.c \
+${SRC_DIR}/parser/validators/identifier_utils/is_invalid_int.c \
 ${SRC_DIR}/parser/validators/identifier_utils/is_invalid_lighting_ratio.c \
-${SRC_DIR}/parser/validators/identifier_utils/is_invalid_normalized_vector_ratio.c \
-${SRC_DIR}/parser/validators/identifier_utils/is_invalid_rgb_ratio.c \
+${SRC_DIR}/parser/validators/identifier_utils/is_invalid_normalized_vector.c \
+${SRC_DIR}/parser/validators/identifier_utils/is_invalid_rgb.c \
 ${SRC_DIR}/set_closest_point_info_in_ray.c \
 ${SRC_DIR}/utils/common/free_scene.c \
+${SRC_DIR}/utils/common/malloc_2dimensional_array.c \
 ${SRC_DIR}/utils/error_utils/exit_with_errno.c \
 ${SRC_DIR}/utils/error_utils/print_error_msg.c \
 ${SRC_DIR}/utils/mlx_utils/handle_key_press.c \
@@ -112,6 +118,7 @@ ${SRC_DIR}/vector/normalize_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d.c \
 ${SRC_DIR}/vector/subtraction_vector3d_xyz.c \
 ${SRC_DIR}/vector/vector3d_dot_double.c \
+
 
 OBJS	=	${addprefix ${OBJ_DIR}/, ${SRCS:.c=.o}}
 DEPS	=	${OBJS:.o=.d}

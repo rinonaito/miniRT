@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:08:36 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:49:23 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ static void	init_cone(t_scene *scene, int *index)
 	cone->phi = 15.0;
 	scene->objects[*index].object = cone;
 	scene->objects[*index].object_type = CONE_TYPE;
-	scene->objects[*index].fp_hit_object = hit_cone;
-	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_cone;
-	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_cone;
+	scene->objects[*index].fp_hit_object = hit_cone_side;
+	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_cone_side;
+	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_cone_side;
 	scene->objects_num++;
 
 	t_circle *circle = malloc(sizeof(t_circle) * 1);
@@ -371,4 +371,19 @@ static void	init_lights(t_scene *scene)
 // 			circle->color.red, circle->color.green, circle->color.blue);
 // 		printf("\n");
 // 	}
+// }
+
+// void	_print_bumpmap(t_bumpmap bumpmap)
+// {
+// 	printf("< in main >\n");
+// 	for (int i = 0; i < bumpmap.map_height; i++)
+// 	{
+// 		for (int j = 0; j < bumpmap.map_width; j++)
+// 		{
+// 			printf("map[%d][%d] : x = %lf, y = %lf, z = %lf\n",
+// 				i, j, bumpmap.map[i][j].x, bumpmap.map[i][j].y, bumpmap.map[i][j].z);
+// 		}
+// 		printf("\n");
+// 	}
+// 	printf("\n");
 // }

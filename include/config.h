@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/28 21:24:24 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:48:30 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
-# define AMBIENT				"A"
-# define CAMERA					"C"
-# define LIGHT					"L"
-# define SPHERE					"sp"
-# define PLANE					"pl"
-# define CYLINDER				"cy"
-# define CONE					"co"
+# define AMBIENT				"A\0"
+# define CAMERA					"C\0"
+# define LIGHT					"L\0"
+# define SPHERE					"sp\0"
+# define PLANE					"pl\0"
+# define CYLINDER				"cy\0"
+# define CONE					"co\0"
 # define AMBIENT_ARGS			2
 # define CAMERA_ARGS			3
 # define LIGHT_ARGS				2
@@ -87,6 +87,7 @@
 # define MIN_DIAMETER			0
 # define RGB_NUM				3
 # define VECTOR_3D_NUM			3
+
 # define ERROR_MSG					"Error"
 # define INVALID_ARGC				"Invalid argument count. \
 Usage: ./miniRT [file_name]"

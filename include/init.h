@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:48:58 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/27 11:50:05 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:02:52 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ t_object	create_object(
 				const void *object,
 				double (*fp_hit_object)(const t_ray, const void *),
 				t_vector3d (*fp_get_normal_vector_for_object)(
-					const t_ray, const t_vector3d, const void *),
+					const t_ray,
+					const t_vector3d,
+					const void *,
+					const t_bumpmap),
 				int (*fp_get_pixel_color_for_object)(
-					const void *, const t_ray, const t_vector3d));
+					const void *, const t_ray));
 
 int			set_ambient(t_scene *scene, const char *const line);
 
