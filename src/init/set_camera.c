@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_camera.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:11:59 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:46:47 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:09:19 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 #include "config.h"
 
 //C -50.0,0,20 0,0,1 70
-int	set_camera(t_scene *scene, const char *const line)
+int	set_camera(t_scene *scene, const char *const line, bool *have_bump_texture)
 {
 	size_t	str_index;
 
+	(void)have_bump_texture;
 	if (get_num_of_token(line) != CAMERA_ARGS)
 		return (EXIT_FAILURE);
 	str_index = 0;

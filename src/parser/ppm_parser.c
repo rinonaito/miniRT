@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 13:38:44 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 15:43:12 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,7 @@ int	ppm_parser(const char *filename, t_scene *scene)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-	{
-		print_error_msg(FILE_NOT_FOUND);
 		return (EXIT_FAILURE);
-	}
 	if (_is_invalid_header(fd)
 		|| _set_map_size(fd, &scene->bump_map) == EXIT_FAILURE
 		|| _set_max_color(fd, &max_color) == EXIT_FAILURE)

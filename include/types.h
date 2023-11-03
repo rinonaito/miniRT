@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 12:52:15 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 16:06:16 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,8 @@ typedef struct s_parser
 {
 	int		(*fp_set_identifier)(
 			t_scene *,
-			const char *const);
+			const char *const,
+			bool *);
 	char	*identifier_type_str;
 	size_t	num_of_lines;
 }	t_parser;

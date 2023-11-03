@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ambient.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:11:16 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:08:21 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 //A 0.2 255,255,255
 //TODO
 //	引数の数チェックが終わっていない
-int	set_ambient(t_scene *scene, const char *const line)
+int	set_ambient(t_scene *scene, const char *const line, bool *have_bump_texture)
 {
 	size_t	str_index;
 
+	(void)have_bump_texture;
 	if (get_num_of_token(line) != AMBIENT_ARGS)
 		return (EXIT_FAILURE);
 	str_index = 0;

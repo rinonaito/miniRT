@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:13:04 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:47:17 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:10:17 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@
 #include <stdlib.h>
 
 //sp 0.0,0.0,20.6 12.6 10,0,255
-int	set_sphere(t_scene *scene, const char *const line)
+int	set_sphere(
+	t_scene *scene,
+	const char *const line,
+	bool *have_bump_texture)
 {
 	t_sphere	*sphere;
 	size_t		str_index;
 
+	(void)have_bump_texture;
 	if (get_num_of_token(line) != SPHERE_ARGS)
 		return (EXIT_FAILURE);
 	sphere = ft_xcalloc(1, sizeof(t_sphere));

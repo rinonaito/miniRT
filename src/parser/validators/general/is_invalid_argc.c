@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:18:05 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 16:58:33 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 15:39:52 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	is_invalid_argc(const int argc)
 {
 	bool	ret;
 
-	ret = (argc != INVALID_ARGC_NUM + BONUS_ARGS);
+	ret = (argc != VALID_ARGC_NUM && argc != VALID_ARGC_NUM + BONUS_ARGS);
 	if (ret)
 	{
 		print_error_msg(INVALID_ARGC);
