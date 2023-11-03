@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/02 20:34:09 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:53:22 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@
 #include <stdio.h>
 #include <math.h>
 
-t_vector3d	get_normal_vector_for_plane2(
-	const t_ray ray,
-	const t_vector3d point,
-	const void *object,
-	const t_bumpmap bumpmap);
-
 int	get_pixel_color(
 	t_ray *ray,
 	const t_scene scene)
@@ -43,22 +37,16 @@ int	get_pixel_color(
 		point_on_object = addition_vector3d(ray->origin,
 				vector3d_dot_double(ray->direction_vec, ray->hit_distance));
 		normal_vector
-			= get_normal_vector_for_plane2(
-				*ray,
+			= scene.objects[ray->hit_object_index]
+			.fp_get_normal_vector_for_object(*ray,
 				point_on_object,
 				scene.objects[ray->hit_object_index].object,
 				scene.bump_map);
-		// normal_vector
-		// 	= scene.objects[ray->hit_object_index]
-		// 	.fp_get_normal_vector_for_object(*ray,
-		// 		point_on_object,
-		// 		scene.objects[ray->hit_object_index].object);
 		set_lighting_ratio(ray, point_on_object, scene, normal_vector);
 		return (scene.objects[ray->hit_object_index]
 			.fp_get_pixel_color_for_object(
 				scene.objects[ray->hit_object_index].object,
-				*ray,
-				point_on_object));
+				*ray));
 	}
 	else
 		return (BLACK);

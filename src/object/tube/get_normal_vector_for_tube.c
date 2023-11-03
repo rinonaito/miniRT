@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:02:17 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/19 20:52:25 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:47:19 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 t_vector3d	get_normal_vector_for_tube(
 	const t_ray ray,
 	const t_vector3d point,
-	const void *object)
+	const void *object,
+	const t_bumpmap bumpmap)
 {
 	t_tube		*tube;
 	t_vector3d	bottom_center;
@@ -25,6 +26,7 @@ t_vector3d	get_normal_vector_for_tube(
 	t_vector3d	projection_on_axis;
 	t_vector3d	normal_vector;
 
+	(void)bumpmap;
 	tube = (t_tube *)object;
 	bottom_center = subtraction_vector3d(tube->center,
 			vector3d_dot_double(tube->direction_vec, tube->height / 2.0));

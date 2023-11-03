@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:01:19 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/02 23:28:17 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:40:18 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,6 @@ static bool	_is_first_hit(t_vector3d basis_vec1)
 		return (false);
 }
 
-t_vector3d	get_normal_vector_for_plane(
-	const t_ray ray,
-	const t_vector3d point,
-	const void *object)
-{
-	t_plane		*plane;
-	t_vector3d	normal_vec;
-
-	(void)point;
-	plane = (t_plane *)object;
-	normal_vec = get_normal_vector_for_2d(ray, plane->direction_vec);
-	if (plane->texture != NORMAL)
-	{
-		if (_is_first_hit(plane->basis_vec1))
-		{
-			plane->basis_vec1 = normalize_vector3d(
-					subtraction_vector3d(point, plane->coordinate));
-			plane->basis_vec2 = normalize_vector3d(
-					cross_vector3d(normal_vec, plane->basis_vec1));
-		}
-		plane->hit_point = convert_3d_coordinate_on_plane_in_2d(
-				plane->basis_vec1,
-				plane->basis_vec2,
-				point);
-	}
-	return (normal_vec);
-}
-
 /**
  * 平面の法線ベクトルを返す
  * 
@@ -64,7 +36,7 @@ t_vector3d	get_normal_vector_for_plane(
  * 
  * plane: 平面の情報（法線ベクトルなど）
  */
-t_vector3d	get_normal_vector_for_plane2(
+t_vector3d	get_normal_vector_for_plane(
 	const t_ray ray,
 	const t_vector3d point,
 	const void *object,

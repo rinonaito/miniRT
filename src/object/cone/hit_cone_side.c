@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:09:46 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 15:18:40 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:47:05 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static bool	_is_out_of_height_range(
 	return (false);
 }
 
-double	hit_cone(const t_ray ray, const void *object)
+double	hit_cone_side(const t_ray ray, const void *object)
 {
 	t_cone		*cone;
 	double		coefficients[3];

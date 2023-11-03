@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:06:39 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/20 15:38:14 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:36:35 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@
 
 int	get_pixel_color_for_tube(
 	const void *object,
-	const t_ray ray,
-	const t_vector3d point)
+	const t_ray ray)
 {
 	t_tube	*tube;
 
-	(void)point;
 	tube = (t_tube *)object;
 	return (get_pixel_color_for_object(tube->color,
 			ray.rgb,

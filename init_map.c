@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:12:41 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/29 21:07:51 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:49:23 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ static void	init_cone(t_scene *scene, int *index)
 	cone->phi = 15.0;
 	scene->objects[*index].object = cone;
 	scene->objects[*index].object_type = CONE_TYPE;
-	scene->objects[*index].fp_hit_object = hit_cone;
-	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_cone;
-	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_cone;
+	scene->objects[*index].fp_hit_object = hit_cone_side;
+	scene->objects[*index].fp_get_normal_vector_for_object = get_normal_vector_for_cone_side;
+	scene->objects[*index].fp_get_pixel_color_for_object = get_pixel_color_for_cone_side;
 	scene->objects_num++;
 
 	t_circle *circle = malloc(sizeof(t_circle) * 1);
