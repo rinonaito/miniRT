@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/04 13:06:50 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/04 13:18:37 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	set_lighting_ratio(
 	const t_vector3d normal_vector)
 {
 	double		diffuse;
-	double		specular;
 	t_ray		spot_light_ray;
 
 	spot_light_ray = _get_spot_light_ray(
@@ -90,10 +89,8 @@ void	set_lighting_ratio(
 	{
 		diffuse = calculate_lighting_ratio(spot_light_ray.direction_vec,
 				normal_vector, scene.light.lighting_ratio);
-		specular = get_specular_lighting_ratio(scene.light,
-				normal_vector, original_point, scene.camera.origin);
 		ray->rgb = _get_ray_color(ray->rgb,
-				ray->lighting_ratio, diffuse + specular);
-		ray->lighting_ratio += (diffuse + specular);
+				ray->lighting_ratio, diffuse);
+		ray->lighting_ratio += (diffuse);
 	}
 }
