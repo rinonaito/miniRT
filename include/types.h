@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:37:26 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 20:04:57 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/04 12:41:41 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ typedef struct s_light
 {
 	t_vector3d	origin;
 	double		lighting_ratio;
-	t_rgb		color;
 }	t_light;
 
 typedef struct s_object
@@ -140,10 +139,9 @@ typedef struct s_scene
 {
 	t_ambient_lighting	ambient;
 	t_camera			camera;
-	t_light				*lights;
+	t_light				light;
 	t_object			*objects;
 	size_t				objects_num;
-	size_t				lights_num;
 }	t_scene;
 
 typedef struct s_mlx_data

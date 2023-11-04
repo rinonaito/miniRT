@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_lighting_ratio.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:02:06 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/17 19:53:50 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/04 13:06:50 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 */
 static t_rgb	_get_ray_color(
 	const t_rgb ray_rgb,
-	const t_rgb light_rgb,
 	const double ray_lighting_ratio,
 	const double light_lighting_ratio)
 {
@@ -34,9 +33,9 @@ static t_rgb	_get_ray_color(
 	double	t;
 
 	t = ray_lighting_ratio / (ray_lighting_ratio + light_lighting_ratio);
-	mixed_red = (1 - t) * light_rgb.red + t * ray_rgb.red;
-	mixed_green = (1 - t) * light_rgb.green + t * ray_rgb.green;
-	mixed_blue = (1 - t) * light_rgb.blue + t * ray_rgb.blue;
+	mixed_red = (1 - t) * MAX_COLOR + t * ray_rgb.red;
+	mixed_green = (1 - t) * MAX_COLOR + t * ray_rgb.green;
+	mixed_blue = (1 - t) * MAX_COLOR + t * ray_rgb.blue;
 	mixed_rgb.red = mixed_red;
 	mixed_rgb.green = mixed_green;
 	mixed_rgb.blue = mixed_blue;
@@ -78,29 +77,23 @@ void	set_lighting_ratio(
 	const t_scene scene,
 	const t_vector3d normal_vector)
 {
-	size_t		i;
 	double		diffuse;
 	double		specular;
 	t_ray		spot_light_ray;
 
-	i = 0;
-	while (i < scene.lights_num)
+	spot_light_ray = _get_spot_light_ray(
+			scene.light.origin, original_point, scene.ambient);
+	if (is_hit_by_spot_light(
+			spot_light_ray, scene, original_point, scene.light)
+		&& _is_smaller_than_vertical(
+			spot_light_ray.direction_vec, normal_vector))
 	{
-		spot_light_ray = _get_spot_light_ray(
-				scene.lights[i].origin, original_point, scene.ambient);
-		if (is_hit_by_spot_light(
-				spot_light_ray, scene, original_point, scene.lights[i])
-			&& _is_smaller_than_vertical(
-				spot_light_ray.direction_vec, normal_vector))
-		{
-			diffuse = calculate_lighting_ratio(spot_light_ray.direction_vec,
-					normal_vector, scene.lights[i].lighting_ratio);
-			specular = get_specular_lighting_ratio(scene.lights[i],
-					normal_vector, original_point, scene.camera.origin);
-			ray->rgb = _get_ray_color(ray->rgb, scene.lights[i].color,
-					ray->lighting_ratio, diffuse + specular);
-			ray->lighting_ratio += (diffuse + specular);
-		}
-		i++;
+		diffuse = calculate_lighting_ratio(spot_light_ray.direction_vec,
+				normal_vector, scene.light.lighting_ratio);
+		specular = get_specular_lighting_ratio(scene.light,
+				normal_vector, original_point, scene.camera.origin);
+		ray->rgb = _get_ray_color(ray->rgb,
+				ray->lighting_ratio, diffuse + specular);
+		ray->lighting_ratio += (diffuse + specular);
 	}
 }

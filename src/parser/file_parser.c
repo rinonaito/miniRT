@@ -6,7 +6,7 @@
 /*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:06 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/11/03 19:23:14 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/04 12:49:32 by yshimoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 int	file_parser(t_scene *scene, int argc, char **argv)
 {
-	scene->lights_num = 0;
 	scene->objects_num = 0;
 	if (is_invalid_argc(argc)
 		|| is_invalid_file_extension(argv[1])
