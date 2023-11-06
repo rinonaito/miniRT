@@ -32,10 +32,16 @@ double	get_closer_hit_distance(double a, double b, double c)
 		return (NOT_HIT);
 	hit_distance_1 = (-b - sqrt(discriminant)) / (2.0 * a);
 	hit_distance_2 = (-b + sqrt(discriminant)) / (2.0 * a);
-	if (hit_distance_1 > 0.0 && hit_distance_2 > 0.0)
-		return (hit_distance_1);
-	else if (hit_distance_1 < 0.0 && hit_distance_2 > 0.0)
+	if (hit_distance_1 < 0.0 && hit_distance_2 > 0.0)
 		return (hit_distance_2);
+	else if (hit_distance_1 > 0.0 && hit_distance_2 < 0.0)
+		return (hit_distance_1);
+	else if (hit_distance_1 > 0.0 && hit_distance_2 > 0.0)
+	{
+		if (hit_distance_1 > hit_distance_2)
+			return (hit_distance_2);
+		return (hit_distance_1);
+	}
 	else
 		return (NOT_HIT);
 }
