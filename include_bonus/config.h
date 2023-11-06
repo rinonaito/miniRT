@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/04 12:56:56 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:37:43 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@
 # define MIN_DIAMETER			0
 # define RGB_NUM				3
 # define VECTOR_3D_NUM			3
+# define VALID_HIT_POINT		0
+# define NO_VALID_POINT			1
+# define GET_ANOTHER_HIT_POINT	2
 
 # define ERROR_MSG					"Error"
 # define INVALID_ARGC				"Invalid argument count. \
@@ -96,7 +99,7 @@ Please provide a .rt file as an argument."
 # define INVALID_IDENTIFIER_TYPE	"Invalid identifier detected. \
 Accepted identifiers are: \
 A (AMBIENT), C (CAMERA), L (LIGHT), \
-sp (SPHERE), pl (PLANE), cy (CYLINDER), co (CONE)."
+sp (SPHERE), pl (PLANE), cy (CYLINDER)."
 # define FILE_NOT_FOUND				 "File not found. \
 Please ensure the provided file path is correct and try again."
 # define INVALID_IDENTIFIER1 		"Invalid information for the identifier. \

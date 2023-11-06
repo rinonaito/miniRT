@@ -118,6 +118,7 @@ SRCS			=	\
 SRCS_BONUS		=	\
 				main.c \
 				${SRC_BONUS_DIR}/calculator/get_closer_hit_distance.c \
+				${SRC_BONUS_DIR}/calculator/get_farer_hit_distance.c \
 				${SRC_BONUS_DIR}/calculator/scale_to_minus_one_to_one.c \
 				${SRC_BONUS_DIR}/calculator/scale_to_zero_to_one.c \
 				${SRC_BONUS_DIR}/color/convert_rgb_in_int.c \
@@ -153,6 +154,7 @@ SRCS_BONUS		=	\
 				${SRC_BONUS_DIR}/object/cone/get_normal_vector_for_cone_side.c \
 				${SRC_BONUS_DIR}/object/cone/get_pixel_color_for_cone_side.c \
 				${SRC_BONUS_DIR}/object/cone/hit_cone_side.c \
+				${SRC_BONUS_DIR}/object/cone/is_invalid_hit_point.c \
 				${SRC_BONUS_DIR}/object/plane/convert_3d_coordinate_on_plane_in_2d.c \
 				${SRC_BONUS_DIR}/object/plane/get_normal_vector_for_plane.c \
 				${SRC_BONUS_DIR}/object/plane/get_normal_vector_with_bump.c \
