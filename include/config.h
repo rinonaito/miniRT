@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:33:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/04 13:57:10 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:37:43 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@
 # define MIN_DIAMETER			0
 # define RGB_NUM				3
 # define VECTOR_3D_NUM			3
+# define VALID_HIT_POINT		0
+# define NO_VALID_POINT			1
+# define GET_ANOTHER_HIT_POINT	2
 
 # define ERROR_MSG					"Error"
 # define INVALID_ARGC				"Invalid argument count. \
