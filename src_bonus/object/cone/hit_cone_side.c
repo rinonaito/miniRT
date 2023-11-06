@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_cone.c                                         :+:      :+:    :+:   */
+/*   hit_cone_side.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:09:46 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 12:47:05 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/06 17:51:30 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "vector.h"
 #include "config.h"
 #include "calculator.h"
+#include "object.h"
 #include <math.h>
 #include <stdbool.h>
-
 /**
  * 円錐とレイとの衝突判定に使用する二次方程式（ax^2 + bx + c = 0）の
  * 係数(a, b, c)を取得し、引数coefficientへ格納する。
@@ -42,43 +42,32 @@ static void	_set_coeffients(double *coefficients, t_ray ray, t_cone cone)
 	coefficients[2] = dot_vector3d(b, b) - pow(d, 2.0);
 }
 
-/**
- * 円錐とレイとの交点が、円錐頂点から与えられた高さの範囲外であることを判定する
- * ⑴ 交点が円錐頂点より上方向にある
- * ⑵ 交点が円錐の高さの範囲外である
-*/
-static bool	_is_out_of_height_range(
+double	hit_cone_side(
 	const t_ray ray,
-	const t_cone cone,
-	const double hit_distance)
-{
-	t_vector3d	point;
-	double		a;
-
-	point = addition_vector3d(ray.origin,
-			vector3d_dot_double(ray.direction_vec, hit_distance));
-	a = dot_vector3d(subtraction_vector3d(point, cone.top),
-			cone.direction_vec);
-	if (a < 0)
-		return (true);
-	if (pow(a, 2.0) >= pow(cone.height, 2.0))
-		return (true);
-	return (false);
-}
-
-double	hit_cone_side(const t_ray ray, const void *object)
+	const void *object)
 {
 	t_cone		*cone;
 	double		coefficients[3];
 	double		hit_distance;
+	int			ret;
 
 	cone = (t_cone *)object;
 	_set_coeffients(coefficients, ray, *cone);
 	hit_distance = get_closer_hit_distance(
 			coefficients[0], coefficients[1], coefficients[2]);
-	if (hit_distance <= NOT_HIT)
+	if (hit_distance <= 0)
 		return (NOT_HIT);
-	if (_is_out_of_height_range(ray, *cone, hit_distance))
-		hit_distance = NOT_HIT;
+	ret = is_invalid_hit_point(ray, *cone, hit_distance);
+	if (ret == NO_VALID_POINT)
+		return (NOT_HIT);
+	else if (ret == GET_ANOTHER_HIT_POINT)
+	{
+		hit_distance = get_farer_hit_distance(
+				coefficients[0], coefficients[1], coefficients[2]);
+		if (hit_distance <= 0
+			|| is_invalid_hit_point(ray, *cone, hit_distance)
+			== NO_VALID_POINT)
+			return (NOT_HIT);
+	}
 	return (hit_distance);
 }

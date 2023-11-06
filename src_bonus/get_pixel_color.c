@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:42:37 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/03 19:31:18 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/05 21:23:09 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	get_pixel_color(
 	const t_scene scene)
 {
 	t_vector3d	normal_vector;
-	t_vector3d	point_on_object;	
+	t_vector3d	point_on_object;
 
 	set_closest_point_info_in_ray(ray, scene);
 	if (ray->hit_object_index != NOT_HIT)

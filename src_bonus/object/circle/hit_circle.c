@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_circle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:19:47 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/08 19:08:32 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:03:56 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ static bool	_point_is_within_radius(
 		<= pow(radius, 2.0));
 }
 
-double	hit_circle(const t_ray ray, const void *object)
+double	hit_circle(
+	const t_ray ray,
+	const void *object)
 {
 	t_circle	*circle;
 	double		hit_distance;

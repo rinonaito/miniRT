@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:08:45 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/08 20:02:15 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:58:53 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@
  * 上記をもとに、レイが平面と接する点までの距離（hit_distance）を求め、返す。
  * hit_distanceが0の場合は、視線の方向ベクトルと平面が平行で、視界に映らないためNOT_HITを返す。
  */
-double	hit_plane(const t_ray ray, const void *object)
+double	hit_plane(
+	const t_ray ray,
+	const void *object)
 {
 	t_plane		*plane;
 	double		hit_distance;
