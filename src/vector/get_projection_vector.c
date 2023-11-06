@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 20:42:22 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/06 18:05:19 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/06 19:57:38 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
  * t_vector3d target: 射影をとりたいベクトル
 */
 t_vector3d	get_projection_vector(
-	const t_vector3d direction_vec,
-	const t_vector3d center_to_point)
+	const t_vector3d base,
+	const t_vector3d target)
 {
-	return (vector3d_dot_double(
-			direction_vec,
-			dot_vector3d(center_to_point, direction_vec)));
+	return (vector3d_dot_double(base, dot_vector3d(target, base)));
 }
