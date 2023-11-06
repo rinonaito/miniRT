@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:57:36 by naitorino         #+#    #+#             */
-/*   Updated: 2023/11/03 12:49:37 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/06 17:53:58 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ t_vector3d	get_circle_center(
 				double distance);
 
 //sphere.h
-double		hit_sphere(const t_ray ray, const void *object);
+double		hit_sphere(
+				const t_ray ray,
+				const void *object);
 
 t_vector3d	get_normal_vector_for_sphere(
 				const t_ray ray,
@@ -49,7 +51,9 @@ int			get_pixel_color_for_sphere(
 				const t_ray ray);
 
 //plane.h
-double		hit_plane(const t_ray ray, const void *object);
+double		hit_plane(
+				const t_ray ray,
+				const void *object);
 
 t_vector3d	get_normal_vector_for_plane(
 				const t_ray ray,
@@ -72,7 +76,9 @@ t_vector3d	get_normal_vector_with_bump(
 				t_bumpmap bumpmap);
 
 //circle.h
-double		hit_circle(const t_ray ray, const void *object);
+double		hit_circle(
+				const t_ray ray,
+				const void *object);
 
 t_vector3d	get_normal_vector_for_circle(
 				const t_ray ray,
@@ -85,7 +91,9 @@ int			get_pixel_color_for_circle(
 				const t_ray ray);
 
 //tube.h
-double		hit_tube(const t_ray ray, const void *object);
+double		hit_tube(
+				const t_ray ray,
+				const void *object);
 
 t_vector3d	get_normal_vector_for_tube(
 				const t_ray ray,
@@ -98,7 +106,9 @@ int			get_pixel_color_for_tube(
 				const t_ray ray);
 
 //cone.h
-double		hit_cone_side(const t_ray ray, const void *object);
+double		hit_cone_side(
+				const t_ray ray,
+				const void *object);
 
 t_vector3d	get_normal_vector_for_cone_side(
 				const t_ray ray,
@@ -109,5 +119,10 @@ t_vector3d	get_normal_vector_for_cone_side(
 int			get_pixel_color_for_cone_side(
 				const void *object,
 				const t_ray ray);
+
+int			is_invalid_hit_point(
+				const t_ray ray,
+				const t_cone cone,
+				const double hit_distance);
 
 #endif

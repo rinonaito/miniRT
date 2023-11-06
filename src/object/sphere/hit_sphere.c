@@ -6,7 +6,7 @@
 /*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:42:36 by yshimoma          #+#    #+#             */
-/*   Updated: 2023/10/16 20:18:08 by rnaito           ###   ########.fr       */
+/*   Updated: 2023/11/06 17:52:45 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ static double	_get_closer_hit_distance_for_sphere(
  * 上記をもとに、tに関する二次方程式 at^2 + bt + c = 0を作成し、
  * 球とレイの接点の数(0 ~ 2)を求め、返す
 */
-double	hit_sphere(const t_ray ray, const void *object)
+double	hit_sphere(
+	const t_ray ray,
+	const void *object)
 {
 	t_sphere	*sphere;
 

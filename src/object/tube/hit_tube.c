@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_tube.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:18:56 by rnaito            #+#    #+#             */
-/*   Updated: 2023/10/08 19:22:26 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:04:12 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ static bool	_is_out_of_height_range(
 		return (false);
 }
 
-double	hit_tube(const t_ray ray, const void *object)
+double	hit_tube(
+	const t_ray ray,
+	const void *object)
 {
 	t_tube		*tube;
 	double		a;
