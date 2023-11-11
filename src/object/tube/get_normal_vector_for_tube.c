@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_normal_vector_for_tube.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimoma <yshimoma@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: rnaito <rnaito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:02:17 by rnaito            #+#    #+#             */
-/*   Updated: 2023/11/06 20:56:32 by yshimoma         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:20:24 by rnaito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ t_vector3d	get_normal_vector_for_tube(
 	tube = (t_tube *)object;
 	bottom_center = subtraction_vector3d(tube->center,
 			vector3d_dot_double(tube->direction_vec, tube->height / 2.0));
-	center_to_point = normalize_vector3d(
-			subtraction_vector3d(point, bottom_center));
-	projection_on_axis = normalize_vector3d(
-			get_projection_vector(tube->direction_vec, center_to_point));
+	center_to_point = subtraction_vector3d(point, bottom_center);
+	projection_on_axis = get_projection_vector(
+			tube->direction_vec, center_to_point);
 	normal_vector = subtraction_vector3d(center_to_point, projection_on_axis);
 	if (camera_is_inside_of_object(normal_vector, ray.direction_vec))
 		normal_vector = subtraction_vector3d(
